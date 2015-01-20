@@ -1,0 +1,5 @@
+﻿CARBOFOL HDPE-|-55-|-ROLL-|-ANR/BND141111105-|-121004-|-Chain International Transport Co.-|-	-|-  -|- 	-|-NEC NEW EAST COMPANY SRL ON BEHALF OF NAUE GMBH & CO.KG-|-	-|-		-|-		-|-Chain International Transport Co.-|-		-|-		-|- 	-|-
+Commodity - Total Number - Type of Package - Bill Of Lading Number - Total Weight - Consigne - Uknown - Uknown - Uknown - Shipper - Uknown - Uknown - Uknown - Notify Party - Uknown - Uknown - Uknwon - 
+----------------------------------------------------------------------------------
+
+commodityCode	totalQuantity	packageTypeCode		originalBolNumber	consignee.name
