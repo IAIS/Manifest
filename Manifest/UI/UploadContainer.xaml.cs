@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,7 +21,7 @@ namespace Manifest.UI
     /// </summary>
     public partial class UploadContainer : UserControl
     {
-        private readonly ObservableCollection<JManifestContainer> _containers = new ObservableCollection<JManifestContainer>(); 
+        private readonly ObservableCollection<Container> _containers = new ObservableCollection<Container>(); 
 
         public UploadContainer()
         {
@@ -39,9 +41,9 @@ namespace Manifest.UI
                 
                 if (dialog.ShowDialog() == true)
                 {
-                    List<JManifestContainer> containers = SimpleConverter.Convert<JManifestContainer>(dialog.FileName, "Manifest.Shared.JManifestContainer");
+                    List<Container> containers = SimpleConverter.Convert<Container>(dialog.FileName, "Manifest.Shared.Container");
                     _containers.Clear();
-                    foreach (JManifestContainer jManifestContainer in containers)
+                    foreach (Container jManifestContainer in containers)
                     {
                         _containers.Add(jManifestContainer);
                     }
@@ -56,7 +58,51 @@ namespace Manifest.UI
 
         private void BtnNext_OnClick(object sender, RoutedEventArgs e)
         {
-            File.WriteAllText("temp.txt", JsonConvert.SerializeObject(_containers), Encoding.UTF8);
+            List<BillOfLading> billOfLadings = ((App)Application.Current).BillOfLadings;
+            IEnumerable<Container> persistedContainers = billOfLadings.SelectMany(b => b.Containers);
+            foreach (Container container in _containers)
+            {
+                Container persistedContainer = persistedContainers.FirstOrDefault();
+                persistedContainer.SealNo = container.SealNo;
+                persistedContainer.TareWeightInMT = container.TareWeightInMT;
+            }
+            Voyage voyage = new Voyage()
+            {
+                BillOfLadings = billOfLadings
+            };
+            StringBuilder builder = new StringBuilder();
+            builder.Append("\"VOY\"");
+            foreach (PropertyInfo propertyInfo in voyage.GetType().GetProperties())
+            {
+                builder.Append("," + "\"" + propertyInfo.GetValue(voyage) + "\"");
+            }
+            //TODO: Convert line below to system.newline
+            builder.Append("\n\"BOL\"");
+            foreach (BillOfLading billOfLading in voyage.BillOfLadings)
+            {
+                foreach (PropertyInfo propertyInfo in billOfLading.GetType().GetProperties())
+                {
+                    builder.Append("," + "\"" + propertyInfo.GetValue(billOfLading) + "\"");
+                }
+                foreach (Container container in billOfLading.Containers)
+                {
+                    builder.Append("\n\"CTR\"");
+                    foreach (PropertyInfo propertyInfo in container.GetType().GetProperties())
+                    {
+                        builder.Append("," + "\"" + propertyInfo.GetValue(container) + "\"");
+                    }
+                    foreach (Consignment consignment in container.Consignments)
+                    {
+                        builder.Append("\n\"CON\"");
+                        foreach (PropertyInfo propertyInfo in consignment.GetType().GetProperties())
+                        {
+                            builder.Append("," + "\"" + propertyInfo.GetValue(consignment) + "\"");
+                        }
+                    }
+                }
+                File.WriteAllText("final_result.txt", builder.ToString(), Encoding.UTF8);
+            }
+            
         }
     }
 }

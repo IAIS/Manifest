@@ -15,56 +15,56 @@
         </WrapPanel>
         <DataGrid Name="gridJFlightConsignment" FlowDirection="RightToLeft" CanUserSortColumns="False" AutoGenerateColumns="False">
         <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=originalBolNumber}" Header="شماره بارنامه">
+                <DataGridTextColumn Binding="{Binding Path=BillOfLadingNo}" Header="شماره بارنامه">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=commodityCode}" Header="کد کالا">
+                <DataGridTextColumn Binding="{Binding Path=CommodityCode}" Header="کد کالا">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=packageTypeCode}" Header="نوع بسته بندی">
+                <DataGridTextColumn Binding="{Binding Path=PackageTypeCode}" Header="نوع بسته بندی">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=totalQuantity}" Header="تعداد کل">
+                <DataGridTextColumn Binding="{Binding Path=TotalQuantity}" Header="تعداد کل">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=grossWeightInKg}" Header="وزن کل">
+                <DataGridTextColumn Binding="{Binding Path=TotalTareWeightInMT}" Header="وزن کل">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=originalConsignee.name}" Header="صاحب کالا">
+                <DataGridTextColumn Binding="{Binding Path=ConsigneeName}" Header="صاحب کالا">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=originalShipper.name}" Header="شرکت حمل">
+                <DataGridTextColumn Binding="{Binding Path=ShipperName}" Header="شرکت حمل">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=notify1.name}" Header="نماینده">
+                <DataGridTextColumn Binding="{Binding Path=Notify1Name}" Header="نماینده">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />

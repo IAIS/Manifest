@@ -16,28 +16,28 @@
         <DataGrid Name="gridContainer" AutoGenerateColumns="False" HorizontalContentAlignment="Center" 
                   FlowDirection="RightToLeft" CanUserSortColumns="False" >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=number}" Header="شماره کانتینر">
+                <DataGridTextColumn Binding="{Binding Path=ContainerNumber}" Header="شماره کانتینر">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=type}" Header="نوع کانتینر">
+                <!--<DataGridTextColumn Binding="{Binding Path=type}" Header="نوع کانتینر">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>-->
+                <DataGridTextColumn Binding="{Binding Path=TareWeightInMT}" Header="وزن کانتینر خالی">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=weight.amount}" Header="وزن کانتینر خالی">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="HorizontalAlignment" Value="Center" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=sealNo}" Header="شماره پلمپ">
+                <DataGridTextColumn Binding="{Binding Path=SealNo}" Header="شماره پلمپ">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />

@@ -27,12 +27,12 @@ namespace Manifest.UI
     /// </summary>
     public partial class UploadBL : UserControl
     {
-        private readonly ObservableCollection<JFlightConsignment> _consignments = new ObservableCollection<JFlightConsignment>(); 
+        private readonly ObservableCollection<BillOfLading> _billOfLadings = new ObservableCollection<BillOfLading>(); 
 
         public UploadBL()
         {
             InitializeComponent();
-            gridJFlightConsignment.ItemsSource = _consignments;
+            gridJFlightConsignment.ItemsSource = _billOfLadings;
         }
 
         private void BtnUploadBillOfLading_OnClick(object sender, RoutedEventArgs e)
@@ -44,14 +44,15 @@ namespace Manifest.UI
                 dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (dialog.ShowDialog() == true)
                 {
-                    List <JFlightConsignment> consignments = SimpleConverter.Convert<JFlightConsignment>(dialog.FileName, "Manifest.Shared.JFlightConsignment");
-                    _consignments.Clear();
-                    foreach (JFlightConsignment consignment in consignments)
+                    List <BillOfLading> consignments = SimpleConverter.Convert<BillOfLading>(dialog.FileName, "Manifest.Shared.BillOfLading");
+                    _billOfLadings.Clear();
+                    foreach (BillOfLading consignment in consignments)
                     {
-                        _consignments.Add(consignment);
+                        _billOfLadings.Add(consignment);
                     }
                     btnNext.IsEnabled = true;
                 }
+                ((App) Application.Current).BillOfLadings = _billOfLadings.ToList();
             }
             catch (Exception ex)
             {
@@ -61,7 +62,7 @@ namespace Manifest.UI
 
         private void BtnNext_OnClick(object sender, RoutedEventArgs e)
         {
-            File.WriteAllText("temp2.txt", JsonConvert.SerializeObject(_consignments), Encoding.UTF8);
+            File.WriteAllText("temp2.txt", JsonConvert.SerializeObject(_billOfLadings), Encoding.UTF8);
         }
     }
 }

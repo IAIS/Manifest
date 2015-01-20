@@ -1,18 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Files>
-  <File class="Manifest.Shared.JManifestContainer">
-    <Property name="number"/>
-    <Property name="type"/>
-    <Property name="items[0].type"/>
+  <File class="Manifest.Shared.BillOfLading">
+    <Property name="CommodityDescription"/>
+    <Property name="TotalQuantity"/>
+    <Property name="PackageType"/>
+    <Property name="BillOfLadingNo"/>
+    <Property name="TotalTareWeightInMT"/>
+    <Property name="ConsigneeName"/>
+    <Uknown/>
+    <Uknown/>
+    <Uknown/>
+    <Property name="ShipperName"/>
+    <Uknown/>
+    <Uknown/>
+    <Uknown/>
+    <Property name="Notify1Name"/>
+    <Uknown/>
+    <Uknown/>
+    <Uknown/>
+  </File>
+  <File class="Manifest.Shared.Container">
+    <Property name="ContainerNumber"/>
     <Uknown/>
     <Uknown/>
     <Uknown/>
     <Uknown/>
     <Uknown/>
-    <Property name="weight.amount"/>
     <Uknown/>
     <Uknown/>
-    <Property name="sealNo"/>
+    <Property name="TareWeightInMT"/>
+    <Uknown/>
+    <Uknown/>
+    <Property name="SealNo"/>
     <Uknown/>
     <Uknown/>
     <Uknown/>

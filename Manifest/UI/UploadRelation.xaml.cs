@@ -64,6 +64,22 @@ namespace Manifest.UI
         private void BtnNext_OnClick(object sender, RoutedEventArgs e)
         {
             File.WriteAllText("temp3.txt", JsonConvert.SerializeObject(_relations), Encoding.UTF8);
+            List<BillOfLading> billOfLadings = ((App) Application.Current).BillOfLadings;
+            foreach (JRelation relation in _relations)
+            {
+                BillOfLading billOfLading = billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(relation.originalBolNumber));
+                Container container = new Container()
+                {
+                    ContainerNumber = relation.number,
+                };
+                container.Consignments.Add(new Consignment()
+                {
+                    ConsignmentWeightInKg = relation.consignmentWeightInKg, 
+                    NoOfPallets = relation.quantityInConsignment, 
+                    SerialNumber = relation.number
+                });
+                billOfLading.Containers.Add(container);
+            }
         }
     }
 }

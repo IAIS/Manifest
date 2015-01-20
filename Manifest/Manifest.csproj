@@ -77,6 +77,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml">
@@ -98,22 +99,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\ExceptionMessage.cs" />
-    <Compile Include="Shared\Habit.cs" />
-    <Compile Include="Shared\JCurrency.cs" />
-    <Compile Include="Shared\JEmployee.cs" />
-    <Compile Include="Shared\JFlightConsignment.cs" />
-    <Compile Include="Shared\JManifest.cs" />
-    <Compile Include="Shared\JManifestContainer.cs" />
-    <Compile Include="Shared\JManifestItem.cs" />
-    <Compile Include="Shared\JManifestVehicle.cs" />
-    <Compile Include="Shared\JUnit.cs" />
-    <Compile Include="Shared\JValue.cs" />
-    <Compile Include="Shared\JWeight.cs" />
-    <Compile Include="Shared\Person.cs" />
-    <Compile Include="Shared\Relation.cs" />
-    <Compile Include="Shared\UNITS.cs" />
     <Compile Include="Converter\SimpleConverter.cs" />
     <Compile Include="Exceptions\UserInterfaceException.cs" />
+    <Compile Include="Shared\BillOfLading.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Shared\Consignment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Shared\Container.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Shared\Voyage.cs" />
+    <Compile Include="Shared\JManifestVehicle.cs" />
+    <Compile Include="Shared\JRelation.cs" />
     <Compile Include="UI\Confirmation.xaml.cs">
       <DependentUpon>Confirmation.xaml</DependentUpon>
     </Compile>
@@ -136,6 +135,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Utils\Printer.cs" />
     <Page Include="UI\Confirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,6 +223,7 @@
     <Resource Include="instances\Person.txt" />
     <Resource Include="instances\VOYAGE.TXT" />
     <Resource Include="Assets\Upload.ico" />
+    <Resource Include="Structure\Output.xml" />
     <Content Include="Structure\Templates.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

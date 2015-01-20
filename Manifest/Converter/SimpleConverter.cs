@@ -28,11 +28,8 @@ namespace Manifest.Converter
         public static List<T> Convert<T>(String path, String className)
         {
             String[][] values = SimpleConverter.FetchValues(path);
-//            Console.WriteLine(values);
             PropertyInfo[][] properties = SimpleConverter.FetchFileInfo(className);
-//            Console.WriteLine(properties);
             List<T> instances = SimpleConverter.CrateInstances<T>(values, properties);
-//            Console.WriteLine(instances);
             return instances;
         }
 

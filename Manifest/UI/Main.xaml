@@ -9,10 +9,9 @@
     <mui:ModernTab Layout="List" FlowDirection="RightToLeft">
         <mui:ModernTab.Links>
             <mui:Link DisplayName="اطلاعات بارنامه" ImageSource="/Assets/world.png" Source="/UI/UploadBL.xaml"/>
-            <mui:Link DisplayName="اطلاعات کانتینر" ImageSource="/Assets/truck.png" Source="/UI/UploadContainer.xaml"/>
             <mui:Link DisplayName="تعیین ارتباطات" ImageSource="/Assets/link.png" Source="/UI/UploadRelation.xaml"/>
+            <mui:Link DisplayName="اطلاعات کانتینر" ImageSource="/Assets/truck.png" Source="/UI/UploadContainer.xaml"/>
             <mui:Link DisplayName="تایید و ثبت نهایی" ImageSource="/Assets/check_mark.png" Source="/UI/Confirmation.xaml" />
-            
         </mui:ModernTab.Links>
     </mui:ModernTab>
     <!--    -->
