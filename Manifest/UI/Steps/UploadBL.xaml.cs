@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using Manifest.Converter;
 using Manifest.Resources;
 using Manifest.Shared;
+using Manifest.UI.Details;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using Warehouse.Exceptions;
@@ -26,7 +27,10 @@ namespace Manifest.UI
         {
             InitializeComponent();
             gridJFlightConsignment.ItemsSource = _billOfLadings;
+            gridJFlightConsignment.Visibility = Visibility.Hidden;
         }
+
+
 
         private void BtnUploadBillOfLading_OnClick(object sender, RoutedEventArgs e)
         {
@@ -37,13 +41,16 @@ namespace Manifest.UI
                 dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (dialog.ShowDialog() == true)
                 {
-                    List<BillOfLading> consignments = SimpleConverter.Convert<BillOfLading>(dialog.FileName, "Manifest.Shared.BillOfLading");
+                    List<BillOfLading> billOfLadings = SimpleConverter.Convert<BillOfLading>(dialog.FileName, "Manifest.Shared.BillOfLading");
                     _billOfLadings.Clear();
-                    foreach (BillOfLading consignment in consignments)
+                    foreach (BillOfLading billOfLading in billOfLadings)
                     {
-                        _billOfLadings.Add(consignment);
+                        _billOfLadings.Add(billOfLading);
                     }
-                    btnNext.IsEnabled = true;
+                }
+                if (_billOfLadings.Count > 0)
+                {
+                    gridJFlightConsignment.Visibility = Visibility.Visible;
                 }
                 ((App)Application.Current).BillOfLadings = _billOfLadings.ToList();
             }
@@ -53,32 +60,37 @@ namespace Manifest.UI
             }
         }
 
-        private void BtnNext_OnClick(object sender, RoutedEventArgs e)
-        {
-            File.WriteAllText("temp2.txt", JsonConvert.SerializeObject(_billOfLadings), Encoding.UTF8);
-        }
-
-        private void GridJFlightConsignment_OnSelected(object sender, RoutedEventArgs e)
-        {
-            //            BillOfLading billOfLading = (BillOfLading)e.Source;
-            //            uBillOfLading.Init(billOfLading);
-        }
-
-        private void GridJFlightConsignment_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            //            String billNo = ((Button)sender).CommandParameter.ToString();
-            //            BillOfLading billOfLading = _billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(billNo));
-            //            BillOfLadingDetails window = new BillOfLadingDetails();
-            //            window.SetContent(billOfLading);
-            //            window.Show();
             String billNo = ((Button)sender).CommandParameter.ToString();
             BillOfLading billOfLading = _billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(billNo));
-            uBilOfLading.Init(billOfLading);
+            BillOfLadingDetails window = new BillOfLadingDetails();
+            window.Show();
+            window.Init(billOfLading);
+        }
+
+        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            String billNo = ((Button)sender).CommandParameter.ToString();
+            BillOfLading billOfLading = _billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(billNo));
+            _billOfLadings.Remove(billOfLading);
+            if (_billOfLadings.Count == 0)
+            {
+                gridJFlightConsignment.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void BtnNewBillOfLading_OnClick(object sender, RoutedEventArgs e)
+        {
+            BillOfLading billOfLading = new BillOfLading();
+            _billOfLadings.Add(billOfLading);
+            BillOfLadingDetails window = new BillOfLadingDetails();
+            window.Show();
+            window.Init(billOfLading);
+            if (_billOfLadings.Count > 0)
+            {
+                gridJFlightConsignment.Visibility = Visibility.Visible;
+            }
         }
     }
 }

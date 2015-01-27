@@ -79,6 +79,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml">
@@ -114,6 +115,9 @@
     <Compile Include="Shared\Voyage.cs" />
     <Compile Include="Shared\JManifestVehicle.cs" />
     <Compile Include="Shared\JRelation.cs" />
+    <Compile Include="UI\Details\BillOfLadingDetails.xaml.cs">
+      <DependentUpon>BillOfLadingDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Steps\Confirmation.xaml.cs">
       <DependentUpon>Confirmation.xaml</DependentUpon>
     </Compile>
@@ -139,7 +143,12 @@
     <Compile Include="UserControl\uBillOfLading.xaml.cs">
       <DependentUpon>uBillOfLading.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ControlCreator.cs" />
     <Compile Include="Utils\Printer.cs" />
+    <Page Include="UI\Details\BillOfLadingDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Steps\Confirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,6 +241,9 @@
     <Resource Include="instances\VOYAGE.TXT" />
     <Resource Include="Assets\Upload.ico" />
     <Resource Include="Structure\Output.xml" />
+    <None Include="Resources\edit.png" />
+    <Resource Include="Assets\edit.png" />
+    <Resource Include="Assets\delete.png" />
     <Content Include="Structure\Templates.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -254,7 +266,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

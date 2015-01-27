@@ -39,3 +39,5 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UI\Template\Wr
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UI\Steps\UploadBL.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UI\Steps\UploadContainer.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UI\Steps\UploadBL.baml
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UI\Details\BillOfLadingDetails.g.cs
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UI\Details\BillOfLadingDetails.baml

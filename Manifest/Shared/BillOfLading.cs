@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
+
 
 namespace Manifest.Shared
 {
+    [MetadataType(typeof(BillOfLading))]
     public class BillOfLading
     {
         public BillOfLading()
