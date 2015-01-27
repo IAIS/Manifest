@@ -1,6 +1,0 @@
-﻿<mui:ModernWindow x:Class="Manifest.UI.Wrapper"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
-        Title="Wrapper" Height="600" Width="800" ContentSource="/UI/Main.xaml" Icon="/Manifest;component/Assets/Upload.ico">
-</mui:ModernWindow>

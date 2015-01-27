@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="Manifest.UI.UploadBL"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:userControl="clr-namespace:Manifest.UserControl"
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical" CanVerticallyScroll="True">
+            <WrapPanel DockPanel.Dock="Top" Orientation="Vertical">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Justify" FlowDirection="RightToLeft" >
+                همکار گرامی لطفا فایل حاوی اطلاعات بارنامه را ثبت کرده و در صورت نیاز اطلاعات آن را ویرایش کنید. 
+                بعد از اطمینان از صحت اطلاعات به مرحله ی بعد (ثبت اطلاعات کانتینر) مراجعه نمایید.
+                </TextBlock>
+                <Button Name="btnUploadBillOfLading" Click="BtnUploadBillOfLading_OnClick" Margin="0 10 1 0">ثبت اطلاعات بارنامه</Button>
+                <Button Name="btnNext" Click="BtnNext_OnClick" Margin="0 1 0 10" IsEnabled="False">تایید و مرحله ی بعد</Button>
+            </WrapPanel>
+            <DataGrid Name="gridJFlightConsignment" FlowDirection="RightToLeft" CanUserSortColumns="False" AutoGenerateColumns="False" DockPanel.Dock="Top">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=BillOfLadingNo}" Header="شماره بارنامه">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path=CommodityCode}" Header="کد کالا">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path=PackageTypeCode}" Header="نوع بسته بندی">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path=TotalQuantity}" Header="تعداد کل">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path=TotalTareWeightInMT}" Header="وزن کل">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path=ConsigneeName}" Header="صاحب کالا">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path=ShipperName}" Header="شرکت حمل">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path=Notify1Name}" Header="نماینده">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btnEdit" Click="BtnEdit_OnClick" CommandParameter="{Binding Path=BillOfLadingNo}">مشاهده ی جزئیات</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <userControl:uBillOfLading x:Name="uBilOfLading" Visibility="Visible"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\App.xaml
-6-1499490630
+7-1376278828
 11366145709
-2435996981
+26-473788233
 12154393369
-UI\Confirmation.xaml;UI\Main.xaml;UI\UploadRelation.xaml;UI\Wrapper.xaml;UI\UploadBL.xaml;UI\UploadContainer.xaml;
+UI\Steps\Confirmation.xaml;UI\Template\Main.xaml;UI\Steps\UploadRelation.xaml;UI\Template\Wrapper.xaml;UI\Steps\UploadBL.xaml;UI\Steps\UploadContainer.xaml;UserControl\uBillOfLading.xaml;
 
 False
 

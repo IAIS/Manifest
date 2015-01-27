@@ -15,7 +15,7 @@
     <WarningLevel>4</WarningLevel>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>C:\Users\AbouzarKamaee\Desktop\IAIS\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -25,11 +25,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -113,50 +114,57 @@
     <Compile Include="Shared\Voyage.cs" />
     <Compile Include="Shared\JManifestVehicle.cs" />
     <Compile Include="Shared\JRelation.cs" />
-    <Compile Include="UI\Confirmation.xaml.cs">
+    <Compile Include="UI\Steps\Confirmation.xaml.cs">
       <DependentUpon>Confirmation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Main.xaml.cs">
+    <Compile Include="UI\Template\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\UploadRelation.xaml.cs">
+    <Compile Include="UI\Steps\UploadRelation.xaml.cs">
       <DependentUpon>UploadRelation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Wrapper.xaml.cs">
+    <Compile Include="UI\Template\Wrapper.xaml.cs">
       <DependentUpon>Wrapper.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\UploadBL.xaml.cs">
+    <Compile Include="UI\Steps\UploadBL.xaml.cs">
       <DependentUpon>UploadBL.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\UploadContainer.xaml.cs">
+    <Compile Include="UI\Steps\UploadContainer.xaml.cs">
       <DependentUpon>UploadContainer.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UserControl\uBillOfLading.xaml.cs">
+      <DependentUpon>uBillOfLading.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Printer.cs" />
-    <Page Include="UI\Confirmation.xaml">
+    <Page Include="UI\Steps\Confirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Main.xaml">
+    <Page Include="UI\Template\Main.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\UploadRelation.xaml">
+    <Page Include="UI\Steps\UploadRelation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Wrapper.xaml">
+    <Page Include="UI\Template\Wrapper.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\UploadBL.xaml">
+    <Page Include="UI\Steps\UploadBL.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\UploadContainer.xaml">
+    <Page Include="UI\Steps\UploadContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\uBillOfLading.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -246,6 +254,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,7 @@
 ﻿<Application x:Class="Manifest.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="UI\Wrapper.xaml">
+             StartupUri="UI\Template\Wrapper.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <!-- WPF 4.0 workaround -->
