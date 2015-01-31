@@ -12,6 +12,11 @@ namespace Manifest
     /// </summary>
     public partial class App : Application
     {
-        public List<BillOfLading> BillOfLadings { get; set; } 
+        public App()
+        {
+            this.Voyage = new Voyage();
+        }
+
+        public Voyage Voyage { get; set; }
     }
 }

@@ -22,9 +22,13 @@ namespace Manifest.Utils
             Type type = instance.GetType();
             foreach (PropertyInfo propertyInfo in type.GetProperties())
             {
-                builder.Append("\"" + type.Name + "\"");
+                if (CommonUtility.IsSimpleProperty(propertyInfo))
+                {
+                    builder.Append("\"" + propertyInfo.GetValue(instance) + "\",");    
+                }
             }
-            throw new NotImplementedException();
+            // برای  پاک کردن یک ویرگول اضافی که در حلقه ی بالا اضافه شده است
+            return builder.ToString().Substring(0, builder.Length - 1);
         }
     }
 }

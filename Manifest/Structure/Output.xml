@@ -7,9 +7,7 @@
     <Property name="agentsVoyageNumber"/>
     <Property name="portCodeOfDischarge"/>
     <Property name="expectedToArriveDate"/>
-    <Property name="rotationNumber"/>
-    
-    
+    <Property name="rotationNumber"/>    
     <Property name="agentsManifestReferenceNumber"/>
   </File>
 </Files>

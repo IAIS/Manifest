@@ -15,7 +15,7 @@
     <WarningLevel>4</WarningLevel>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\AbouzarKamaee\Desktop\IAIS\</PublishUrl>
+    <PublishUrl>C:\Users\AbouzarKamaee\Desktop\Finl\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -79,7 +79,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml">
@@ -118,8 +120,26 @@
     <Compile Include="UI\Details\BillOfLadingDetails.xaml.cs">
       <DependentUpon>BillOfLadingDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Details\ConsignmentDetails.xaml.cs">
+      <DependentUpon>ConsignmentDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Details\ContainerDetails.xaml.cs">
+      <DependentUpon>ContainerDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Details\ReationDetails.xaml.cs">
+      <DependentUpon>ReationDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Details\VoyageDetails.xaml.cs">
+      <DependentUpon>VoyageDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Steps\Confirmation.xaml.cs">
       <DependentUpon>Confirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Steps\UploadConsignment.xaml.cs">
+      <DependentUpon>UploadConsignment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Steps\UploadVoyage.xaml.cs">
+      <DependentUpon>UploadVoyage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Template\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
@@ -143,13 +163,53 @@
     <Compile Include="UserControl\uBillOfLading.xaml.cs">
       <DependentUpon>uBillOfLading.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\uConsignment.xaml.cs">
+      <DependentUpon>uConsignment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\uContainer.xaml.cs">
+      <DependentUpon>uContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\uRelation.xaml.cs">
+      <DependentUpon>uRelation.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UserControl\uVoyage.xaml.cs">
+      <DependentUpon>uVoyage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\CommonUtility.cs" />
     <Compile Include="Utils\ControlCreator.cs" />
+    <Compile Include="Utils\ParameterUtility.cs" />
     <Compile Include="Utils\Printer.cs" />
+    <Compile Include="Utils\RowToIndexConv.cs" />
     <Page Include="UI\Details\BillOfLadingDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Details\ConsignmentDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Details\ContainerDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Details\ReationDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Details\VoyageDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Steps\Confirmation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Steps\UploadConsignment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Steps\UploadVoyage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,6 +234,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\uBillOfLading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\uConsignment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\uContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\uRelation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\uVoyage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,6 +320,10 @@
     <None Include="Resources\edit.png" />
     <Resource Include="Assets\edit.png" />
     <Resource Include="Assets\delete.png" />
+    <Resource Include="Assets\package.png" />
+    <Resource Include="Assets\support.png" />
+    <Resource Include="Assets\tag.png" />
+    <Resource Include="Assets\add.png" />
     <Content Include="Structure\Templates.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -266,9 +346,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

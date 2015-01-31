@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mui="http://firstfloorsoftware.com/ModernUI"
         xmlns:userControl="clr-namespace:Manifest.UserControl"
-        Title="BillOfLadingDetails">
+        Title="BillOfLadingDetails"   SizeToContent="WidthAndHeight">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical" CanVerticallyScroll="True">
             <userControl:uBillOfLading x:Name="ucBillOfLadingDetails" />

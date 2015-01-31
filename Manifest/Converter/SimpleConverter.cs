@@ -120,6 +120,7 @@ namespace Manifest.Converter
                 }
                 result.Add(values);
             }
+            reader.Close();
             return result.ToArray();
         }
 
@@ -178,6 +179,7 @@ namespace Manifest.Converter
                                             }
                                             else
                                             {
+                                                xmlReader.Close();
                                                 return result.ToArray();
                                             }
                                         }
@@ -189,6 +191,7 @@ namespace Manifest.Converter
                     }
                 }
             }
+            xmlReader.Close();
             if (result.Count == 0)
             {
                 return null;

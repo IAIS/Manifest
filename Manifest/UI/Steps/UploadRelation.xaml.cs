@@ -4,20 +4,16 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using FirstFloor.ModernUI.Windows;
+using FirstFloor.ModernUI.Windows.Navigation;
 using Manifest.Converter;
 using Manifest.Resources;
 using Manifest.Shared;
+using Manifest.Utils;
 using Microsoft.Win32;
+using Manifest.UI.Details;
 using Newtonsoft.Json;
 using Warehouse.Exceptions;
 
@@ -26,14 +22,21 @@ namespace Manifest.UI
     /// <summary>
     /// Interaction logic for UploadRelation.xaml
     /// </summary>
-    public partial class UploadRelation : System.Windows.Controls.UserControl
+    public partial class UploadRelation : System.Windows.Controls.UserControl, IContent
     {
-        private readonly ObservableCollection<JRelation> _relations = new ObservableCollection<JRelation>(); 
+        private ObservableCollection<JRelation> _relations;
 
         public UploadRelation()
         {
             InitializeComponent();
+            
+        }
+
+        public void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _relations = ParameterUtility.GetRelations();
             gridRelation.ItemsSource = _relations;
+            HandleDataGrid();
         }
 
         private void BtnUploadContainer_OnClick(object sender, RoutedEventArgs e)
@@ -51,8 +54,9 @@ namespace Manifest.UI
                     foreach (JRelation relation in relations)
                     {
                         _relations.Add(relation);
+                        AddRelation(relations);
                     }
-                    btnNext.IsEnabled = true;
+                    HandleDataGrid();
                 }
             }
             catch (Exception ex)
@@ -61,25 +65,96 @@ namespace Manifest.UI
             }
         }
 
-        private void BtnNext_OnClick(object sender, RoutedEventArgs e)
+        private void BtnNew_OnClick(object sender, RoutedEventArgs e)
         {
-            File.WriteAllText("temp3.txt", JsonConvert.SerializeObject(_relations), Encoding.UTF8);
-            List<BillOfLading> billOfLadings = ((App) Application.Current).BillOfLadings;
+            JRelation relation = new JRelation();
+            _relations.Add(relation);
+            AddRelation(relation);
+            ReationDetails window = new ReationDetails();
+            window.Show();
+            window.Init(relation);
+            HandleDataGrid();
+        }
+
+        private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            String containerNumber = ((Button)sender).CommandParameter.ToString();
+            JRelation relation = _relations.FirstOrDefault(c => c.Number.Equals(containerNumber));
+            ReationDetails window = new ReationDetails();
+            window.Show();
+            window.Init(relation);
+            HandleDataGrid();
+        }
+
+        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            String containerNumber = ((Button)sender).CommandParameter.ToString();
+            JRelation relation = _relations.FirstOrDefault(c => c.Number.Equals(containerNumber));
+            RemoveRelation(relation);
+            _relations.Remove(relation);
+            HandleDataGrid();
+        }
+
+        private void HandleDataGrid()
+        {
+            if (this._relations.Count == 0)
+            {
+                this.gridRelation.Visibility = Visibility.Hidden;
+            }
+            if (this._relations.Count > 0)
+            {
+                this.gridRelation.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void AddRelation(ICollection<JRelation> relations)
+        {
+            
             foreach (JRelation relation in _relations)
             {
-                BillOfLading billOfLading = billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(relation.originalBolNumber));
+                AddRelation(relation);
+            }
+        }
+
+        private void AddRelation(JRelation relation)
+        {
+            ObservableCollection<BillOfLading> billOfLadings = ParameterUtility.GetBillOfLading();
+            BillOfLading billOfLading = billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(relation.BolNumber));
+            if (!billOfLading.Containers.Any(c => c.ContainerNumber.Equals(relation.Number)))
+            {
                 Container container = new Container()
                 {
-                    ContainerNumber = relation.number,
+                    ContainerNumber = relation.Number,
                 };
                 container.Consignments.Add(new Consignment()
                 {
-                    ConsignmentWeightInKg = relation.consignmentWeightInKg, 
-                    NoOfPallets = relation.quantityInConsignment, 
-                    SerialNumber = relation.number
+                    ConsignmentWeightInKg = relation.ConsignmentWeightInKg,
+                    NoOfPallets = relation.QuantityInConsignment,
                 });
                 billOfLading.Containers.Add(container);
             }
+        }
+
+        private void RemoveRelation(JRelation relation)
+        {
+            ObservableCollection<BillOfLading> billOfLadings = ParameterUtility.GetBillOfLading();
+            BillOfLading billOfLading = billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(relation.BolNumber));
+            billOfLading.Containers.Remove(billOfLading.Containers.FirstOrDefault(c => c.ContainerNumber.Equals(relation.Number)));
+        }
+
+        public void OnFragmentNavigation(FragmentNavigationEventArgs e)
+        {
+            
+        }
+
+        public void OnNavigatedFrom(NavigationEventArgs e)
+        {
+
+        }
+
+        public void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+
         }
     }
 }

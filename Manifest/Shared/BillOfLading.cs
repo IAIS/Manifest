@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -10,10 +11,10 @@ namespace Manifest.Shared
     {
         public BillOfLading()
         {
-            Containers = new List<Container>();
+            Containers = new ObservableCollection<Container>();
         }
 
-        public List<Container> Containers { get; set; }
+        public ObservableCollection<Container> Containers { get; set; }
 
         [Required, MaxLength(60)]
         public String BillOfLadingNo { get; set; }

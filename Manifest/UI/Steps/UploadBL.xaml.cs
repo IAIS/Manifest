@@ -6,10 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using FirstFloor.ModernUI.Windows;
+using FirstFloor.ModernUI.Windows.Navigation;
 using Manifest.Converter;
 using Manifest.Resources;
 using Manifest.Shared;
 using Manifest.UI.Details;
+using Manifest.Utils;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using Warehouse.Exceptions;
@@ -19,18 +22,22 @@ namespace Manifest.UI
     /// <summary>
     /// Interaction logic for UploadBL.xaml
     /// </summary>
-    public partial class UploadBL : System.Windows.Controls.UserControl
+    public partial class UploadBL : System.Windows.Controls.UserControl, IContent
     {
-        private readonly ObservableCollection<BillOfLading> _billOfLadings = new ObservableCollection<BillOfLading>();
+        private ObservableCollection<BillOfLading> _billOfLadings;
 
         public UploadBL()
         {
             InitializeComponent();
-            gridJFlightConsignment.ItemsSource = _billOfLadings;
-            gridJFlightConsignment.Visibility = Visibility.Hidden;
+            
         }
 
-
+        public void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _billOfLadings = ParameterUtility.GetBillOfLading();
+            gridJFlightConsignment.ItemsSource = _billOfLadings;
+            HandleDataGrid();
+        }
 
         private void BtnUploadBillOfLading_OnClick(object sender, RoutedEventArgs e)
         {
@@ -41,7 +48,9 @@ namespace Manifest.UI
                 dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (dialog.ShowDialog() == true)
                 {
-                    List<BillOfLading> billOfLadings = SimpleConverter.Convert<BillOfLading>(dialog.FileName, "Manifest.Shared.BillOfLading");
+
+                    List<BillOfLading> billOfLadings = SimpleConverter.Convert<BillOfLading>(dialog.FileName,
+                        "Manifest.Shared.BillOfLading");
                     _billOfLadings.Clear();
                     foreach (BillOfLading billOfLading in billOfLadings)
                     {
@@ -52,11 +61,15 @@ namespace Manifest.UI
                 {
                     gridJFlightConsignment.Visibility = Visibility.Visible;
                 }
-                ((App)Application.Current).BillOfLadings = _billOfLadings.ToList();
+                ParameterUtility.SetBillOfLading(_billOfLadings);
             }
             catch (Exception ex)
             {
                 throw new UserInterfaceException(10001, ExceptionMessage.BillOfLadingOpenError, ex);
+            }
+            finally
+            {
+                HandleDataGrid();
             }
         }
 
@@ -74,10 +87,7 @@ namespace Manifest.UI
             String billNo = ((Button)sender).CommandParameter.ToString();
             BillOfLading billOfLading = _billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(billNo));
             _billOfLadings.Remove(billOfLading);
-            if (_billOfLadings.Count == 0)
-            {
-                gridJFlightConsignment.Visibility = Visibility.Hidden;
-            }
+            HandleDataGrid();
         }
 
         private void BtnNewBillOfLading_OnClick(object sender, RoutedEventArgs e)
@@ -87,10 +97,48 @@ namespace Manifest.UI
             BillOfLadingDetails window = new BillOfLadingDetails();
             window.Show();
             window.Init(billOfLading);
+            HandleDataGrid();
+        }
+
+        private void BtnAdd_OnClick(object sender, RoutedEventArgs e)
+        {
+            String billNo = ((Button)sender).CommandParameter.ToString();
+            BillOfLading billOfLading = _billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(billNo));
+            Container container = new Container();
+            billOfLading.Containers.Add(container);
+            ContainerDetails window = new ContainerDetails();
+            window.Show();
+            window.Init(container);
+            HandleDataGrid();
+        }
+
+        private void HandleDataGrid()
+        {
             if (_billOfLadings.Count > 0)
             {
                 gridJFlightConsignment.Visibility = Visibility.Visible;
             }
+            else
+            {
+                gridJFlightConsignment.Visibility = Visibility.Hidden;
+            }
+        }
+
+        public void OnFragmentNavigation(FragmentNavigationEventArgs e)
+        {
+            
+        }
+
+        public void OnNavigatedFrom(NavigationEventArgs e)
+        {
+
+        }
+
+
+
+        public void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+
         }
     }
 }

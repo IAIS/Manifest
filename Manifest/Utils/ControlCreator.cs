@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -26,7 +27,6 @@ namespace Manifest.Utils
         /// اضافه می کند و باز می گرداند
         /// </summary>
         /// <param name="instance"></param>
-        /// <param name="panel"></param>
         public static Panel CreateControl(T instance)
         {
             UniformGrid panel = new UniformGrid();
@@ -35,6 +35,10 @@ namespace Manifest.Utils
             panel.Columns = 2;
             foreach (PropertyInfo propertyInfo in instance.GetType().GetProperties())
             {
+                if (!CommonUtility.IsSimpleProperty(propertyInfo))
+                {
+                    continue;
+                }
                 TextBlock label = new TextBlock();
                 label.Text = propertyInfo.Name;
                 label.Margin = new Thickness(5);
@@ -51,12 +55,23 @@ namespace Manifest.Utils
                 valueBinder.Source = instance;
                 valueBinder.NotifyOnValidationError = true;
                 valueBinder.ValidatesOnExceptions = true;
+                valueBinder.ValidatesOnDataErrors = true;
                 valueBinder.Mode = BindingMode.TwoWay;
+//                RequiredAttribute attribute =
+//                    propertyInfo.GetCustomAttributes(typeof (RequiredAttribute), false)
+//                        .Cast<RequiredAttribute>()
+//                        .Single();
+//                attribute.
+//                valueBinder.ValidationRules.Add(new V);
                 BindingOperations.SetBinding(text, TextBox.TextProperty, valueBinder);
                 panel.Children.Add(text);
-//                TextBlock validator = new TextBlock();
-//                
+
                 
+                TextBlock validator = new TextBlock();
+                Binding validatorBinding = new Binding("(Validation.Errors)[0].ErrorContent");
+                validatorBinding.ElementName = propertyInfo.Name;
+                BindingOperations.SetBinding(validator, TextBlock.TextProperty, validatorBinding);
+
             }
 
             return panel;

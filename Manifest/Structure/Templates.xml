@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Files>
+  <File class="Manifest.Shared.Voyage">
+    <Property name="VoyageAgentCode"/>
+    <Uknown/>
+    <Property name="VesselName"/>
+    <Uknown/>
+    <Uknown/>
+    <Uknown/>
+    <Uknown/>
+  </File>
   <File class="Manifest.Shared.BillOfLading">
     <Property name="CommodityDescription"/>
     <Property name="TotalQuantity"/>
@@ -61,9 +70,12 @@
     <Uknown/>
   </File>
   <File class="Manifest.Shared.JRelation">
-    <Property name="originalBolNumber"/>
-    <Property name="number"/>
-    <Property name="quantityInConsignment"/>
-    <Property name="consignmentWeightInKg"/>
+    <Property name="BolNumber"/>
+    <Property name="Number"/>
+    <Property name="QuantityInConsignment"/>
+    <Property name="ConsignmentWeightInKg"/>
+  </File>
+  <File class="Manifest.Shared.Consignment">
+    
   </File>
 </Files>

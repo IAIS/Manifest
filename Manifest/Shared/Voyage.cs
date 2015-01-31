@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Manifest.Shared
@@ -11,7 +12,7 @@ namespace Manifest.Shared
     {
         public Voyage()
         {
-            BillOfLadings = new List<BillOfLading>();
+            BillOfLadings = new ObservableCollection<BillOfLading>();
         }
 
         [Required, MaxLength(18)]
@@ -44,6 +45,6 @@ namespace Manifest.Shared
         [Required, MaxLength(15)]
         public Int32 AgentsManifestSequenceNumber { get; set; }
 
-        public List<BillOfLading> BillOfLadings;
+        public ObservableCollection<BillOfLading> BillOfLadings;
     }
 }

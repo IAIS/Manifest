@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\App.xaml
-836294215
+18-940917315
 11366145709
-241226151598
-13-1260169332
-UI\Details\BillOfLadingDetails.xaml;UI\Steps\Confirmation.xaml;UI\Template\Main.xaml;UI\Steps\UploadRelation.xaml;UI\Template\Wrapper.xaml;UI\Steps\UploadBL.xaml;UI\Steps\UploadContainer.xaml;UserControl\uBillOfLading.xaml;
+37-1763078784
+15-117048516
+UI\Details\BillOfLadingDetails.xaml;UI\Details\ConsignmentDetails.xaml;UI\Details\ContainerDetails.xaml;UI\Details\ReationDetails.xaml;UI\Details\VoyageDetails.xaml;UI\Steps\Confirmation.xaml;UI\Steps\UploadConsignment.xaml;UI\Steps\UploadVoyage.xaml;UI\Template\Main.xaml;UI\Steps\UploadRelation.xaml;UI\Template\Wrapper.xaml;UI\Steps\UploadBL.xaml;UI\Steps\UploadContainer.xaml;UserControl\uBillOfLading.xaml;UserControl\uConsignment.xaml;UserControl\uContainer.xaml;UserControl\uRelation.xaml;UserControl\uVoyage.xaml;
 
 False
 

@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using FirstFloor.ModernUI.Windows;
+using FirstFloor.ModernUI.Windows.Navigation;
 using Manifest.Converter;
 using Manifest.Resources;
 using Manifest.Shared;
+using Manifest.UI.Details;
+using Manifest.Utils;
 using Microsoft.Win32;
-using Newtonsoft.Json;
 using Warehouse.Exceptions;
 
 namespace Manifest.UI
@@ -19,17 +19,21 @@ namespace Manifest.UI
     /// <summary>
     /// Interaction logic for UploadContainer.xaml
     /// </summary>
-    public partial class UploadContainer : System.Windows.Controls.UserControl
+    public partial class UploadContainer : System.Windows.Controls.UserControl, IContent
     {
-        private readonly ObservableCollection<Container> _containers = new ObservableCollection<Container>(); 
+        private ObservableCollection<Container> _containers;
 
         public UploadContainer()
         {
             InitializeComponent();
-            gridContainer.ItemsSource = _containers;
         }
 
-
+        public void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _containers = ParameterUtility.GetContainers();
+            gridContainer.ItemsSource = _containers;
+            HandleDataGrid();
+        }
 
         private void BtnUploadContainer_OnClick(object sender, RoutedEventArgs e)
         {
@@ -42,13 +46,13 @@ namespace Manifest.UI
                 if (dialog.ShowDialog() == true)
                 {
                     List<Container> containers = SimpleConverter.Convert<Container>(dialog.FileName, "Manifest.Shared.Container");
-                    _containers.Clear();
-                    foreach (Container jManifestContainer in containers)
+                    foreach (Container container in containers)
                     {
-                        _containers.Add(jManifestContainer);
+                        AddContainer(container);
                     }
-                    btnNext.IsEnabled = true;
+                    HandleDataGrid();
                 }
+
             }
             catch (Exception ex)
             {
@@ -56,17 +60,99 @@ namespace Manifest.UI
             }
         }
 
-        private void BtnNext_OnClick(object sender, RoutedEventArgs e)
+        private void BtnNewContainer_OnClick(object sender, RoutedEventArgs e)
         {
-            List<BillOfLading> billOfLadings = ((App)Application.Current).BillOfLadings;
-            IEnumerable<Container> persistedContainers = billOfLadings.SelectMany(b => b.Containers);
-            foreach (Container container in _containers)
-            {
-                Container persistedContainer = persistedContainers.FirstOrDefault();
-                persistedContainer.SealNo = container.SealNo;
-                persistedContainer.TareWeightInMT = container.TareWeightInMT;
-            }
+            const string message = @"برای افزودن کانتینر جدید از قسمت اطلاعات بارنامه و ستون افزودن کانتینر استفاده نمایید";
+            const string caption = "ثبت کانتینر جدید";
+            MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK,
+                MessageBoxOptions.RightAlign);
+        }
+
+        private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            String containerNumber = ((Button)sender).CommandParameter.ToString();
+            Container container = _containers.FirstOrDefault(c => c.ContainerNumber.Equals(containerNumber));
+            ContainerDetails window = new ContainerDetails();
+            window.Show();
+            window.Init(container);
+            HandleDataGrid();
+        }
+
+        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            String containerNumber = ((Button)sender).CommandParameter.ToString();
+            Container container = _containers.FirstOrDefault(c => c.ContainerNumber.Equals(containerNumber));
+            _containers.Remove(container);
             
+            HandleDataGrid();
+        }
+
+        private void HandleDataGrid()
+        {
+            if (_containers.Count == 0)
+            {
+                this.gridContainer.Visibility = Visibility.Hidden;
+            }
+            if (_containers.Count > 0)
+            {
+                this.gridContainer.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void BtnAdd_OnClick(object sender, RoutedEventArgs e)
+        {
+            String containerNumber = ((Button)sender).CommandParameter.ToString();
+            Container container = _containers.FirstOrDefault(c => c.ContainerNumber.Equals(containerNumber));
+            Consignment consignment = new Consignment();
+            container.Consignments.Add(consignment);
+            ConsignmentDetails window = new ConsignmentDetails();
+            window.Show();
+            window.Init(consignment);
+        }
+
+        private void AddContainer(Container container)
+        {
+            BillOfLading persistedBillOfLading =
+                            ParameterUtility.GetBillOfLading()
+                                .FirstOrDefault(b => b.Containers.Any(c => c.ContainerNumber.Equals(container.ContainerNumber)));
+            if (persistedBillOfLading != null)
+            {
+                Container persistedContainer = persistedBillOfLading.Containers.FirstOrDefault
+                    (c => c.ContainerNumber.Equals(container.ContainerNumber));
+                persistedBillOfLading.Containers.Remove(persistedContainer);
+                persistedBillOfLading.Containers.Add(container);
+                container.Consignments = persistedContainer.Consignments;
+                _containers.Remove(persistedContainer);
+                _containers.Add(container);
+            }
+            else
+            {
+                // فایل مشکل دارد
+            }
+        }
+
+        private void RemoveContainer(Container container)
+        {
+            BillOfLading persistedBillOfLading =
+                            ParameterUtility.GetBillOfLading()
+                                .FirstOrDefault(b => b.Containers.Any(c => c.ContainerNumber.Equals(container.ContainerNumber)));
+            Container persistedContainer = persistedBillOfLading.Containers.FirstOrDefault
+                    (c => c.ContainerNumber.Equals(container.ContainerNumber));
+            persistedBillOfLading.Containers.Remove(persistedContainer);
+        }
+
+        public void OnFragmentNavigation(FragmentNavigationEventArgs e)
+        {
+            
+        }
+
+        public void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            
+        }
+
+        public void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
             
         }
     }

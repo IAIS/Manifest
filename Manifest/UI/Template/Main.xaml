@@ -8,9 +8,11 @@
     <!-- TODO: set @SelectedSource -->
     <mui:ModernTab Layout="List" FlowDirection="RightToLeft">
         <mui:ModernTab.Links>
+            <mui:Link DisplayName="اطلاعات مانیفست" ImageSource="/Assets/support.png" Source="/UI\Steps\UploadVoyage.xaml"/>
             <mui:Link DisplayName="اطلاعات بارنامه" ImageSource="/Assets/world.png" Source="/UI\Steps\UploadBL.xaml"/>
             <mui:Link DisplayName="تعیین ارتباطات" ImageSource="/Assets/link.png" Source="/UI\Steps\UploadRelation.xaml"/>
             <mui:Link DisplayName="اطلاعات کانتینر" ImageSource="/Assets/truck.png" Source="/UI\Steps\UploadContainer.xaml"/>
+            <mui:Link DisplayName="اطلاعات کالا" ImageSource="/Assets/tag.png" Source="/UI\Steps\UploadConsignment.xaml"/>
             <mui:Link DisplayName="تایید و ثبت نهایی" ImageSource="/Assets/check_mark.png" Source="/UI\Steps\Confirmation.xaml" />
         </mui:ModernTab.Links>
     </mui:ModernTab>

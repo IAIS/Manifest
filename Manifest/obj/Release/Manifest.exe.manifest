@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="376832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="423424">
       <assemblyIdentity name="Manifest" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>mS0dcRpiXkMkdEdGqOmubdfgqwBQixPorLuwuR4j/wc=</dsig:DigestValue>
+        <dsig:DigestValue>98h8mY9K9LpZJo5DakOOd8JyplTOVWS5kEPbM7jXTrI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -99,13 +99,13 @@
       <dsig:DigestValue>+K0Xw31ERSGzkFzL116my249J2OxbrVrLhqkJ0Fz5hQ=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Structure\Templates.xml" size="1734" writeableType="applicationData">
+  <file name="Structure\Templates.xml" size="1991" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>1WNrxvhvhW1MRhACaNaDHfhyML5OWg3AcPJjNRFcBUQ=</dsig:DigestValue>
+      <dsig:DigestValue>DGP5igr0FHuN+6c2EW8be0yyTCAqWnsUq0VNsZOXvBc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Upload.ico" size="34494">
