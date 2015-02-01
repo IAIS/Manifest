@@ -28,7 +28,7 @@ namespace Manifest.UserControl
 
         public void Init(JRelation relation)
         {
-            Panel panel = Utils.ControlCreator<JRelation>.CreateControl(relation);
+            Panel panel = Utils.ControlCreator<JRelation>.GetInstance().CreateControl(relation);
             this.AddChild(panel);
         }
     }

@@ -19,20 +19,13 @@ namespace Manifest.UI
     /// <summary>
     /// Interaction logic for UploadContainer.xaml
     /// </summary>
-    public partial class UploadContainer : System.Windows.Controls.UserControl, IContent
+    public partial class UploadContainer : MyControl
     {
         private ObservableCollection<Container> _containers;
 
         public UploadContainer()
         {
             InitializeComponent();
-        }
-
-        public void OnNavigatedTo(NavigationEventArgs e)
-        {
-            _containers = ParameterUtility.GetContainers();
-            gridContainer.ItemsSource = _containers;
-            HandleDataGrid();
         }
 
         private void BtnUploadContainer_OnClick(object sender, RoutedEventArgs e)
@@ -141,19 +134,30 @@ namespace Manifest.UI
             persistedBillOfLading.Containers.Remove(persistedContainer);
         }
 
-        public void OnFragmentNavigation(FragmentNavigationEventArgs e)
+        public override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
+            _containers = ParameterUtility.GetContainers();
+            gridContainer.ItemsSource = _containers;
+            HandleDataGrid();
         }
 
-        public void OnNavigatedFrom(NavigationEventArgs e)
+        public override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            
-        }
-
-        public void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
-            
+            try
+            {
+                foreach (Container container in _containers)
+                {
+                    if (Utils.Validator.Validate(container) == false)
+                    {
+                        break;
+                    }
+                }
+            }
+            catch (UserInterfaceException ex)
+            {
+                ShowError(ex);
+                e.Cancel = true;
+            }
         }
     }
 }

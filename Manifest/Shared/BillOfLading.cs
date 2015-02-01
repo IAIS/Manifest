@@ -136,7 +136,6 @@ namespace Manifest.Shared
         [MaxLength(720)]
         public String Notify3Address { get; set; }
 
-
         [Required, MaxLength(600)]
         public String MarksAndNumbers { get; set; }
 

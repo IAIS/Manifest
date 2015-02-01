@@ -36,10 +36,9 @@ namespace Manifest.Shared
         [MaxLength(18)]
         public String RotationNumber { get; set; }
 
-        [Required, MaxLength(9)]
+        [MaxLength(9)]
         public String MessageType { get; set; }
 
-        [Required]
         public Int32 NoOfInstalment { get; set; }
 
         [Required, MaxLength(15)]

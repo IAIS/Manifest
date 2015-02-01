@@ -24,5 +24,8 @@ namespace Manifest.Resources
         public const String VoyagSave =
             "هنگام ذخیره فایل نهایی خطای نامشخص رخ داده است، لطفا اطلاعات وارد شده را بررسی کرده و دوباره امتحان کنید";
 
+        // 20001
+        public const String Validation = "ستون {0} نمی تواند خالی باشد.";
+
     }
 }

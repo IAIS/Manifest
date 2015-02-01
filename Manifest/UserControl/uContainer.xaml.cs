@@ -32,7 +32,7 @@ namespace Manifest.UserControl
         public void Init(Container container)
         {
             this.Container = container;
-            Panel panel = Utils.ControlCreator<Container>.CreateControl(container);
+            Panel panel = Utils.ControlCreator<Container>.GetInstance().CreateControl(container);
             this.AddChild(panel);
         }
     }

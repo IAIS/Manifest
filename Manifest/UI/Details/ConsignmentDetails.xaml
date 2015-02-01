@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:userControl="clr-namespace:Manifest.UserControl"
-             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
-             mc:Ignorable="d"   SizeToContent="WidthAndHeight">
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI" mc:Ignorable="d" 
+             SizeToContent="WidthAndHeight" MaxHeight="600" MaxWidth="800">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical" CanVerticallyScroll="True">
             <userControl:uConsignment   x:Name="ucConsignment" />

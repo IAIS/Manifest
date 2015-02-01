@@ -31,7 +31,7 @@ namespace Manifest.UserControl
         public void Init(Consignment consignment)
         {
             this._consignment = consignment;
-            Panel panel = Utils.ControlCreator<Consignment>.CreateControl(consignment);
+            Panel panel = Utils.ControlCreator<Consignment>.GetInstance().CreateControl(consignment);
             this.Content = null;
             this.AddChild(panel);
         }

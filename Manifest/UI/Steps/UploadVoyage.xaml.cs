@@ -16,18 +16,13 @@ namespace Manifest.UI.Steps
     /// <summary>
     /// Interaction logic for UploadVoyage.xaml
     /// </summary>
-    public partial class UploadVoyage : System.Windows.Controls.UserControl, IContent
+    public partial class UploadVoyage : MyControl
     {
         private Voyage _voyage;
 
         public UploadVoyage()
         {
             InitializeComponent();
-        }
-
-        public void OnNavigatedTo(NavigationEventArgs e)
-        {
-            ucVoyage.Init(ParameterUtility.GetVoyage());
         }
 
         private void BtnUploadVoyage_OnClick(object sender, RoutedEventArgs e)
@@ -65,19 +60,26 @@ namespace Manifest.UI.Steps
             }
         }
 
-        public void OnFragmentNavigation(FragmentNavigationEventArgs e)
+        public override void OnNavigatedTo(NavigationEventArgs e)
         {
-
+            _voyage = ParameterUtility.GetVoyage();
+            ucVoyage.Init(_voyage);
         }
 
-        public void OnNavigatedFrom(NavigationEventArgs e)
+        public override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-
-        }
-
-        public void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
-
+            try
+            {
+                if (Utils.Validator.Validate(_voyage) == false)
+                {
+                    return;
+                }
+            }
+            catch (UserInterfaceException ex)
+            {
+                ShowError(ex);
+                e.Cancel = true;
+            }
         }
     }
 }

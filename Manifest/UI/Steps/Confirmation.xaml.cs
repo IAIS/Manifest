@@ -16,15 +16,11 @@ namespace Manifest.UI
     /// <summary>
     /// Interaction logic for Confirmation.xaml
     /// </summary>
-    public partial class Confirmation : System.Windows.Controls.UserControl, IContent
+    public partial class Confirmation : MyControl
     {
         public Confirmation()
         {
             InitializeComponent();
-        }
-
-        public void OnNavigatedTo(NavigationEventArgs e)
-        {
         }
 
         private void BtnSubmit_OnClick(object sender, RoutedEventArgs e)
@@ -35,23 +31,8 @@ namespace Manifest.UI
                 dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (dialog.ShowDialog() == true)
                 {
-                    StringBuilder builder = new StringBuilder("");
-                    builder.AppendLine("\"VOY\"," + Printer.Print(ParameterUtility.GetVoyage()));
                     
-                    ObservableCollection<BillOfLading> billOfLadings = ParameterUtility.GetBillOfLading();
-                    foreach (BillOfLading billOfLading in billOfLadings)
-                    {
-                        builder.AppendLine("\"BOL\"," + Printer.Print(billOfLading));
-                        foreach (Container container in billOfLading.Containers)
-                        {
-                            builder.AppendLine("\"CTR\"," + Printer.Print(container));
-                            foreach (Consignment consignment in container.Consignments)
-                            {
-                                builder.AppendLine("\"CON\"," + Printer.Print(consignment));
-                            }
-                        }
-                    }
-                    File.WriteAllText(dialog.FileName, builder.ToString().Trim(), Encoding.Unicode);
+                    File.WriteAllText(dialog.FileName, GetResult(), Encoding.Unicode);
                 }
             }
             catch (Exception ex)
@@ -60,19 +41,33 @@ namespace Manifest.UI
             }
         }
 
-        public void OnFragmentNavigation(FragmentNavigationEventArgs e)
+        private String GetResult()
         {
-            
+            StringBuilder builder = new StringBuilder("");
+            builder.AppendLine("\"VOY\"," + Printer.Print(ParameterUtility.GetVoyage()));
+
+            ObservableCollection<BillOfLading> billOfLadings = ParameterUtility.GetBillOfLading();
+            foreach (BillOfLading billOfLading in billOfLadings)
+            {
+                builder.AppendLine("\"BOL\"," + Printer.Print(billOfLading));
+                foreach (Container container in billOfLading.Containers)
+                {
+                    builder.AppendLine("\"CTR\"," + Printer.Print(container));
+                    foreach (Consignment consignment in container.Consignments)
+                    {
+                        builder.AppendLine("\"CON\"," + Printer.Print(consignment));
+                    }
+                }
+            }
+            return builder.ToString();
         }
 
-        public void OnNavigatedFrom(NavigationEventArgs e)
+        public override void OnNavigatedTo(NavigationEventArgs e)
         {
-
+            txtResult.Text = GetResult();
         }
 
-        
-
-        public void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        public override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
 
         }

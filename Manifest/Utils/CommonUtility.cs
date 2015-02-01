@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Security.RightsManagement;
@@ -29,6 +30,17 @@ namespace Manifest.Utils
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// آیا خاصیت اجباری است یا خیر
+        /// </summary>
+        /// <param name="propertyInfo"></param>
+        /// <returns></returns>
+        public static bool IsRequired(PropertyInfo propertyInfo)
+        {
+            return System.Attribute.GetCustomAttributes(propertyInfo, false)
+                .Any(t => t is RequiredAttribute);  
         }
     }
 }

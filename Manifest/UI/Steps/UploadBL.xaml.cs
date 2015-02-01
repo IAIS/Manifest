@@ -22,21 +22,13 @@ namespace Manifest.UI
     /// <summary>
     /// Interaction logic for UploadBL.xaml
     /// </summary>
-    public partial class UploadBL : System.Windows.Controls.UserControl, IContent
+    public partial class UploadBL : MyControl
     {
         private ObservableCollection<BillOfLading> _billOfLadings;
 
         public UploadBL()
         {
             InitializeComponent();
-            
-        }
-
-        public void OnNavigatedTo(NavigationEventArgs e)
-        {
-            _billOfLadings = ParameterUtility.GetBillOfLading();
-            gridJFlightConsignment.ItemsSource = _billOfLadings;
-            HandleDataGrid();
         }
 
         private void BtnUploadBillOfLading_OnClick(object sender, RoutedEventArgs e)
@@ -124,21 +116,30 @@ namespace Manifest.UI
             }
         }
 
-        public void OnFragmentNavigation(FragmentNavigationEventArgs e)
+        public override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
+            _billOfLadings = ParameterUtility.GetBillOfLading();
+            gridJFlightConsignment.ItemsSource = _billOfLadings;
+            HandleDataGrid();
         }
 
-        public void OnNavigatedFrom(NavigationEventArgs e)
+        public override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-
-        }
-
-
-
-        public void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
-
+            try
+            {
+                foreach (BillOfLading billOfLading in _billOfLadings)
+                {
+                    if (Utils.Validator.Validate(billOfLading) == false)
+                    {
+                        break;
+                    }
+                }
+            }
+            catch (UserInterfaceException ex)
+            {
+                ShowError(ex);
+                e.Cancel = true;
+            }
         }
     }
 }

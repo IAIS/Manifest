@@ -25,12 +25,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,7 +53,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Upload.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>0FD69B7503291B14EDEB749F4E2E83A4CC5B8ED8</ManifestCertificateThumbprint>
@@ -178,9 +178,11 @@
     </Compile>
     <Compile Include="Utils\CommonUtility.cs" />
     <Compile Include="Utils\ControlCreator.cs" />
+    <Compile Include="Utils\MyControl.cs" />
     <Compile Include="Utils\ParameterUtility.cs" />
     <Compile Include="Utils\Printer.cs" />
     <Compile Include="Utils\RowToIndexConv.cs" />
+    <Compile Include="Utils\Validator.cs" />
     <Page Include="UI\Details\BillOfLadingDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -307,8 +309,6 @@
     <Resource Include="Assets\link.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TextFile1.txt" />
-    <Resource Include="Upload.ico" />
     <Resource Include="instances\BL.TXT" />
     <Resource Include="instances\BL_CNTR.TXT" />
     <Resource Include="instances\CNTR.TXT" />

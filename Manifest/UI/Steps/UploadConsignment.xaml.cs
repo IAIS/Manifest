@@ -17,6 +17,7 @@ using FirstFloor.ModernUI.Windows;
 using Manifest.Shared;
 using Manifest.UI.Details;
 using Manifest.Utils;
+using Warehouse.Exceptions;
 using FragmentNavigationEventArgs = FirstFloor.ModernUI.Windows.Navigation.FragmentNavigationEventArgs;
 using NavigatingCancelEventArgs = FirstFloor.ModernUI.Windows.Navigation.NavigatingCancelEventArgs;
 using NavigationEventArgs = FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs;
@@ -26,20 +27,13 @@ namespace Manifest.UI.Steps
     /// <summary>
     /// Interaction logic for UploadConsignment.xaml
     /// </summary>
-    public partial class UploadConsignment : System.Windows.Controls.UserControl, IContent
+    public partial class UploadConsignment : MyControl
     {
         private ObservableCollection<Consignment> _consignments; 
 
         public UploadConsignment()
         {
             InitializeComponent();
-        }
-
-        public void OnNavigatedTo(NavigationEventArgs e)
-        {
-            _consignments = ParameterUtility.GetConsignments();
-            gridJFlightConsignment.ItemsSource = _consignments;
-            HandleDataGrid();
         }
 
         private void BtnUploadConsignment_OnClick(object sender, RoutedEventArgs e)
@@ -83,24 +77,31 @@ namespace Manifest.UI.Steps
             }
         }
 
-        public void OnFragmentNavigation(FragmentNavigationEventArgs e)
+        public override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
+            _consignments = ParameterUtility.GetConsignments();
+            gridJFlightConsignment.ItemsSource = _consignments;
+            HandleDataGrid();
         }
 
-        public void OnNavigatedFrom(NavigationEventArgs e)
+        public override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-
+            try
+            {
+                foreach (Consignment consignment in _consignments)
+                {
+                    if (Utils.Validator.Validate(consignment) == false)
+                    {
+                        break;
+                    }
+                }
+            }
+            catch (UserInterfaceException ex)
+            {
+                ShowError(ex);
+                e.Cancel = true;
+            }
         }
 
-        public void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
-
-        }
-
-        private void GridJFlightConsignment_OnLoadingRow(object sender, DataGridRowEventArgs e)
-        {
-            e.Row.Header = (e.Row.GetIndex()).ToString(); 
-        }
     }
 }

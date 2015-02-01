@@ -19,7 +19,7 @@ namespace Manifest.UserControl
         public void Init(Voyage voyage)
         {
             this.Voyage = voyage;
-            Panel panel = Utils.ControlCreator<Voyage>.CreateControl(voyage);
+            Panel panel = Utils.ControlCreator<Voyage>.GetInstance().CreateControl(voyage);
             this.Content = null;
             this.AddChild(panel);       
         }

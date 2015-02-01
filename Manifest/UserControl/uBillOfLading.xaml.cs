@@ -23,7 +23,7 @@ namespace Manifest.UserControl
         public void Init(BillOfLading billOfLading)
         {
             this.BillOfLading = billOfLading;
-            Panel panel = Utils.ControlCreator<BillOfLading>.CreateControl(BillOfLading);
+            Panel panel = Utils.ControlCreator<BillOfLading>.GetInstance().CreateControl(BillOfLading);
             this.AddChild(panel);
         }
     }
