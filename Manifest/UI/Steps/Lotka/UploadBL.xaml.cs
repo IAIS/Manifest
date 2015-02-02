@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using FirstFloor.ModernUI.Windows;
 using FirstFloor.ModernUI.Windows.Navigation;
 using Manifest.Converter;
 using Manifest.Resources;
@@ -14,10 +11,9 @@ using Manifest.Shared;
 using Manifest.UI.Details;
 using Manifest.Utils;
 using Microsoft.Win32;
-using Newtonsoft.Json;
 using Warehouse.Exceptions;
 
-namespace Manifest.UI
+namespace Manifest.UI.Steps.Lotka
 {
     /// <summary>
     /// Interaction logic for UploadBL.xaml
@@ -55,9 +51,19 @@ namespace Manifest.UI
                 }
                 ParameterUtility.SetBillOfLading(_billOfLadings);
             }
+            catch (UserInterfaceException ex)
+            {
+                ShowError(ex);
+            }
+            catch (FormatException ex)
+            {
+                UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
+                ShowError(exception);
+            }
             catch (Exception ex)
             {
-                throw new UserInterfaceException(10001, ExceptionMessage.BillOfLadingOpenError, ex);
+                UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.BillOfLadingOpenError, ex);
+                ShowError(exception);
             }
             finally
             {

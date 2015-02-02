@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.IO.Compression;
 using System.Text;
 using System.Windows;
-using FirstFloor.ModernUI.Windows;
 using FirstFloor.ModernUI.Windows.Navigation;
 using Manifest.Resources;
 using Manifest.Shared;
@@ -11,7 +11,7 @@ using Manifest.Utils;
 using Microsoft.Win32;
 using Warehouse.Exceptions;
 
-namespace Manifest.UI
+namespace Manifest.UI.Steps.Lotka
 {
     /// <summary>
     /// Interaction logic for Confirmation.xaml
@@ -32,7 +32,7 @@ namespace Manifest.UI
                 if (dialog.ShowDialog() == true)
                 {
                     
-                    File.WriteAllText(dialog.FileName, GetResult(), Encoding.Unicode);
+                    File.WriteAllText(dialog.FileName, GetResult(), Encoding.ASCII);
                 }
             }
             catch (Exception ex)
@@ -70,6 +70,33 @@ namespace Manifest.UI
         public override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
 
+        }
+
+        private void BtnZip_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.Filter = "Zip files (*.zip)|*.zip|All files (*.*)|*.*";
+                if (dialog.ShowDialog() == true)
+                {
+                    using (ZipArchive archive = new ZipArchive(new FileStream(dialog.FileName, FileMode.Create), ZipArchiveMode.Create, true))
+                    {
+                        ZipArchiveEntry entry = archive.CreateEntry("Manifest_" + DateTime.Now.ToString("yyyyMMddHHmmss"), CompressionLevel.Optimal);
+                        using (var zipStream = entry.Open())
+                        {
+                            byte[] value = System.Text.Encoding.ASCII.GetBytes(GetResult());
+                            zipStream.Write(value, 0, value.Length);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new UserInterfaceException(10301, ExceptionMessage.VoyagSave, ex);
+            }
+            
         }
     }
 }

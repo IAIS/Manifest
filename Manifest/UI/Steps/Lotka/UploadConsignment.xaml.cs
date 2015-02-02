@@ -1,28 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using FirstFloor.ModernUI.Windows;
+using FirstFloor.ModernUI.Windows.Navigation;
 using Manifest.Shared;
 using Manifest.UI.Details;
 using Manifest.Utils;
 using Warehouse.Exceptions;
-using FragmentNavigationEventArgs = FirstFloor.ModernUI.Windows.Navigation.FragmentNavigationEventArgs;
-using NavigatingCancelEventArgs = FirstFloor.ModernUI.Windows.Navigation.NavigatingCancelEventArgs;
-using NavigationEventArgs = FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs;
 
-namespace Manifest.UI.Steps
+namespace Manifest.UI.Steps.Lotka
 {
     /// <summary>
     /// Interaction logic for UploadConsignment.xaml
@@ -34,12 +18,6 @@ namespace Manifest.UI.Steps
         public UploadConsignment()
         {
             InitializeComponent();
-        }
-
-        private void BtnUploadConsignment_OnClick(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-            HandleDataGrid();
         }
 
         private void BtnNewConsignment_OnClick(object sender, RoutedEventArgs e)

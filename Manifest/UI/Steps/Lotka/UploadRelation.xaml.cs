@@ -1,28 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using FirstFloor.ModernUI.Windows;
 using FirstFloor.ModernUI.Windows.Navigation;
 using Manifest.Converter;
 using Manifest.Resources;
 using Manifest.Shared;
+using Manifest.UI.Details;
 using Manifest.Utils;
 using Microsoft.Win32;
-using Manifest.UI.Details;
-using Newtonsoft.Json;
 using Warehouse.Exceptions;
 
-namespace Manifest.UI
+namespace Manifest.UI.Steps.Lotka
 {
     /// <summary>
     /// Interaction logic for UploadRelation.xaml
     /// </summary>
-    public partial class UploadRelation : System.Windows.Controls.UserControl, IContent
+    public partial class UploadRelation : MyControl
     {
         private ObservableCollection<JRelation> _relations;
 
@@ -32,7 +28,7 @@ namespace Manifest.UI
             
         }
 
-        public void OnNavigatedTo(NavigationEventArgs e)
+        public override void OnNavigatedTo(NavigationEventArgs e)
         {
             _relations = ParameterUtility.GetRelations();
             gridRelation.ItemsSource = _relations;
@@ -49,7 +45,8 @@ namespace Manifest.UI
 
                 if (dialog.ShowDialog() == true)
                 {
-                    List<JRelation> relations = SimpleConverter.Convert<JRelation>(dialog.FileName, "Manifest.Shared.JRelation");
+                    List<JRelation> relations = SimpleConverter.Convert<JRelation>(dialog.FileName,
+                        "Manifest.Shared.JRelation");
                     _relations.Clear();
                     foreach (JRelation relation in relations)
                     {
@@ -59,9 +56,19 @@ namespace Manifest.UI
                     HandleDataGrid();
                 }
             }
+            catch (UserInterfaceException ex)
+            {
+                ShowError(ex);
+            }
+            catch (FormatException ex)
+            {
+                UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
+                ShowError(exception);
+            }
             catch (Exception ex)
             {
-                throw new UserInterfaceException(10201, ExceptionMessage.RelationOpen, ex);
+                UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.BillOfLadingOpenError, ex);
+                ShowError(exception);
             }
         }
 
@@ -120,6 +127,10 @@ namespace Manifest.UI
         {
             ObservableCollection<BillOfLading> billOfLadings = ParameterUtility.GetBillOfLading();
             BillOfLading billOfLading = billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(relation.BolNumber));
+            if (billOfLading == null)   // اطلاعات بارگزاری شده مشکل دار است
+            {
+                return;
+            }
             if (!billOfLading.Containers.Any(c => c.ContainerNumber.Equals(relation.Number)))
             {
                 Container container = new Container()
@@ -142,19 +153,23 @@ namespace Manifest.UI
             billOfLading.Containers.Remove(billOfLading.Containers.FirstOrDefault(c => c.ContainerNumber.Equals(relation.Number)));
         }
 
-        public void OnFragmentNavigation(FragmentNavigationEventArgs e)
+        public override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            
-        }
-
-        public void OnNavigatedFrom(NavigationEventArgs e)
-        {
-
-        }
-
-        public void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
-
+            try
+            {
+                foreach (JRelation relation in _relations)
+                {
+                    if (Utils.Validator.Validate(relation) == false)
+                    {
+                        break;
+                    }
+                }
+            }
+            catch (UserInterfaceException ex)
+            {
+                ShowError(ex);
+                e.Cancel = true;
+            }
         }
     }
 }
