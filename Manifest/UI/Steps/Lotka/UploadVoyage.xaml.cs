@@ -6,7 +6,7 @@ using FirstFloor.ModernUI.Windows.Navigation;
 using Manifest.Converter;
 using Manifest.Resources;
 using Manifest.Shared;
-using Manifest.Template;
+using Manifest.Template.Lootka;
 using Manifest.Utils;
 using Microsoft.Win32;
 using Warehouse.Exceptions;

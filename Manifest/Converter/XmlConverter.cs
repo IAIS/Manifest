@@ -4,7 +4,7 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using Manifest.Shared;
-using Manifest.Template;
+using Manifest.Template.Lootka;
 
 namespace Manifest.Converter
 {

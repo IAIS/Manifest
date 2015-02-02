@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Manifest.Template
+namespace Manifest.Template.Lootka
 {
     /// <remarks />
     [GeneratedCode("xsd", "2.0.50727.3038")]

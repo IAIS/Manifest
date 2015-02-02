@@ -102,6 +102,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\ClassConverter.cs" />
+    <Compile Include="Converter\IConverter.cs" />
     <Compile Include="Converter\XmlConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -125,14 +127,17 @@
     <Compile Include="Shared\Voyage.cs" />
     <Compile Include="Shared\JManifestVehicle.cs" />
     <Compile Include="Shared\JRelation.cs" />
-    <Compile Include="Template\Data.cs" />
-    <Compile Include="Template\DataManifest.cs" />
-    <Compile Include="Template\DataManifestBLSBL.cs" />
-    <Compile Include="Template\DataManifestBLSBLConsigneeExtraInfo.cs" />
-    <Compile Include="Template\DataManifestBLSBLContainerDataContainer.cs" />
-    <Compile Include="Template\DataManifestBLSBLNotifyExtraInfo.cs" />
-    <Compile Include="Template\DataManifestBLSBLPricingDataPrice.cs" />
-    <Compile Include="Template\DataManifestBLSBLShipper.cs" />
+    <Compile Include="Template\Hoopad\maps.cs" />
+    <Compile Include="Template\Hoopad\mapsMap.cs" />
+    <Compile Include="Template\Hoopad\mapsMapProperty.cs" />
+    <Compile Include="Template\Lootka\Data.cs" />
+    <Compile Include="Template\Lootka\DataManifest.cs" />
+    <Compile Include="Template\Lootka\DataManifestBLSBL.cs" />
+    <Compile Include="Template\Lootka\DataManifestBLSBLConsigneeExtraInfo.cs" />
+    <Compile Include="Template\Lootka\DataManifestBLSBLContainerDataContainer.cs" />
+    <Compile Include="Template\Lootka\DataManifestBLSBLNotifyExtraInfo.cs" />
+    <Compile Include="Template\Lootka\DataManifestBLSBLPricingDataPrice.cs" />
+    <Compile Include="Template\Lootka\DataManifestBLSBLShipper.cs" />
     <Compile Include="UI\Details\BillOfLadingDetails.xaml.cs">
       <DependentUpon>BillOfLadingDetails.xaml</DependentUpon>
     </Compile>
@@ -147,6 +152,9 @@
     </Compile>
     <Compile Include="UI\Details\VoyageDetails.xaml.cs">
       <DependentUpon>VoyageDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Steps\Lotka\Confirmation.xaml.cs">
+      <DependentUpon>Confirmation.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Steps\Lotka\UploadBL.xaml.cs">
       <DependentUpon>UploadBL.xaml</DependentUpon>
@@ -216,6 +224,10 @@
     <Page Include="UI\Details\VoyageDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Steps\Lotka\Confirmation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Steps\Lotka\UploadBL.xaml">
       <Generator>MSBuild:Compile</Generator>

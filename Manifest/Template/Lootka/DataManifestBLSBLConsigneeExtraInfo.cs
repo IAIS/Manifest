@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Manifest.Template
+namespace Manifest.Template.Lootka
 {
     /// <remarks />
     [GeneratedCode("xsd", "2.0.50727.3038")]
@@ -13,36 +13,36 @@ namespace Manifest.Template
     [DebuggerStepThrough]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public class DataManifestBLSBLNotifyExtraInfo
+    public class DataManifestBLSBLConsigneeExtraInfo
     {
-        private string notifyEmailField;
+        private string consigneeEmailField;
 
-        private string notifyFaxField;
+        private string consigneeFaxField;
 
-        private string notifyMobileField;
+        private string consigneeMobileField;
 
         /// <remarks />
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
-        public string NotifyEmail
+        public string ConsigneeEmail
         {
-            get { return notifyEmailField; }
-            set { notifyEmailField = value; }
+            get { return consigneeEmailField; }
+            set { consigneeEmailField = value; }
         }
 
         /// <remarks />
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
-        public string NotifyFax
+        public string ConsigneeFax
         {
-            get { return notifyFaxField; }
-            set { notifyFaxField = value; }
+            get { return consigneeFaxField; }
+            set { consigneeFaxField = value; }
         }
 
         /// <remarks />
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
-        public string NotifyMobile
+        public string ConsigneeMobile
         {
-            get { return notifyMobileField; }
-            set { notifyMobileField = value; }
+            get { return consigneeMobileField; }
+            set { consigneeMobileField = value; }
         }
     }
 }

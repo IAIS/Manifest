@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Manifest.Template
+namespace Manifest.Template.Lootka
 {
     /// <remarks />
     [GeneratedCode("xsd", "2.0.50727.3038")]
@@ -24,7 +24,9 @@ namespace Manifest.Template
         private string projectVesselNameField;
         private string referenceField;
 
-        /// <remarks />
+        /// <summary>
+        /// Departure Date
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string ManifestDate
         {
@@ -32,7 +34,9 @@ namespace Manifest.Template
             set { manifestDateField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// 
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string Reference
         {

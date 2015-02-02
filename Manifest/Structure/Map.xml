@@ -1,7 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <maps>
-  <map source="" destination="">
-    <src></src>
-    <dest></dest>
+  <map>
+    <sourceClass>
+      Manifest.Template.DataManifest
+    </sourceClass>
+    <destinationClass>
+      Manifest.Shared.Voyage
+    </destinationClass>
+    <property>
+      <src>ProjectCode</src>
+      <dest>LineCode</dest>
+    </property>
+    <property>
+      <src>projectVesselNameField</src>
+      <dest>VesselName</dest>
+    </property>
+  </map>
+  <map>
+    <sourceClass>
+      Manifest.Template.DataManifest
+    </sourceClass>
+    <destinationClass>
+      Manifest.Shared.Voyage
+    </destinationClass>
+    <property>
+      <src>ProjectCode</src>
+      <dest>LineCode</dest>
+    </property>
+    <property>
+      <src>projectVesselNameField</src>
+      <dest>VesselName</dest>
+    </property>
+  </map>
+  <map>
+    <sourceClass>
+      Manifest.Template.DataManifest
+    </sourceClass>
+    <destinationClass>
+      Manifest.Shared.Voyage
+    </destinationClass>
+    <property>
+      <src>ProjectCode</src>
+      <dest>LineCode</dest>
+    </property>
+    <property>
+      <src>projectVesselNameField</src>
+      <dest>VesselName</dest>
+    </property>
   </map>
 </maps>
