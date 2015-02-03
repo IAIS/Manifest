@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="2534400">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="2533376">
       <assemblyIdentity name="Manifest" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>d6yvG8oYRwduBnAhwFyV1Wh8bNdJqa0+w6tBRXqKCcw=</dsig:DigestValue>
+        <dsig:DigestValue>IKwoTBvbyLb658iw3I6nw9kGO9V0PEadRAyZBOFuIKA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
