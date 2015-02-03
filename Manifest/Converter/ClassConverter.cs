@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Manifest.Template.Hoopad;
+using Warehouse.Exceptions;
 
 namespace Manifest.Converter
 {
@@ -31,7 +33,9 @@ namespace Manifest.Converter
                 destinationInstance.GetType().FullName);
             foreach (PropertyInfo[] propertyInfo in properties)
             {
-                propertyInfo[1].SetValue(propertyInfo[0].GetValue(sourceInstance), destinationInstance);
+                var value = propertyInfo[0].GetValue(sourceInstance);
+                var convertedValue = System.Convert.ChangeType(value, propertyInfo[1].PropertyType);
+                propertyInfo[1].SetValue(destinationInstance, convertedValue);
             }
         }
 
@@ -46,14 +50,23 @@ namespace Manifest.Converter
         {
             mapsMap map =
                 XmlConverter.Convert<maps>(StructurePath)
-                    .FirstOrDefault()
                     .Items.FirstOrDefault(m => m.sourceClass.Equals(sourceClassName) && m.destinationClass.Equals(destinationClassName));
             List<PropertyInfo[]> result = new List<PropertyInfo[]>();
             Type sourceType = Type.GetType(sourceClassName);
             Type destinationType = Type.GetType(destinationClassName);
             foreach (mapsMapProperty mapProperty in map.property)
             {
-                result.Add(new PropertyInfo[] { sourceType.GetProperty(mapProperty.src), destinationType.GetProperty(mapProperty.src) });
+                PropertyInfo sourceProperty = sourceType.GetProperty(mapProperty.src);
+                if (sourceProperty == null)
+                {
+                    throw new UserInterfaceException("خطا در خواندن قایل نگاشت رخ داده است. لطفا با پشتیبانی تماس بگیرید.");
+                }
+                PropertyInfo destinationProperty = destinationType.GetProperty(mapProperty.dest);
+                if (destinationProperty == null)
+                {
+                    throw new UserInterfaceException("خطا در خواندن قایل نگاشت رخ داده است. لطفا با پشتیبانی تماس بگیرید.");
+                }
+                result.Add(new PropertyInfo[] { sourceProperty, destinationProperty });
             }
             return result.ToArray();
         }

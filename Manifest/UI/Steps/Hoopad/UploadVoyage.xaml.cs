@@ -11,7 +11,7 @@ using Manifest.Utils;
 using Microsoft.Win32;
 using Warehouse.Exceptions;
 
-namespace Manifest.UI.Steps.Lotka
+namespace Manifest.UI.Steps.Hoopad
 {
     /// <summary>
     /// Interaction logic for UploadVoyage.xaml

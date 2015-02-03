@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Manifest.Template.Lootka
+namespace Manifest.Template.Hoopad
 {
     /// <remarks />
     [GeneratedCode("xsd", "2.0.50727.3038")]
@@ -13,17 +13,17 @@ namespace Manifest.Template.Lootka
     [DebuggerStepThrough]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public class DataManifestBLSBL
+    public class BLSBL
     {
         private string bLDateField;
         private string bLNOField;
         private string bookingAgentField;
 
         private string bookingReferenceNOField;
-        private DataManifestBLSBLConsigneeExtraInfo[] consigneeExtraInfoField;
+        private ConsigneeExtraInfo[] consigneeExtraInfoField;
 
         private string consigneeField;
-        private DataManifestBLSBLContainerDataContainer[] containerDataField;
+        private ContainerDataContainer[] _containerContainerDataField;
 
         private string dESCRIPTIONField;
 
@@ -40,7 +40,7 @@ namespace Manifest.Template.Lootka
         private string netWeightField;
         private string notifyAddressField;
 
-        private DataManifestBLSBLNotifyExtraInfo[] notifyExtraInfoField;
+        private NotifyExtraInfo[] notifyExtraInfoField;
         private string onwardInlandRoutingField;
         private string onwardInlandRoutingNameField;
         private string originField;
@@ -49,9 +49,9 @@ namespace Manifest.Template.Lootka
         private string pointCountryOrigionField;
         private string pointCountryOrigionNameField;
 
-        private DataManifestBLSBLPricingDataPrice[] pricingDataField;
+        private PricingDataPrice[] _pricingPricingDataField;
         private string projectCodeField;
-        private DataManifestBLSBLShipper[] shipperField;
+        private Shipper[] shipperField;
         private string termField;
         private string volumeField;
         private string volumeUnitField;
@@ -300,7 +300,7 @@ namespace Manifest.Template.Lootka
 
         /// <remarks />
         [XmlElement("Shipper", Form = XmlSchemaForm.Unqualified)]
-        public DataManifestBLSBLShipper[] Shipper
+        public Shipper[] Shipper
         {
             get { return shipperField; }
             set { shipperField = value; }
@@ -308,7 +308,7 @@ namespace Manifest.Template.Lootka
 
         /// <remarks />
         [XmlElement("ConsigneeExtraInfo", Form = XmlSchemaForm.Unqualified)]
-        public DataManifestBLSBLConsigneeExtraInfo[] ConsigneeExtraInfo
+        public ConsigneeExtraInfo[] ConsigneeExtraInfo
         {
             get { return consigneeExtraInfoField; }
             set { consigneeExtraInfoField = value; }
@@ -316,7 +316,7 @@ namespace Manifest.Template.Lootka
 
         /// <remarks />
         [XmlElement("NotifyExtraInfo", Form = XmlSchemaForm.Unqualified)]
-        public DataManifestBLSBLNotifyExtraInfo[] NotifyExtraInfo
+        public NotifyExtraInfo[] NotifyExtraInfo
         {
             get { return notifyExtraInfoField; }
             set { notifyExtraInfoField = value; }
@@ -324,22 +324,22 @@ namespace Manifest.Template.Lootka
 
         /// <remarks />
         [XmlArray(Form = XmlSchemaForm.Unqualified)]
-        [XmlArrayItem("Price", typeof (DataManifestBLSBLPricingDataPrice), Form = XmlSchemaForm.Unqualified,
+        [XmlArrayItem("Price", typeof (PricingDataPrice), Form = XmlSchemaForm.Unqualified,
             IsNullable = false)]
-        public DataManifestBLSBLPricingDataPrice[] PricingData
+        public PricingDataPrice[] PricingPricingData
         {
-            get { return pricingDataField; }
-            set { pricingDataField = value; }
+            get { return _pricingPricingDataField; }
+            set { _pricingPricingDataField = value; }
         }
 
         /// <remarks />
         [XmlArray(Form = XmlSchemaForm.Unqualified)]
-        [XmlArrayItem("Container", typeof (DataManifestBLSBLContainerDataContainer), Form = XmlSchemaForm.Unqualified,
+        [XmlArrayItem("Container", typeof (ContainerDataContainer), Form = XmlSchemaForm.Unqualified,
             IsNullable = false)]
-        public DataManifestBLSBLContainerDataContainer[] ContainerData
+        public ContainerDataContainer[] ContainerContainerData
         {
-            get { return containerDataField; }
-            set { containerDataField = value; }
+            get { return _containerContainerDataField; }
+            set { _containerContainerDataField = value; }
         }
     }
 }

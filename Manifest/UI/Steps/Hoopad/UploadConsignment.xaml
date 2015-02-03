@@ -1,22 +1,19 @@
-﻿<utils:MyControl x:Class="Manifest.UI.Steps.Hoopad.UploadBL"  x:Name="uploadBLWindow"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<utils:MyControl x:Class="Manifest.UI.Steps.Lotka.UploadConsignment" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:utils="clr-namespace:Manifest.Utils"
              mc:Ignorable="d">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Orientation="Vertical"  CanVerticallyScroll="True" FlowDirection="LeftToRight" Margin="10">
+        <StackPanel Orientation="Vertical" CanVerticallyScroll="True" FlowDirection="LeftToRight" Margin="10">
             <TextBlock TextWrapping="Wrap" TextAlignment="Justify" FlowDirection="RightToLeft" >
-                همکار گرامی لطفا فایل حاوی اطلاعات بارنامه را ثبت کرده و در صورت نیاز اطلاعات آن را ویرایش کنید. 
-                بعد از اطمینان از صحت اطلاعات به مرحله ی بعد (ثبت ارتباطات کانتینر و بارنامه) مراجعه نمایید.
+                در حال حاضر برای ورود اطلاعات کالا تنها امکان ورود دستی اطلاعات وجود دارد.
             </TextBlock>
-            <Button Name="btnUploadBillOfLading" Click="BtnUploadBillOfLading_OnClick" Margin="0 10 0 1">بارگزاری اطلاعات بارنامه</Button>
-            <Button Name="btnNewBillOfLading" Click="BtnNewBillOfLading_OnClick" Margin="0 1 0 10">افزودن بارنامه جدید</Button>
+            <Button Name="btnUploadConsignment" IsEnabled="False" Margin="0 10 0 1">بارگزاری اطلاعات کالا</Button>
+            <Button Name="btnNewConsignment" Click="BtnNewConsignment_OnClick" Margin="0 1 0 10">افزودن اطلاعات کالای جدید</Button>
             <DataGrid Name="gridJFlightConsignment" FlowDirection="LeftToRight" HorizontalAlignment="Left" IsReadOnly="True" AutoGenerateColumns="False" 
                       CanUserAddRows="False" CanUserSortColumns="False" CanUserDeleteRows="True" CanUserReorderColumns="False" CanUserResizeRows="True"
-                      SelectionMode="Single" FontSize="10" BorderThickness="1" GridLinesVisibility="All" 
-                      HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
+                      SelectionMode="Single" FontSize="12" BorderThickness="1" GridLinesVisibility="All">
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="ContentTemplate">
@@ -29,7 +26,7 @@
                     </Style>
                 </DataGrid.ColumnHeaderStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=BillOfLadingNo}" Header="BillOfLadingNo">
+                    <DataGridTextColumn Binding="{Binding Path=SerialNumber}" Header="SerialNumber">
                     </DataGridTextColumn>
                     <!--                    <DataGridTextColumn Binding="{Binding Path=CommodityCode}" Header="CommodityCode">-->
                     <!--                        <DataGridTextColumn.ElementStyle>-->
@@ -45,11 +42,11 @@
                     <!--                            </Style>-->
                     <!--                        </DataGridTextColumn.ElementStyle>-->
                     <!--                    </DataGridTextColumn>-->
-                    <DataGridTextColumn Binding="{Binding Path=TotalTareWeightInMT}" Header="TotalTareWeightInMT">
+                    <DataGridTextColumn Binding="{Binding Path=CommodityCode}" Header="CommodityCode">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Path=ConsigneeName}" Header="ConsigneeName">
+                    <DataGridTextColumn Binding="{Binding Path=NoOfPallets}" Header="NoOfPallets">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Path=ShipperName}" Header="ShipperName">
+                    <DataGridTextColumn Binding="{Binding Path=ConsignmentWeightInKg}" Header="ConsignmentWeightInKg">
                     </DataGridTextColumn>
                     <!--                    <DataGridTextColumn Binding="{Binding Path=Notify1Name}" Header="Notify1Name">-->
                     <!--                        <DataGridTextColumn.ElementStyle>-->
@@ -61,7 +58,7 @@
                     <DataGridTemplateColumn Header="Edit">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="btnEdit" Click="BtnEdit_OnClick" CommandParameter="{Binding Path=BillOfLadingNo}" BorderThickness="0">
+                                <Button Name="btnEdit" Click="BtnEdit_OnClick" CommandParameter="{Binding Path=SerialNumber}" BorderThickness="0">
                                     <Image Source="../../Assets/edit.png"/>
                                 </Button>
                             </DataTemplate>
@@ -70,17 +67,8 @@
                     <DataGridTemplateColumn Header="Delete">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="btnDelete" Click="BtnDelete_OnClick"  CommandParameter="{Binding Path=BillOfLadingNo}" BorderThickness="0">
+                                <Button Name="btnDelete" Click="BtnDelete_OnClick"  CommandParameter="{Binding Path=SerialNumber}" BorderThickness="0">
                                     <Image Source="../../Assets/delete.png"/>
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Add">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Name="btnAdd" Click="BtnAdd_OnClick"  CommandParameter="{Binding Path=BillOfLadingNo}" BorderThickness="0">
-                                    <Image Source="../../Assets/add.png"/>
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

@@ -1,34 +1,37 @@
-﻿/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-[System.SerializableAttribute()]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-public partial class mapsMapProperty {
-    
-    private string srcField;
-    
-    private string destField;
-    
+﻿namespace Manifest.Template.Hoopad
+{
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public string src {
-        get {
-            return this.srcField;
-        }
-        set {
-            this.srcField = value;
-        }
-    }
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+    public partial class mapsMapProperty {
     
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public string dest {
-        get {
-            return this.destField;
+        private string srcField;
+    
+        private string destField;
+    
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string src {
+            get {
+                return this.srcField;
+            }
+            set {
+                this.srcField = value;
+            }
         }
-        set {
-            this.destField = value;
+    
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string dest {
+            get {
+                return this.destField;
+            }
+            set {
+                this.destField = value;
+            }
         }
     }
 }

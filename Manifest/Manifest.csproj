@@ -130,14 +130,14 @@
     <Compile Include="Template\Hoopad\maps.cs" />
     <Compile Include="Template\Hoopad\mapsMap.cs" />
     <Compile Include="Template\Hoopad\mapsMapProperty.cs" />
-    <Compile Include="Template\Lootka\Data.cs" />
-    <Compile Include="Template\Lootka\DataManifest.cs" />
-    <Compile Include="Template\Lootka\DataManifestBLSBL.cs" />
-    <Compile Include="Template\Lootka\DataManifestBLSBLConsigneeExtraInfo.cs" />
-    <Compile Include="Template\Lootka\DataManifestBLSBLContainerDataContainer.cs" />
-    <Compile Include="Template\Lootka\DataManifestBLSBLNotifyExtraInfo.cs" />
-    <Compile Include="Template\Lootka\DataManifestBLSBLPricingDataPrice.cs" />
-    <Compile Include="Template\Lootka\DataManifestBLSBLShipper.cs" />
+    <Compile Include="Template\Hoopad\Data.cs" />
+    <Compile Include="Template\Hoopad\Manifest.cs" />
+    <Compile Include="Template\Hoopad\BLSBL.cs" />
+    <Compile Include="Template\Hoopad\ConsigneeExtraInfo.cs" />
+    <Compile Include="Template\Hoopad\ContainerDataContainer.cs" />
+    <Compile Include="Template\Hoopad\NotifyExtraInfo.cs" />
+    <Compile Include="Template\Hoopad\PricingDataPrice.cs" />
+    <Compile Include="Template\Hoopad\Shipper.cs" />
     <Compile Include="UI\Details\BillOfLadingDetails.xaml.cs">
       <DependentUpon>BillOfLadingDetails.xaml</DependentUpon>
     </Compile>
@@ -153,8 +153,35 @@
     <Compile Include="UI\Details\VoyageDetails.xaml.cs">
       <DependentUpon>VoyageDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Steps\Hoopad\Confirmation.xaml.cs">
+      <DependentUpon>Confirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Steps\Hoopad\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Steps\Hoopad\UploadBL.xaml.cs">
+      <DependentUpon>UploadBL.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Steps\Hoopad\UploadConsignment.xaml.cs">
+      <DependentUpon>UploadConsignment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Steps\Hoopad\UploadContainer.xaml.cs">
+      <DependentUpon>UploadContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Steps\Hoopad\UploadFile.xaml.cs">
+      <DependentUpon>UploadFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Steps\Hoopad\UploadRelation.xaml.cs">
+      <DependentUpon>UploadRelation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Steps\Hoopad\UploadVoyage.xaml.cs">
+      <DependentUpon>UploadVoyage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Steps\Lotka\Confirmation.xaml.cs">
       <DependentUpon>Confirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Steps\Lotka\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Steps\Lotka\UploadBL.xaml.cs">
       <DependentUpon>UploadBL.xaml</DependentUpon>
@@ -170,9 +197,6 @@
     </Compile>
     <Compile Include="UI\Steps\Lotka\UploadVoyage.xaml.cs">
       <DependentUpon>UploadVoyage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Template\Main.xaml.cs">
-      <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Template\Wrapper.xaml.cs">
       <DependentUpon>Wrapper.xaml</DependentUpon>
@@ -225,7 +249,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Steps\Hoopad\Confirmation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Steps\Hoopad\Main.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Steps\Hoopad\UploadBL.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Steps\Hoopad\UploadConsignment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Steps\Hoopad\UploadContainer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Steps\Hoopad\UploadFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Steps\Hoopad\UploadRelation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Steps\Hoopad\UploadVoyage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Steps\Lotka\Confirmation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Steps\Lotka\Main.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -246,10 +306,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Steps\Lotka\UploadVoyage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Template\Main.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -347,7 +403,10 @@
     <Resource Include="Assets\tag.png" />
     <Resource Include="Assets\add.png" />
     <Resource Include="instances\2.xml" />
-    <Resource Include="Structure\Map.xml" />
+    <Content Include="Structure\Map.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Assets\upload_page.png" />
     <Content Include="Structure\Templates.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

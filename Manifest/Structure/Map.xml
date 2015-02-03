@@ -1,50 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <maps>
   <map>
-    <sourceClass>
-      Manifest.Template.DataManifest
-    </sourceClass>
-    <destinationClass>
-      Manifest.Shared.Voyage
-    </destinationClass>
+    <sourceClass>Manifest.Template.Hoopad.Manifest</sourceClass>
+    <destinationClass>Manifest.Shared.Voyage</destinationClass>
     <property>
       <src>ProjectCode</src>
       <dest>LineCode</dest>
     </property>
     <property>
-      <src>projectVesselNameField</src>
-      <dest>VesselName</dest>
-    </property>
-  </map>
-  <map>
-    <sourceClass>
-      Manifest.Template.DataManifest
-    </sourceClass>
-    <destinationClass>
-      Manifest.Shared.Voyage
-    </destinationClass>
-    <property>
-      <src>ProjectCode</src>
-      <dest>LineCode</dest>
-    </property>
-    <property>
-      <src>projectVesselNameField</src>
-      <dest>VesselName</dest>
-    </property>
-  </map>
-  <map>
-    <sourceClass>
-      Manifest.Template.DataManifest
-    </sourceClass>
-    <destinationClass>
-      Manifest.Shared.Voyage
-    </destinationClass>
-    <property>
-      <src>ProjectCode</src>
-      <dest>LineCode</dest>
-    </property>
-    <property>
-      <src>projectVesselNameField</src>
+      <src>ProjectVesselName</src>
       <dest>VesselName</dest>
     </property>
   </map>

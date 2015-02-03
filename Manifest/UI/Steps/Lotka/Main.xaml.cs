@@ -1,6 +1,4 @@
-﻿using System.Windows.Controls;
-
-namespace Manifest.UI
+﻿namespace Manifest.UI.Steps.Lotka
 {
     /// <summary>
     /// Interaction logic for Main.xaml

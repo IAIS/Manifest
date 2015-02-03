@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Manifest.Template.Lootka
+namespace Manifest.Template.Hoopad
 {
     /// <remarks />
     [GeneratedCode("xsd", "2.0.50727.3038")]
@@ -16,11 +16,11 @@ namespace Manifest.Template.Lootka
     [XmlRoot(Namespace = "", IsNullable = false)]
     public class Data
     {
-        public DataManifest[] itemsField;
+        public Manifest[] itemsField;
 
         /// <remarks />
         [XmlElement("Manifest", Form = XmlSchemaForm.Unqualified)]
-        public DataManifest[] Items
+        public Manifest[] Items
         {
             get { return itemsField; }
             set { itemsField = value; }

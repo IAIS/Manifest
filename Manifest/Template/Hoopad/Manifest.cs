@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Manifest.Template.Lootka
+namespace Manifest.Template.Hoopad
 {
     /// <remarks />
     [GeneratedCode("xsd", "2.0.50727.3038")]
@@ -13,9 +13,9 @@ namespace Manifest.Template.Lootka
     [DebuggerStepThrough]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public class DataManifest
+    public class Manifest
     {
-        private DataManifestBLSBL[] bLSField;
+        private BLSBL[] bLSField;
         private string manifestDateField;
         private string masterNameField;
 
@@ -70,8 +70,8 @@ namespace Manifest.Template.Lootka
 
         /// <remarks />
         [XmlArray(Form = XmlSchemaForm.Unqualified)]
-        [XmlArrayItem("BL", typeof (DataManifestBLSBL), Form = XmlSchemaForm.Unqualified, IsNullable = false)]
-        public DataManifestBLSBL[] BLS
+        [XmlArrayItem("BL", typeof (BLSBL), Form = XmlSchemaForm.Unqualified, IsNullable = false)]
+        public BLSBL[] BLS
         {
             get { return bLSField; }
             set { bLSField = value; }

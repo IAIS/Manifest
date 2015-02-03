@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="2494976">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="2534400">
       <assemblyIdentity name="Manifest" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>VQkY2Wev/9NzqFUOqWs61adN4Nw1a7PNzyn6m3296vA=</dsig:DigestValue>
+        <dsig:DigestValue>d6yvG8oYRwduBnAhwFyV1Wh8bNdJqa0+w6tBRXqKCcw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -95,7 +95,16 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>npOjCb9E7Jn7/rONm/tlI6VCvOSYPSvAEnXfNdsNAA0=</dsig:DigestValue>
+      <dsig:DigestValue>D6tIQubKRCE64ndo3oFqveU7MC0SFzilDfw4r8Jrapw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Structure\Map.xml" size="403" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>LODcrYkHFlS9GI3eGrkAraygVx8k4ESplMbB8cQZalo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Structure\Templates.xml" size="1991" writeableType="applicationData">

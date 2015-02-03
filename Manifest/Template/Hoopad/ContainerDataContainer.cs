@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Manifest.Template.Lootka
+namespace Manifest.Template.Hoopad
 {
     /// <remarks />
     [GeneratedCode("xsd", "2.0.50727.3038")]
@@ -13,7 +13,7 @@ namespace Manifest.Template.Lootka
     [DebuggerStepThrough]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public class DataManifestBLSBLContainerDataContainer
+    public class ContainerDataContainer
     {
         private string aPartField;
 

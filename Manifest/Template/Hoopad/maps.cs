@@ -15,25 +15,28 @@ using System.Xml.Serialization;
 // 
 
 
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-[System.SerializableAttribute()]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
-public partial class maps {
-    
-    private mapsMap[] itemsField;
-    
+namespace Manifest.Template.Hoopad
+{
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("map", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public mapsMap[] Items {
-        get {
-            return this.itemsField;
-        }
-        set {
-            this.itemsField = value;
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [XmlType(AnonymousType=true)]
+    [XmlRoot(Namespace="", IsNullable=false)]
+    public partial class maps {
+    
+        private mapsMap[] itemsField;
+    
+        /// <remarks/>
+        [XmlElement("map", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public mapsMap[] Items {
+            get {
+                return this.itemsField;
+            }
+            set {
+                this.itemsField = value;
+            }
         }
     }
 }

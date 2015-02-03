@@ -14,12 +14,13 @@ namespace Manifest.UI
         {
             if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Hoopad)
             {
-                Uri uri = new Uri("/UI/Template/Main.xaml", UriKind.Relative);
-                //            new Uri("pack://application:,,,/Manifest;component/UI\\Template\\Main.xaml");
-                this.ContentSource = uri;
-                //            this.ContentSource = new Uri("/UI\\Template\\Main.xaml");
-                InitializeComponent();
+                this.ContentSource = new Uri("/UI/Steps/Hoopad/Main.xaml", UriKind.Relative);
             }
+            if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Lootka)
+            {
+                this.ContentSource = new Uri("/UI/Steps/Lotka/Main.xaml", UriKind.Relative);
+            }
+            InitializeComponent();
         }
     }
 }

@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("structure/map.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("structure/templates.xml")]
 
 
