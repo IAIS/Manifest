@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="UI\Steps\Hoopad\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="UI\Steps\Hoopad\UploadBL.xaml.cs">
       <DependentUpon>UploadBL.xaml</DependentUpon>
@@ -255,8 +256,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Steps\Hoopad\Main.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Steps\Hoopad\UploadBL.xaml">
       <Generator>MSBuild:Compile</Generator>
