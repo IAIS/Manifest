@@ -203,6 +203,23 @@ namespace FirstFloor.ModernUI.Windows.Controls
 #endif
         }
 
+        private void SizeChangedToolbar(object sender, SizeChangedEventArgs e)
+        {
+            ToolBar toolBar = sender as ToolBar;
+            var overflowGrid = toolBar.Template.FindName("OverflowGrid", toolBar) as FrameworkElement;
+            if (overflowGrid != null)
+            {
+                overflowGrid.Visibility = toolBar.HasOverflowItems ? Visibility.Visible : Visibility.Collapsed;
+            }
+
+            var mainPanelBorder = toolBar.Template.FindName("MainPanelBorder", toolBar) as FrameworkElement;
+            if (mainPanelBorder != null)
+            {
+                var defaultMargin = new Thickness(0, 0, 11, 0);
+                mainPanelBorder.Margin = toolBar.HasOverflowItems ? defaultMargin : new Thickness(0);
+            }
+        }
+
         /// <summary>
         /// Gets or sets the background content of this window instance.
         /// </summary>

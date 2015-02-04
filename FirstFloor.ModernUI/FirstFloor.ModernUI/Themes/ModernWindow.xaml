@@ -41,7 +41,7 @@
                             <AdornerDecorator>
                                 <Grid x:Name="LayoutRoot">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="36" />
+                                        <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
@@ -58,10 +58,24 @@
                                             <ColumnDefinition Width="96" />
                                         </Grid.ColumnDefinitions>
 
-                                        <!-- title -->
-                                        <TextBlock Text="{TemplateBinding Title}" Margin="8,0" VerticalAlignment="Center" Style="{StaticResource ModernWindowTitle}"
-                                                   DataContext="{TemplateBinding IsTitleVisible}"
-                                                   Visibility="{Binding Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                        <ToolBarTray IsLocked="True" ClipToBounds="True" Width="170" HorizontalAlignment="Left">
+                                            <ToolBar OverflowMode="Never" Margin="-5,0,-13,0" Padding="5,0,0,0">
+                                                <Button Padding="10 5" Command="ApplicationCommands.New" Cursor="Hand">
+                                                    <Image Source="/Manifest;component/Assets/new_file.png"/>
+                                                </Button>
+                                                <Button Padding="10 5" Command="ApplicationCommands.Open" Cursor="Hand">
+                                                    <Image Source="/Manifest;component/Assets/open_file.png"/>
+                                                </Button>
+                                                <Button Padding="10 5" Command="ApplicationCommands.SaveAs" Cursor="Hand">
+                                                    <Image Source="/Manifest;component/Assets/save.png" />
+                                                </Button>
+                                            </ToolBar>
+                                        </ToolBarTray>
+                                        
+<!--                                        ~1~ title @1@-->
+<!--                                        <TextBlock Text="{TemplateBinding Title}" Margin="8,0" VerticalAlignment="Center" Style="{StaticResource ModernWindowTitle}"-->
+<!--                                                   DataContext="{TemplateBinding IsTitleVisible}"-->
+<!--                                                   Visibility="{Binding Converter={StaticResource BooleanToVisibilityConverter}}"/>-->
 
                                         <!-- title links -->
                                         <ItemsControl Grid.Column="1" ItemsSource="{TemplateBinding TitleLinks}" Margin="0,0,24,0" WindowChrome.IsHitTestVisibleInChrome="True">
@@ -138,19 +152,20 @@
 
                                     <Grid Grid.Row="1">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="42" />
+                                            <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
                                         <!-- back button -->
-                                        <controls:ModernButton Margin="8,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                                               EllipseDiameter="24" IconWidth="12" IconHeight="12"
-                                                               IconData="F1 M 33,22L 33,26L 19.75,26L 27,33L 20.5,33L 11,24L 20.5,15L 27,15L 19.75,22L 33,22 Z"
-                                                               Command="NavigationCommands.BrowseBack"
-                                                               CommandTarget="{Binding ElementName=ContentFrame}" 
-                                                               ToolTip="{x:Static modernui:Resources.Back}"
-                                                               WindowChrome.IsHitTestVisibleInChrome="True" />
-
+                                        <!--                                        <controls:ModernButton Margin="8,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"-->
+                                        <!--                                                               EllipseDiameter="24" IconWidth="12" IconHeight="12"-->
+                                        <!--                                                               IconData="F1 M 33,22L 33,26L 19.75,26L 27,33L 20.5,33L 11,24L 20.5,15L 27,15L 19.75,22L 33,22 Z"-->
+                                        <!--                                                               Command="NavigationCommands.BrowseBack"-->
+                                        <!--                                                               CommandTarget="{Binding ElementName=ContentFrame}" -->
+                                        <!--                                                               ToolTip="{x:Static modernui:Resources.Back}"-->
+                                        <!--                                                               WindowChrome.IsHitTestVisibleInChrome="True" />-->
+                                        
+                                        
                                         <!-- main menu -->
                                         <controls:ModernMenu Grid.Column="1"
                                                              SelectedSource="{Binding Source, ElementName=ContentFrame, Mode=TwoWay}"

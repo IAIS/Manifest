@@ -57,7 +57,7 @@ namespace Manifest.Utils
             for (int i = 0; i < 3; i ++)
             {
                 ColumnDefinition column = new ColumnDefinition();
-                column.MinWidth = 100;
+                column.Width = new GridLength(200);
                 grid.ColumnDefinitions.Add(column);
             }
             

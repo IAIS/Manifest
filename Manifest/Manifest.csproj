@@ -378,6 +378,9 @@
     <Resource Include="Assets\tag.png" />
     <Resource Include="Assets\add.png" />
     <Resource Include="instances\2.xml" />
+    <Resource Include="Assets\new_file.png" />
+    <Resource Include="Assets\open_file.png" />
+    <Resource Include="Assets\save.png" />
     <Content Include="Structure\Map.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

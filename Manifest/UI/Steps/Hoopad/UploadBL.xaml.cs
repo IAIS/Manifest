@@ -29,50 +29,6 @@ namespace Manifest.UI.Steps.Hoopad
             InitializeComponent();
         }
 
-        private void BtnUploadBillOfLading_OnClick(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Multiselect = false;
-                dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-                if (dialog.ShowDialog() == true)
-                {
-
-                    List<BillOfLading> billOfLadings = SimpleConverter.Convert<BillOfLading>(dialog.FileName,
-                        "Manifest.Shared.BillOfLading");
-                    _billOfLadings.Clear();
-                    foreach (BillOfLading billOfLading in billOfLadings)
-                    {
-                        _billOfLadings.Add(billOfLading);
-                    }
-                }
-                if (_billOfLadings.Count > 0)
-                {
-                    gridJFlightConsignment.Visibility = Visibility.Visible;
-                }
-                ParameterUtility.SetBillOfLading(_billOfLadings);
-            }
-            catch (UserInterfaceException ex)
-            {
-                ShowError(ex);
-            }
-            catch (FormatException ex)
-            {
-                UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
-                ShowError(exception);
-            }
-            catch (Exception ex)
-            {
-                UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.BillOfLadingOpenError, ex);
-                ShowError(exception);
-            }
-            finally
-            {
-                HandleDataGrid();
-            }
-        }
-
         private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
         {
             String billNo = ((Button)sender).CommandParameter.ToString();

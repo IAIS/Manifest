@@ -9,7 +9,7 @@
                 همکار گرامی در صورت نیاز می توانید اطلاعات بارنامه ها را ویرایش کنید. 
                 بعد از اطمینان از صحت اطلاعات به مرحله ی بعد (ثبت اطلاعات کانتینر) مراجعه نمایید.
         </TextBlock>
-        <Button Name="btnNewBillOfLading" Click="BtnNewBillOfLading_OnClick" Margin="0 1 0 10" DockPanel.Dock="Top">افزودن بارنامه جدید</Button>
+        <Button Name="btnNewBillOfLading" Click="BtnNewBillOfLading_OnClick" Margin="0 10 0 10" DockPanel.Dock="Top">افزودن بارنامه جدید</Button>
         <DataGrid Name="gridJFlightConsignment" FlowDirection="LeftToRight" HorizontalAlignment="Left" IsReadOnly="True" AutoGenerateColumns="False" 
                       CanUserAddRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False"
                       SelectionMode="Single" FontSize="10" BorderThickness="1" GridLinesVisibility="All">

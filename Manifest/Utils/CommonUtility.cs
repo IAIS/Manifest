@@ -8,6 +8,9 @@ using System.Reflection;
 using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using Manifest.Shared;
 
 namespace Manifest.Utils
@@ -42,5 +45,6 @@ namespace Manifest.Utils
             return System.Attribute.GetCustomAttributes(propertyInfo, false)
                 .Any(t => t is RequiredAttribute);  
         }
+
     }
 }

@@ -47,3 +47,4 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.Mode
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.ModernUI\obj\Debug\FirstFloor.ModernUI.csproj.GenerateResource.Cache
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.ModernUI\obj\Debug\FirstFloor.ModernUI.dll
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.ModernUI\obj\Debug\FirstFloor.ModernUI.pdb
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.ModernUI\obj\Debug\FirstFloor.ModernUI.csprojResolveAssemblyReference.cache
