@@ -19,8 +19,6 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\UploadConsignment.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\UploadContainer.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\UploadFile.g.cs
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\UploadRelation.g.cs
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\UploadVoyage.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Lotka\Confirmation.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Lotka\Main.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Lotka\UploadBL.g.cs
@@ -49,8 +47,6 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\UploadConsignment.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\UploadContainer.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\UploadFile.baml
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\UploadRelation.baml
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\UploadVoyage.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Lotka\Confirmation.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Lotka\UploadBL.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Lotka\UploadConsignment.baml

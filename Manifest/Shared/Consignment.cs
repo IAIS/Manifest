@@ -28,7 +28,7 @@ namespace Manifest.Shared
         [Required, MaxLength(90)]
         public String PackageType { get; set; }
 
-        [Required, MaxLength(9)]
+        [Required, MaxLength(90)]
         public String PackageTypeCode { get; set; }
 
         [Required]
@@ -66,5 +66,12 @@ namespace Manifest.Shared
 
         [MaxLength(1)]
         public String UnitOfRefregerationTemperature { get; set; }
+
+        public Consignment()
+        {
+            RefrigerationRequired = "0";
+            UnitOfTemperature = "C";
+            DangerousGoodIndicator = "";
+        }
     }
 }

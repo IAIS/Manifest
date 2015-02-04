@@ -50,20 +50,35 @@ namespace Manifest.Utils
         /// <param name="instance"></param>
         public Panel CreateControl(T instance)
         {
-            UniformGrid panel = new UniformGrid();
-            panel.HorizontalAlignment = HorizontalAlignment.Left;
-            panel.FlowDirection = FlowDirection.LeftToRight;
-            panel.Columns = 3;
+            Grid grid = new Grid();    
+            grid.HorizontalAlignment = HorizontalAlignment.Left;
+            grid.FlowDirection = FlowDirection.LeftToRight;
+
+            for (int i = 0; i < 3; i ++)
+            {
+                ColumnDefinition column = new ColumnDefinition();
+                column.MinWidth = 100;
+                grid.ColumnDefinitions.Add(column);
+            }
+            
+            int rowIndex = 0;
+
             foreach (PropertyInfo propertyInfo in instance.GetType().GetProperties())
             {
                 if (!CommonUtility.IsSimpleProperty(propertyInfo))
                 {
                     continue;
                 }
+                RowDefinition row = new RowDefinition();
+                row.MinHeight = 30;
+                grid.RowDefinitions.Add(row);
+
                 TextBlock label = new TextBlock();
                 label.Text = propertyInfo.Name;
                 label.Margin = new Thickness(5);
-                panel.Children.Add(label);
+                Grid.SetColumn(label, 0);
+                Grid.SetRow(label, rowIndex);
+                grid.Children.Add(label);
 
                 if (propertyInfo.PropertyType == typeof(DateTime))
                 {
@@ -78,13 +93,16 @@ namespace Manifest.Utils
                     valueBinder.ValidatesOnDataErrors = true;
                     valueBinder.Mode = BindingMode.TwoWay;
                     BindingOperations.SetBinding(datePicker, DatePicker.TextProperty, valueBinder);
-                    panel.Children.Add(datePicker);
+                    Grid.SetColumn(datePicker, 1);
+                    Grid.SetRow(datePicker, rowIndex);
+                    grid.Children.Add(datePicker);
                 }
                 else
                 {
                     TextBox text = new TextBox();
                     text.Name = propertyInfo.Name;
                     text.Margin = new Thickness(5);
+                    text.TextWrapping = TextWrapping.WrapWithOverflow;
                     Binding valueBinder = new Binding(propertyInfo.Name);
                     valueBinder.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
                     valueBinder.Source = instance;
@@ -93,23 +111,26 @@ namespace Manifest.Utils
                     valueBinder.ValidatesOnDataErrors = true;
                     valueBinder.Mode = BindingMode.TwoWay;
                     BindingOperations.SetBinding(text, TextBox.TextProperty, valueBinder);
-                    panel.Children.Add(text);
+                    Grid.SetColumn(text, 1);
+                    Grid.SetRow(text, rowIndex);
+                    grid.Children.Add(text);
                 }
 
 
-                TextBlock lblStar = new TextBlock();
-                lblStar.Foreground = System.Windows.Media.Brushes.Red;
-                panel.Children.Add(lblStar);
+
                 if (CommonUtility.IsRequired(propertyInfo))
                 {
+                    TextBlock lblStar = new TextBlock();
+                    lblStar.Foreground = System.Windows.Media.Brushes.Red;
                     lblStar.Text = "*";
+                    Grid.SetColumn(lblStar, 2);
+                    Grid.SetRow(lblStar, rowIndex);
+                    grid.Children.Add(lblStar);
                 }
-                else
-                {
-                    lblStar.Text = "";
-                }
+
+                rowIndex ++;
             }
-            return panel;
+            return grid;
         }
 
         private void TextOnLostFocus(object sender, RoutedEventArgs routedEventArgs)

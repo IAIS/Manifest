@@ -1,4 +1,4 @@
-﻿<utils:MyControl x:Class="Manifest.UI.Steps.Hoopad.UploadBL"  x:Name="uploadBLWindow"
+﻿<utils:MyControl x:Class="Manifest.UI.Steps.Lotka.UploadBL"  x:Name="uploadBlLootka"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

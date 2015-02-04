@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Web.UI;
 using System.Windows;
+using FirstFloor.ModernUI.Windows.Controls;
+using FirstFloor.ModernUI.Windows.Navigation;
 using Manifest.Converter;
 using Manifest.Resources;
 using Manifest.Shared;
@@ -9,6 +13,7 @@ using Manifest.Template.Hoopad;
 using Manifest.Utils;
 using Microsoft.Win32;
 using Warehouse.Exceptions;
+using Container = Manifest.Shared.Container;
 
 namespace Manifest.UI.Steps.Hoopad
 {
@@ -20,7 +25,45 @@ namespace Manifest.UI.Steps.Hoopad
         public UploadFile()
         {
             InitializeComponent();
+
         }
+
+        private void WorkerOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Voyage voyage = e.Result as Voyage;
+            ucVoyage.Init(voyage);
+            IsLoaded();
+        }
+
+        private void WorkerOnDoWork(object sender, DoWorkEventArgs e)
+        {
+            String path = e.Argument as String;
+            Template.Hoopad.Manifest manifest = XmlConverter.Convert<Data>(path).Items;
+            Voyage voyage = ParameterUtility.GetVoyage();
+            ClassConverter.Convert(manifest, voyage);
+            foreach (BLSBL blsbl in manifest.BLS)
+            {
+                BillOfLading billOfLading = new BillOfLading();
+                ClassConverter.Convert(blsbl, billOfLading);
+                ClassConverter.Convert(blsbl.Shipper, billOfLading);
+                foreach (ContainerDataContainer containerDataContainer in blsbl.ContainerData)
+                {
+                    Container container = new Container();
+                    ClassConverter.Convert(containerDataContainer, container);
+                    foreach (PricingDataPrice pricingDataPrice in blsbl.PricingData)
+                    {
+                        Consignment consignment = new Consignment();
+                        ClassConverter.Convert(pricingDataPrice, consignment);
+                        ClassConverter.Convert(containerDataContainer, consignment);
+                        container.Consignments.Add(consignment);
+                    }
+                    billOfLading.Containers.Add(container);
+                }
+                voyage.BillOfLadings.Add(billOfLading);
+            }
+            e.Result = voyage;
+        }
+
 
         private void BtnUploadFile_OnClick(object sender, RoutedEventArgs e)
         {
@@ -31,13 +74,13 @@ namespace Manifest.UI.Steps.Hoopad
                 dialog.Filter = "Xml files (*.xml)|*.xml|All files (*.*)|*.*";
                 if (dialog.ShowDialog() == true)
                 {
-                    Data data = XmlConverter.Convert<Data>(dialog.FileName);
-                    Voyage voyage = ParameterUtility.GetVoyage();
-                    foreach (Template.Hoopad.Manifest dataManifest in data.Items)
-                    {
-                        ClassConverter.Convert(dataManifest, voyage);
-                    }
+                    IsLoading();
+                    BackgroundWorker worker = new BackgroundWorker();
+                    worker.DoWork += WorkerOnDoWork;
+                    worker.RunWorkerCompleted += WorkerOnRunWorkerCompleted;
+                    worker.RunWorkerAsync(dialog.FileName);
                 }
+
             }
             catch (UserInterfaceException ex)
             {
@@ -53,6 +96,12 @@ namespace Manifest.UI.Steps.Hoopad
                 UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.VoyageOpenError, ex);
                 ShowError(exception);
             }
+        }
+
+        public override void OnNavigatedTo(FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)
+        {
+            ucVoyage.Init(ParameterUtility.GetVoyage());
+
         }
     }
 }

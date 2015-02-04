@@ -25,7 +25,6 @@ namespace Manifest.UI.Steps.Lotka
         public UploadRelation()
         {
             InitializeComponent();
-            
         }
 
         public override void OnNavigatedTo(NavigationEventArgs e)

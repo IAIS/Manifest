@@ -29,8 +29,7 @@ namespace Manifest.Converter
 
         public static void Convert(Object sourceInstance, Object destinationInstance)
         {
-            PropertyInfo[][] properties = FetchProperties(sourceInstance.GetType().FullName,
-                destinationInstance.GetType().FullName);
+            PropertyInfo[][] properties = FetchProperties(sourceInstance.GetType().FullName, destinationInstance.GetType().FullName);
             foreach (PropertyInfo[] propertyInfo in properties)
             {
                 var value = propertyInfo[0].GetValue(sourceInstance);
@@ -48,13 +47,13 @@ namespace Manifest.Converter
         /// <returns></returns>
         private static PropertyInfo[][] FetchProperties(String sourceClassName, String destinationClassName)
         {
-            mapsMap map =
+            Map map =
                 XmlConverter.Convert<maps>(StructurePath)
                     .Items.FirstOrDefault(m => m.sourceClass.Equals(sourceClassName) && m.destinationClass.Equals(destinationClassName));
             List<PropertyInfo[]> result = new List<PropertyInfo[]>();
             Type sourceType = Type.GetType(sourceClassName);
             Type destinationType = Type.GetType(destinationClassName);
-            foreach (mapsMapProperty mapProperty in map.property)
+            foreach (Property mapProperty in map.property)
             {
                 PropertyInfo sourceProperty = sourceType.GetProperty(mapProperty.src);
                 if (sourceProperty == null)

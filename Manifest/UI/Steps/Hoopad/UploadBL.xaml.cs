@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using Manifest.UI.Details;
 using Manifest.Utils;
 using Microsoft.Win32;
 using Warehouse.Exceptions;
+using Container = Manifest.Shared.Container;
 
 namespace Manifest.UI.Steps.Hoopad
 {

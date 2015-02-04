@@ -543,6 +543,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         public bool IsLoadingContent
         {
             get { return (bool)GetValue(IsLoadingContentProperty); }
+            set { SetValue(IsLoadingContentPropertyKey, value); }
         }
 
         /// <summary>

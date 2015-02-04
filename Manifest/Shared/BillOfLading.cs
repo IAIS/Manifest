@@ -91,7 +91,7 @@ namespace Manifest.Shared
         [Required, MaxLength(90)]
         public String OriginalShipperAddess { get; set; }
 
-        [MaxLength(90)]
+        [MaxLength(300)]
         public String ShipperName { get; set; }
 
         [Required, MaxLength(90)]

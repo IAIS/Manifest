@@ -59,10 +59,10 @@
     <ApplicationIcon>Assets\Upload.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>0FD69B7503291B14EDEB749F4E2E83A4CC5B8ED8</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>81137384CA7DD26B9605C0D467A2578AF4B3E652</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Manifest_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>RFID.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -123,8 +123,8 @@
     <Compile Include="Shared\JManifestVehicle.cs" />
     <Compile Include="Shared\JRelation.cs" />
     <Compile Include="Template\Hoopad\maps.cs" />
-    <Compile Include="Template\Hoopad\mapsMap.cs" />
-    <Compile Include="Template\Hoopad\mapsMapProperty.cs" />
+    <Compile Include="Template\Hoopad\Map.cs" />
+    <Compile Include="Template\Hoopad\Property.cs" />
     <Compile Include="Template\Hoopad\Data.cs" />
     <Compile Include="Template\Hoopad\Manifest.cs" />
     <Compile Include="Template\Hoopad\BLSBL.cs" />
@@ -166,12 +166,6 @@
     </Compile>
     <Compile Include="UI\Steps\Hoopad\UploadFile.xaml.cs">
       <DependentUpon>UploadFile.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Steps\Hoopad\UploadRelation.xaml.cs">
-      <DependentUpon>UploadRelation.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Steps\Hoopad\UploadVoyage.xaml.cs">
-      <DependentUpon>UploadVoyage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Steps\Lotka\Confirmation.xaml.cs">
       <DependentUpon>Confirmation.xaml</DependentUpon>
@@ -269,14 +263,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Steps\Hoopad\UploadRelation.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Steps\Hoopad\UploadVoyage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UI\Steps\Lotka\Confirmation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -345,12 +331,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="RFID.pfx" />
     <Resource Include="Fonts\B Titr.TTF">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Fonts\B Nazanin.TTF" />
     <None Include="instances\CCS_SHIBA_0064_0064_LOTKA SHIPPING SERVICES.edi" />
-    <None Include="Manifest_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

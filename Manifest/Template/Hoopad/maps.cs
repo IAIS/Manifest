@@ -26,11 +26,11 @@ namespace Manifest.Template.Hoopad
     [XmlRoot(Namespace="", IsNullable=false)]
     public partial class maps {
     
-        private mapsMap[] itemsField;
+        private Map[] itemsField;
     
         /// <remarks/>
         [XmlElement("map", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public mapsMap[] Items {
+        public Map[] Items {
             get {
                 return this.itemsField;
             }

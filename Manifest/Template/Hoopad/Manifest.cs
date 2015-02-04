@@ -24,9 +24,7 @@ namespace Manifest.Template.Hoopad
         private string projectVesselNameField;
         private string referenceField;
 
-        /// <summary>
-        /// Departure Date
-        /// </summary>
+
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string ManifestDate
         {
@@ -34,9 +32,6 @@ namespace Manifest.Template.Hoopad
             set { manifestDateField = value; }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string Reference
         {
@@ -44,7 +39,9 @@ namespace Manifest.Template.Hoopad
             set { referenceField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// LineCode
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string ProjectCode
         {
@@ -52,7 +49,9 @@ namespace Manifest.Template.Hoopad
             set { projectCodeField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// VesselName
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string ProjectVesselName
         {
@@ -76,5 +75,7 @@ namespace Manifest.Template.Hoopad
             get { return bLSField; }
             set { bLSField = value; }
         }
+
+
     }
 }

@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FirstFloor.ModernUI.dll" size="317440">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FirstFloor.ModernUI.dll" size="318464">
       <assemblyIdentity name="FirstFloor.ModernUI" version="1.0.6.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eTqa+Toda/SQ0H+2j1kt5zoPJyXV1ykGjz4XczuSxsY=</dsig:DigestValue>
+        <dsig:DigestValue>wq2hLx3j+bYKFWt8+22owMkfOeWjgg2e6Pc5cU+qrvg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="2586112">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="2576896">
       <assemblyIdentity name="Manifest" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>A5xEDDxdY56RrjgvPlbib9xo6FBpZLuWwAbc+vI2piw=</dsig:DigestValue>
+        <dsig:DigestValue>xcoLSh9mTcK/BBmt2FuSSlaE46i1Ekv+eVbJWDXFO7M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -96,13 +96,13 @@
       <dsig:DigestValue>ZHZrMo04mCOJ9wy3fuXbgOidKHcuJEReaJzX4+OuExE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Structure\Map.xml" size="403" writeableType="applicationData">
+  <file name="Structure\Map.xml" size="3733" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LODcrYkHFlS9GI3eGrkAraygVx8k4ESplMbB8cQZalo=</dsig:DigestValue>
+      <dsig:DigestValue>Wbi03CkY9CYK1QpNxQLh9h+896v+UFprmVVahmon2Ow=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Structure\Templates.xml" size="1991" writeableType="applicationData">

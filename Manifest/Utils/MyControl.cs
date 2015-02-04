@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 using FirstFloor.ModernUI.Windows;
+using FirstFloor.ModernUI.Windows.Controls;
 using FirstFloor.ModernUI.Windows.Navigation;
 using Warehouse.Exceptions;
 
@@ -31,6 +34,18 @@ namespace Manifest.Utils
         public virtual void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             // Do Nothing !
+        }
+
+        public virtual void IsLoading()
+        {
+            ((ModernFrame)this.Parent).IsLoadingContent = true;
+            ((Panel)((ModernFrame)this.Parent).Parent).IsEnabled = false;
+        }
+
+        public virtual void IsLoaded()
+        {
+            ((ModernFrame)this.Parent).IsLoadingContent = false;
+            ((Panel) ((ModernFrame) this.Parent).Parent).IsEnabled = true;
         }
     }
 }

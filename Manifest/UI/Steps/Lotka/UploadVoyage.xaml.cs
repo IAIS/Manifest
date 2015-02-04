@@ -74,7 +74,6 @@ namespace Manifest.UI.Steps.Lotka
         public override void OnNavigatedTo(NavigationEventArgs e)
         {
             ucVoyage.Init(ParameterUtility.GetVoyage());
-//            
         }
 
         public override void OnNavigatingFrom(NavigatingCancelEventArgs e)

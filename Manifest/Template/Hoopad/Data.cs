@@ -16,11 +16,11 @@ namespace Manifest.Template.Hoopad
     [XmlRoot(Namespace = "", IsNullable = false)]
     public class Data
     {
-        public Manifest[] itemsField;
+        public Manifest itemsField;
 
         /// <remarks />
         [XmlElement("Manifest", Form = XmlSchemaForm.Unqualified)]
-        public Manifest[] Items
+        public Manifest Items
         {
             get { return itemsField; }
             set { itemsField = value; }

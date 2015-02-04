@@ -22,5 +22,19 @@ namespace Manifest.UI
             }
             InitializeComponent();
         }
+
+        ModernFrame _mModernFrame = null;
+        
+        public ModernFrame ModernFrame
+        {
+            get
+            {
+                if (null == _mModernFrame)
+                {
+                    _mModernFrame = GetTemplateChild("ContentFrame") as ModernFrame;
+                }
+                return _mModernFrame;
+            }
+        } 
     }
 }

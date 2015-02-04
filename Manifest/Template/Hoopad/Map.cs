@@ -6,13 +6,13 @@
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    public partial class mapsMap {
+    public partial class Map {
     
         private string sourceClassField;
     
         private string destinationClassField;
     
-        private mapsMapProperty[] propertyField;
+        private Property[] propertyField;
     
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -38,7 +38,7 @@
     
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("property", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public mapsMapProperty[] property {
+        public Property[] property {
             get {
                 return this.propertyField;
             }

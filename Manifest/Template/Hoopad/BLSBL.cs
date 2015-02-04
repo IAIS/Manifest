@@ -20,10 +20,10 @@ namespace Manifest.Template.Hoopad
         private string bookingAgentField;
 
         private string bookingReferenceNOField;
-        private ConsigneeExtraInfo[] consigneeExtraInfoField;
+        private ConsigneeExtraInfo consigneeExtraInfoField;
 
         private string consigneeField;
-        private ContainerDataContainer[] _containerContainerDataField;
+        private ContainerDataContainer[] containerContainerDataField;
 
         private string dESCRIPTIONField;
 
@@ -40,7 +40,7 @@ namespace Manifest.Template.Hoopad
         private string netWeightField;
         private string notifyAddressField;
 
-        private NotifyExtraInfo[] notifyExtraInfoField;
+        private NotifyExtraInfo notifyExtraInfoField;
         private string onwardInlandRoutingField;
         private string onwardInlandRoutingNameField;
         private string originField;
@@ -49,9 +49,9 @@ namespace Manifest.Template.Hoopad
         private string pointCountryOrigionField;
         private string pointCountryOrigionNameField;
 
-        private PricingDataPrice[] _pricingPricingDataField;
+        private PricingDataPrice[] pricingPricingDataField;
         private string projectCodeField;
-        private Shipper[] shipperField;
+        private Shipper shipperField;
         private string termField;
         private string volumeField;
         private string volumeUnitField;
@@ -66,7 +66,9 @@ namespace Manifest.Template.Hoopad
             set { bLNOField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// BillOfLadingNo
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string BookingReferenceNO
         {
@@ -98,7 +100,9 @@ namespace Manifest.Template.Hoopad
             set { fPNOField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// CargoWeightInKg
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string WEIGHT
         {
@@ -106,7 +110,9 @@ namespace Manifest.Template.Hoopad
             set { wEIGHTField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// GrossWeightInKg
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string NetWeight
         {
@@ -114,7 +120,9 @@ namespace Manifest.Template.Hoopad
             set { netWeightField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// CargoVolumeInCubicMetre
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string Volume
         {
@@ -130,7 +138,9 @@ namespace Manifest.Template.Hoopad
             set { weightUnitField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// 
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string VolumeUnit
         {
@@ -146,7 +156,9 @@ namespace Manifest.Template.Hoopad
             set { termField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// PortCodeOfOrigin
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string OriginPort
         {
@@ -154,7 +166,9 @@ namespace Manifest.Template.Hoopad
             set { originPortField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// PortCodeOfLoading
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string LoadPort
         {
@@ -162,7 +176,9 @@ namespace Manifest.Template.Hoopad
             set { loadPortField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// PortCodeOfDischarge
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string DiscPort
         {
@@ -170,7 +186,9 @@ namespace Manifest.Template.Hoopad
             set { discPortField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// PortCodeOfDestination
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string FinalPort
         {
@@ -234,7 +252,9 @@ namespace Manifest.Template.Hoopad
             set { onwardInlandRoutingField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// BillOfLadingOwnerAddress
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string Consignee
         {
@@ -250,7 +270,9 @@ namespace Manifest.Template.Hoopad
             set { notifyAddressField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// MarksAndNumbers
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string Marks
         {
@@ -258,7 +280,9 @@ namespace Manifest.Template.Hoopad
             set { marksField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// Remark
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string DESCRIPTION
         {
@@ -282,7 +306,9 @@ namespace Manifest.Template.Hoopad
             set { destinationField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// OriginalVesselName
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string LocalVessel
         {
@@ -300,7 +326,7 @@ namespace Manifest.Template.Hoopad
 
         /// <remarks />
         [XmlElement("Shipper", Form = XmlSchemaForm.Unqualified)]
-        public Shipper[] Shipper
+        public Shipper Shipper
         {
             get { return shipperField; }
             set { shipperField = value; }
@@ -308,7 +334,7 @@ namespace Manifest.Template.Hoopad
 
         /// <remarks />
         [XmlElement("ConsigneeExtraInfo", Form = XmlSchemaForm.Unqualified)]
-        public ConsigneeExtraInfo[] ConsigneeExtraInfo
+        public ConsigneeExtraInfo ConsigneeExtraInfo
         {
             get { return consigneeExtraInfoField; }
             set { consigneeExtraInfoField = value; }
@@ -316,7 +342,7 @@ namespace Manifest.Template.Hoopad
 
         /// <remarks />
         [XmlElement("NotifyExtraInfo", Form = XmlSchemaForm.Unqualified)]
-        public NotifyExtraInfo[] NotifyExtraInfo
+        public NotifyExtraInfo NotifyExtraInfo
         {
             get { return notifyExtraInfoField; }
             set { notifyExtraInfoField = value; }
@@ -326,20 +352,20 @@ namespace Manifest.Template.Hoopad
         [XmlArray(Form = XmlSchemaForm.Unqualified)]
         [XmlArrayItem("Price", typeof (PricingDataPrice), Form = XmlSchemaForm.Unqualified,
             IsNullable = false)]
-        public PricingDataPrice[] PricingPricingData
+        public PricingDataPrice[] PricingData
         {
-            get { return _pricingPricingDataField; }
-            set { _pricingPricingDataField = value; }
+            get { return pricingPricingDataField; }
+            set { pricingPricingDataField = value; }
         }
 
         /// <remarks />
         [XmlArray(Form = XmlSchemaForm.Unqualified)]
         [XmlArrayItem("Container", typeof (ContainerDataContainer), Form = XmlSchemaForm.Unqualified,
             IsNullable = false)]
-        public ContainerDataContainer[] ContainerContainerData
+        public ContainerDataContainer[] ContainerData
         {
-            get { return _containerContainerDataField; }
-            set { _containerContainerDataField = value; }
+            get { return containerContainerDataField; }
+            set { containerContainerDataField = value; }
         }
     }
 }

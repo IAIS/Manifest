@@ -53,7 +53,9 @@ namespace Manifest.Template.Hoopad
             set { containerTypeField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// ContainerNumber
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string ContainerNo
         {
@@ -61,7 +63,9 @@ namespace Manifest.Template.Hoopad
             set { containerNoField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// SealNo
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string SealNo
         {
@@ -109,7 +113,9 @@ namespace Manifest.Template.Hoopad
             set { aPartPercentField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// TareWeightInMT
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string TW
         {
@@ -149,7 +155,9 @@ namespace Manifest.Template.Hoopad
             set { remarksField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// ConsignmentPackages
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string PackageQty
         {
@@ -157,7 +165,10 @@ namespace Manifest.Template.Hoopad
             set { packageQtyField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// PackageType
+        /// PackageTypeCode
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string PackageUnit
         {

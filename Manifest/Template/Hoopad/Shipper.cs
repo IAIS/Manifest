@@ -23,7 +23,9 @@ namespace Manifest.Template.Hoopad
 
         private string shipperTelField;
 
-        /// <remarks />
+        /// <summary>
+        /// ShipperCountryCode
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string ShipperCode
         {
@@ -31,7 +33,9 @@ namespace Manifest.Template.Hoopad
             set { shipperCodeField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// ShipperName
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string ShipperName
         {
@@ -39,7 +43,9 @@ namespace Manifest.Template.Hoopad
             set { shipperNameField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// ShipperAddess
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string ShipperAddress
         {

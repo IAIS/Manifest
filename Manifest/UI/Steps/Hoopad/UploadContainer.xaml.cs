@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using Manifest.UI.Details;
 using Manifest.Utils;
 using Microsoft.Win32;
 using Warehouse.Exceptions;
+using Container = Manifest.Shared.Container;
 
 namespace Manifest.UI.Steps.Hoopad
 {
@@ -25,41 +27,6 @@ namespace Manifest.UI.Steps.Hoopad
         public UploadContainer()
         {
             InitializeComponent();
-        }
-
-        private void BtnUploadContainer_OnClick(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Multiselect = false;
-                dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-                
-                if (dialog.ShowDialog() == true)
-                {
-                    List<Container> containers = SimpleConverter.Convert<Container>(dialog.FileName, "Manifest.Shared.Container");
-                    foreach (Container container in containers)
-                    {
-                        AddContainer(container);
-                    }
-                    HandleDataGrid();
-                }
-
-            }
-            catch (UserInterfaceException ex)
-            {
-                ShowError(ex);
-            }
-            catch (FormatException ex)
-            {
-                UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
-                ShowError(exception);
-            }
-            catch (Exception ex)
-            {
-                UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.BillOfLadingOpenError, ex);
-                ShowError(exception);
-            }
         }
 
         private void BtnNewContainer_OnClick(object sender, RoutedEventArgs e)

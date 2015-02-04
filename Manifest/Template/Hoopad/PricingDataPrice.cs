@@ -79,7 +79,9 @@ namespace Manifest.Template.Hoopad
             set { amountTypeField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// CargoDescription
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string ServiceExplain
         {
@@ -87,7 +89,10 @@ namespace Manifest.Template.Hoopad
             set { serviceExplainField = value; }
         }
 
-        /// <remarks />
+        /// <summary>
+        /// ConsignmentPackages
+        /// NoOfPallets
+        /// </summary>
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public string Qty
         {
