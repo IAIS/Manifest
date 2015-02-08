@@ -76,3 +76,4 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\Manifest.exe.man
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\Manifest.application
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\Manifest.exe
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\Manifest.pdb
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\bin\Debug\Structure\Output.xml
