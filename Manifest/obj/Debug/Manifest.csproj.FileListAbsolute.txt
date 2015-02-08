@@ -1,1 +1,2 @@
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\bin\Debug\Manifest.exe
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\bin\Debug\Manifest.exe.config
