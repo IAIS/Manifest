@@ -27,9 +27,10 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>https://epl.irica.ir/manifest/</InstallUrl>
     <UpdateUrl>https://epl.irica.ir/manifest/</UpdateUrl>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>14</ApplicationRevision>
+    <ApplicationRevision>15</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
