@@ -199,6 +199,9 @@
     <Compile Include="UI\Steps\Lotka\UploadVoyage.xaml.cs">
       <DependentUpon>UploadVoyage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Template\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Template\Wrapper.xaml.cs">
       <DependentUpon>Wrapper.xaml</DependentUpon>
     </Compile>
@@ -311,6 +314,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Template\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Template\Wrapper.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -389,6 +396,7 @@
     <Resource Include="instances\Person.txt" />
     <Resource Include="instances\VOYAGE.TXT" />
     <Resource Include="Assets\Upload.ico" />
+    <Resource Include="Assets\settings.png" />
     <Content Include="Structure\Output.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

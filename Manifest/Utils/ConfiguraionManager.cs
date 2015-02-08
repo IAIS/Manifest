@@ -29,5 +29,10 @@ namespace Manifest.Utils
         {
             return (ApplicaionType)Enum.Parse(typeof(ApplicaionType), System.Configuration.ConfigurationManager.AppSettings["ApplicationType"]);
         }
+
+        public void SetApplicationType(String applicationType)
+        {
+            System.Configuration.ConfigurationManager.AppSettings["ApplicationType"] = applicationType;
+        }
     }
 }

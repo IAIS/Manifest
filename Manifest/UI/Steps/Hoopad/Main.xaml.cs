@@ -23,7 +23,6 @@ namespace Manifest.UI.Steps.Hoopad
 
         private void NewCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            //TODO: Reload Page After New Command!
             ParameterUtility.SetVoyage(new Voyage());
             Wrapper window = (Wrapper) Window.GetWindow(this);
             Wrapper newWindows = new Wrapper();
@@ -102,6 +101,16 @@ namespace Manifest.UI.Steps.Hoopad
         }
 
         private void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void PropertiesCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            
+        }
+
+        private void ProperitesCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }

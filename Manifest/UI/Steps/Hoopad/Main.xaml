@@ -9,6 +9,7 @@
         <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_OnExecuted" CanExecute="NewCommand_CanExecute" />
         <CommandBinding Command="ApplicationCommands.Open" Executed="OpenCommand_Executed" CanExecute="OpenCommand_CanExecute" />
         <CommandBinding Command="ApplicationCommands.SaveAs" Executed="SaveAsCommand_Executed" CanExecute="SaveCommand_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.Properties" Executed="PropertiesCommand_Executed" CanExecute="ProperitesCommand_CanExecute" />
     </UserControl.CommandBindings>
     <mui:ModernTab Layout="List" FlowDirection="RightToLeft" SelectedSource="/UI\Steps\Hoopad\Intro.xaml">
         <mui:ModernTab.Links>

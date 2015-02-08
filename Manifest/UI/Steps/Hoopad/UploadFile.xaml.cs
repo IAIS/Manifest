@@ -41,7 +41,7 @@ namespace Manifest.UI.Steps.Hoopad
             try
             {
                 String path = e.Argument as String;
-                Template.Hoopad.Manifest manifest = XmlConverter.Convert<Data>(path).Items;
+                Manifest.Template.Hoopad.Manifest manifest = XmlConverter.Convert<Data>(path).Items;
                 Voyage voyage = ParameterUtility.GetVoyage();
                 ClassConverter.Convert(manifest, voyage);
                 foreach (BLSBL blsbl in manifest.BLS)

@@ -58,7 +58,7 @@
                                             <ColumnDefinition Width="96" />
                                         </Grid.ColumnDefinitions>
 
-                                        <ToolBarTray IsLocked="True" ClipToBounds="True" Width="170" HorizontalAlignment="Left">
+                                        <ToolBarTray IsLocked="True" Name="toolbar"  ClipToBounds="True" Width="220" HorizontalAlignment="Left" IsEnabled="True">
                                             <ToolBar OverflowMode="Never" Margin="-5,0,-13,0" Padding="5,0,0,0">
                                                 <Button Padding="10 5" Command="ApplicationCommands.New" Cursor="Hand">
                                                     <Image Source="/Manifest;component/Assets/new_file.png"/>
@@ -68,6 +68,9 @@
                                                 </Button>
                                                 <Button Padding="10 5" Command="ApplicationCommands.SaveAs"  Cursor="Hand">
                                                     <Image Source="/Manifest;component/Assets/save.png" />
+                                                </Button>
+                                                <Button Padding="10 5" Command="NavigationCommands.GoToPage" CommandParameter="/UI\Template\Settings.xaml" Cursor="Hand">
+                                                    <Image Source="/Manifest;component/Assets/settings.png" />
                                                 </Button>
                                             </ToolBar>
                                         </ToolBarTray>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using FirstFloor.ModernUI.Windows.Controls;
 using Manifest.Shared;
 
@@ -21,20 +20,8 @@ namespace Manifest.UI
                 this.ContentSource = new Uri("/UI/Steps/Lotka/Main.xaml", UriKind.Relative);
             }
             InitializeComponent();
+            
         }
 
-        ModernFrame _mModernFrame = null;
-        
-        public ModernFrame ModernFrame
-        {
-            get
-            {
-                if (null == _mModernFrame)
-                {
-                    _mModernFrame = GetTemplateChild("ContentFrame") as ModernFrame;
-                }
-                return _mModernFrame;
-            }
-        } 
     }
 }
