@@ -79,3 +79,4 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\Manifest.pdb
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\bin\Debug\Structure\Output.xml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\Settings.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\Settings.baml
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\bin\Debug\Microsoft.Windows.Shell.dll

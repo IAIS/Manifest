@@ -32,13 +32,13 @@ namespace Manifest.Converter
             PropertyInfo[][] properties = FetchProperties(sourceInstance.GetType().FullName, destinationInstance.GetType().FullName);
             foreach (PropertyInfo[] propertyInfo in properties)
             {
-                var value = propertyInfo[0].GetValue(sourceInstance);
+                var value = propertyInfo[0].GetValue(sourceInstance, null);
                 if (propertyInfo[0].PropertyType.FullName.Equals("System.String"))
                 {
                     value = ((String) value).Replace("\r", " ").Replace("\n", " ").Trim();
                 }
                 var convertedValue = System.Convert.ChangeType(value, propertyInfo[1].PropertyType);
-                propertyInfo[1].SetValue(destinationInstance, convertedValue);
+                propertyInfo[1].SetValue(destinationInstance, convertedValue, null);
             }
         }
 

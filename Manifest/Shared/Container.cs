@@ -12,16 +12,16 @@ namespace Manifest.Shared
             Consignments = new List<Consignment>();   
         }
 
-        [Required, MaxLength(30)]
+        [Required]
         public String ContainerNumber { get; set; }
 
-        [Required, MaxLength(1)]
+        [Required]
         public String CheckDigit { get; set; }
 
         [Required]
         public Double TareWeightInMT { get; set; }
 
-        [Required, MaxLength(30)]
+        [Required]
         public String SealNo { get; set; }
 
         public List<Consignment> Consignments;

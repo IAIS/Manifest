@@ -81,15 +81,15 @@ namespace Manifest.UI.Steps.Lotka
                 dialog.Filter = "Zip files (*.zip)|*.zip|All files (*.*)|*.*";
                 if (dialog.ShowDialog() == true)
                 {
-                    using (ZipArchive archive = new ZipArchive(new FileStream(dialog.FileName, FileMode.Create), ZipArchiveMode.Create, true))
-                    {
-                        ZipArchiveEntry entry = archive.CreateEntry("Manifest_" + DateTime.Now.ToString("yyyyMMddHHmmss"), CompressionLevel.Optimal);
-                        using (var zipStream = entry.Open())
-                        {
-                            byte[] value = System.Text.Encoding.ASCII.GetBytes(GetResult());
-                            zipStream.Write(value, 0, value.Length);
-                        }
-                    }
+//                    using (ZipArchive archive = new ZipArchive(new FileStream(dialog.FileName, FileMode.Create), ZipArchiveMode.Create, true))
+//                    {
+//                        ZipArchiveEntry entry = archive.CreateEntry("Manifest_" + DateTime.Now.ToString("yyyyMMddHHmmss"), CompressionLevel.Optimal);
+//                        using (var zipStream = entry.Open())
+//                        {
+//                            byte[] value = System.Text.Encoding.ASCII.GetBytes(GetResult());
+//                            zipStream.Write(value, 0, value.Length);
+//                        }
+//                    }
                 }
             }
             catch (Exception ex)

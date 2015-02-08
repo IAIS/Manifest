@@ -20,7 +20,7 @@ namespace Manifest.Utils
             {
                 if (CommonUtility.IsSimpleProperty(propertyInfo))
                 {
-                    var value = propertyInfo.GetValue(instance);
+                    var value = propertyInfo.GetValue(instance, null);
                     if (value == null || String.IsNullOrEmpty(value.ToString()))
                     {
                         builder.AppendLine(String.Format(ExceptionMessage.ValidationBlank, propertyInfo.Name));
@@ -43,7 +43,7 @@ namespace Manifest.Utils
                 {
                     continue;    
                 }
-                var value = propertyInfo.GetValue(instance);
+                var value = propertyInfo.GetValue(instance, null);
                 if (value == null)
                 {
                     continue;
@@ -81,18 +81,20 @@ namespace Manifest.Utils
 
         private static bool HasMaxLength(PropertyInfo propertyInfo)
         {
-            var attr = propertyInfo.GetCustomAttributes(typeof(MaxLengthAttribute), false).FirstOrDefault();
-            if (attr == null)
-            {
-                return false;
-            }
-            return true;
+            return false;
+//            var attr = propertyInfo.GetCustomAttributes(typeof(MaxLengthAttribute), false).FirstOrDefault();
+//            if (attr == null)
+//            {
+//                return false;
+//            }
+//            return true;
         }
 
         private static int GetMaxLength(PropertyInfo propertyInfo)
         {
-            MaxLengthAttribute attr = (MaxLengthAttribute)propertyInfo.GetCustomAttributes(typeof(MaxLengthAttribute), false).FirstOrDefault();
-            return attr.Length;
+            throw new NotImplementedException();
+//            MaxLengthAttribute attr = (MaxLengthAttribute)propertyInfo.GetCustomAttributes(typeof(MaxLengthAttribute), false).FirstOrDefault();
+//            return attr.Length;
         }
 
     }

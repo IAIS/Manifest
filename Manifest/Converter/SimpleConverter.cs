@@ -59,29 +59,29 @@ namespace Manifest.Converter
                             if (underlayingType == null) // NonNullable Property
                             {
                                 var refined = System.Convert.ChangeType(instance[i], propertyInfo.PropertyType);
-                                propertyInfo.SetValue(item, refined);   
+                                propertyInfo.SetValue(item, refined, null);   
                             }
                             else    // Nullable Property
                             {
                                 var refined = System.Convert.ChangeType(instance[i], underlayingType);
-                                propertyInfo.SetValue(item, refined);
+                                propertyInfo.SetValue(item, refined, null);
                             }
                         }
                         else if (properties[i].Length == 2)     // Navigation Property
                         {
                             PropertyInfo childInstanceType = properties[i][0];
                             PropertyInfo childPropertyType = properties[i][1];
-                            var childInstance = childInstanceType.GetValue(item);
+                            var childInstance = childInstanceType.GetValue(item, null);
                             Type underlayingType = Nullable.GetUnderlyingType(childPropertyType.PropertyType);
                             if (underlayingType == null) // NonNullable Property
                             {
                                 var refined = System.Convert.ChangeType(instance[i], childPropertyType.PropertyType);
-                                childPropertyType.SetValue(childInstance, refined);
+                                childPropertyType.SetValue(childInstance, refined, null);
                             }
                             else    // Nullable Property
                             {
                                 var refined = System.Convert.ChangeType(instance[i], underlayingType);
-                                childPropertyType.SetValue(childInstance, refined);
+                                childPropertyType.SetValue(childInstance, refined, null);
                             }
                         }
                         else

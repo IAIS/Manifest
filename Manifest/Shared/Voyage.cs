@@ -15,33 +15,31 @@ namespace Manifest.Shared
             BillOfLadings = new ObservableCollection<BillOfLading>();
         }
 
-        [Required, MaxLength(18)]
+        [Required]
         public String LineCode { get; set; }
 
-        [Required, MaxLength(18)]
+        [Required]
         public String VoyageAgentCode { get; set; }
 
-        [Required, MaxLength(90)]
+        [Required]
         public String VesselName { get; set; }
 
-        [Required, MaxLength(30)]
+        [Required]
         public String AgentsVoyageNumber { get; set; }
 
-        [Required, MaxLength(15)]
+        [Required]
         public String PortCodeOfDischarge { get; set; }
 
-        [Required, MaxLength(33)]
+        [Required]
         public String ExpectedToArriveDate { get; set; }
 
-        [MaxLength(18)]
         public String RotationNumber { get; set; }
 
-        [MaxLength(9)]
         public String MessageType { get; set; }
 
         public Int32 NoOfInstalment { get; set; }
 
-        [Required, MaxLength(15)]
+        [Required]
         public Int32 AgentsManifestSequenceNumber { get; set; }
 
         public ObservableCollection<BillOfLading> BillOfLadings;

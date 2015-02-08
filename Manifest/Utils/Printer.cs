@@ -24,7 +24,7 @@ namespace Manifest.Utils
             {
                 if (CommonUtility.IsSimpleProperty(propertyInfo))
                 {
-                    builder.Append("\"" + propertyInfo.GetValue(instance) + "\",");    
+                    builder.Append("\"" + propertyInfo.GetValue(instance, null) + "\",");    
                 }
             }
             // برای  پاک کردن یک ویرگول اضافی که در حلقه ی بالا اضافه شده است
