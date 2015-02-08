@@ -5,7 +5,7 @@
     <PublishUrlHistory>C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\Deploy\|C:\Users\AbouzarKamaee\Desktop\Finaize\|C:\Users\AbouzarKamaee\Desktop\Finl\|C:\Users\AbouzarKamaee\Desktop\IAIS\|publish\</PublishUrlHistory>
     <InstallUrlHistory>https://epl.irica.ir/manifest/|http://epl.irica.ir/manifest/</InstallUrlHistory>
     <SupportUrlHistory />
-    <UpdateUrlHistory />
+    <UpdateUrlHistory>https://epl.irica.ir/manifest/</UpdateUrlHistory>
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>

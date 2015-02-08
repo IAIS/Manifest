@@ -32,6 +32,7 @@ namespace Manifest.UI.Steps.Hoopad
         {
             Voyage voyage = e.Result as Voyage;
             ucVoyage.Init(voyage);
+            btnUploadFile.IsEnabled = false;
             IsLoaded();
         }
 

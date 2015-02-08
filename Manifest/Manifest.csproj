@@ -27,9 +27,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>https://epl.irica.ir/manifest/</InstallUrl>
     <UpdateUrl>https://epl.irica.ir/manifest/</UpdateUrl>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>11</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -405,6 +405,7 @@
     <Resource Include="Assets\lightbulb.png" />
     <Content Include="Structure\Map.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Resource Include="Assets\upload_page.png" />
     <Content Include="Structure\Templates.xml">
