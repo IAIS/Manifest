@@ -37,32 +37,50 @@ namespace Manifest.UI.Steps.Hoopad
 
         private void WorkerOnDoWork(object sender, DoWorkEventArgs e)
         {
-            String path = e.Argument as String;
-            Template.Hoopad.Manifest manifest = XmlConverter.Convert<Data>(path).Items;
-            Voyage voyage = ParameterUtility.GetVoyage();
-            ClassConverter.Convert(manifest, voyage);
-            foreach (BLSBL blsbl in manifest.BLS)
+            try
             {
-                BillOfLading billOfLading = new BillOfLading();
-                ClassConverter.Convert(blsbl, billOfLading);
-                ClassConverter.Convert(blsbl.Shipper, billOfLading);
-                foreach (ContainerDataContainer containerDataContainer in blsbl.ContainerData)
+                String path = e.Argument as String;
+                Template.Hoopad.Manifest manifest = XmlConverter.Convert<Data>(path).Items;
+                Voyage voyage = ParameterUtility.GetVoyage();
+                ClassConverter.Convert(manifest, voyage);
+                foreach (BLSBL blsbl in manifest.BLS)
                 {
-                    Container container = new Container();
-                    ClassConverter.Convert(containerDataContainer, container);
-                    foreach (PricingDataPrice pricingDataPrice in blsbl.PricingData)
+                    BillOfLading billOfLading = new BillOfLading();
+                    ClassConverter.Convert(blsbl, billOfLading);
+                    ClassConverter.Convert(blsbl.Shipper, billOfLading);
+                    foreach (ContainerDataContainer containerDataContainer in blsbl.ContainerData)
                     {
-                        Consignment consignment = new Consignment();
-                        ClassConverter.Convert(pricingDataPrice, consignment);
-                        ClassConverter.Convert(containerDataContainer, consignment);
-                        container.Consignments.Add(consignment);
+                        Container container = new Container();
+                        ClassConverter.Convert(containerDataContainer, container);
+                        foreach (PricingDataPrice pricingDataPrice in blsbl.PricingData)
+                        {
+                            Consignment consignment = new Consignment();
+                            ClassConverter.Convert(pricingDataPrice, consignment);
+                            ClassConverter.Convert(containerDataContainer, consignment);
+                            container.Consignments.Add(consignment);
+                        }
+                        billOfLading.Containers.Add(container);
                     }
-                    billOfLading.Containers.Add(container);
+                    voyage.BillOfLadings.Add(billOfLading);
                 }
-                voyage.BillOfLadings.Add(billOfLading);
+                e.Result = voyage;
+
             }
-            e.Result = voyage;
-        }
+            catch (UserInterfaceException ex)
+            {
+                ShowError(ex);
+            }
+            catch (FormatException ex)
+            {
+                UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
+                ShowError(exception);
+            }
+            catch (Exception ex)
+            {
+                UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.VoyageOpenError, ex);
+                ShowError(exception);
+            }
+            }
 
         private void BtnUploadFile_OnClick(object sender, RoutedEventArgs e)
         {
