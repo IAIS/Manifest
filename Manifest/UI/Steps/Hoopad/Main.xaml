@@ -4,16 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
-             xmlns:utils="clr-namespace:Manifest.Utils"
-             mc:Ignorable="d">
+             xmlns:utils="clr-namespace:Manifest.Utils" mc:Ignorable="d">
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_OnExecuted" CanExecute="NewCommand_CanExecute" />
         <CommandBinding Command="ApplicationCommands.Open" Executed="OpenCommand_Executed" CanExecute="OpenCommand_CanExecute" />
         <CommandBinding Command="ApplicationCommands.SaveAs" Executed="SaveAsCommand_Executed" CanExecute="SaveCommand_CanExecute" />
     </UserControl.CommandBindings>
-    <!-- TODO: set @SelectedSource -->
-    <mui:ModernTab Layout="List" FlowDirection="RightToLeft">
+    <mui:ModernTab Layout="List" FlowDirection="RightToLeft" SelectedSource="/UI\Steps\Hoopad\Intro.xaml">
         <mui:ModernTab.Links>
+            <mui:Link DisplayName="توضیحات اولیه" ImageSource="/Assets/lightbulb.png" Source="/UI\Steps\Hoopad\Intro.xaml"/>
             <mui:Link DisplayName="بارگزاری فایل" ImageSource="/Assets/upload_page.png" Source="/UI\Steps\Hoopad\UploadFile.xaml"/>
             <mui:Link DisplayName="اطلاعات بارنامه" ImageSource="/Assets/world.png" Source="/UI\Steps\Hoopad\UploadBL.xaml"/>
             <mui:Link DisplayName="اطلاعات کانتینر" ImageSource="/Assets/truck.png" Source="/UI\Steps\Hoopad\UploadContainer.xaml"/>

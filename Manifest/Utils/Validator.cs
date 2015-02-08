@@ -23,19 +23,44 @@ namespace Manifest.Utils
                     var value = propertyInfo.GetValue(instance);
                     if (value == null || String.IsNullOrEmpty(value.ToString()))
                     {
-                        builder.AppendLine(String.Format(ExceptionMessage.Validation, propertyInfo.Name));
+                        builder.AppendLine(String.Format(ExceptionMessage.ValidationBlank, propertyInfo.Name));
                     }
                 }
             }
-            if (builder.Length == 0)
+            if (builder.Length > 0)
             {
-                return true;
+                const string message = @"اطلاعات {0} ناقص می باشد، لطفا اطلاعات را با استفاده از ستون ویرایش تکمیل کرده و دوباره امتحان کنید.";
+                throw new UserInterfaceException(20001, String.Format(message, instance) + System.Environment.NewLine + System.Environment.NewLine + builder.ToString());
             }
-            else
+            PropertyInfo[] properties = instance.GetType().GetProperties();
+            foreach (PropertyInfo propertyInfo in properties)
             {
-                const string message = @"اطلاعات وارد شده ناقص می باشد، لطفا اطلاعات را با استفاده از ستون ویرایش تکمیل کرده و دوباره امتحان کنید.";
-                throw new UserInterfaceException(20001, message + System.Environment.NewLine + System.Environment.NewLine + builder.ToString());
+                if (typeof (String) != propertyInfo.PropertyType)
+                {
+                    continue;
+                }
+                if (!HasMaxLength(propertyInfo))
+                {
+                    continue;    
+                }
+                var value = propertyInfo.GetValue(instance);
+                if (value == null)
+                {
+                    continue;
+                }
+                int maxLength = GetMaxLength(propertyInfo);
+                String convertedValue = (String) System.Convert.ChangeType(value, propertyInfo.PropertyType);
+                if (convertedValue.Length > maxLength)
+                {
+                    builder.AppendLine(String.Format(ExceptionMessage.ValidationMaxLength, propertyInfo.Name));
+                }
             }
+            if (builder.Length > 0)
+            {
+                const string message = @"اطلاعات {0} غیرمجاز می باشد، لطفا اطلاعات را با استفاده از ستون ویرایش تصحیح کرده و دوباره امتحان کنید.";
+                throw new UserInterfaceException(20003, String.Format(message, instance) + System.Environment.NewLine + System.Environment.NewLine + builder.ToString());
+            }
+            return true;
         }
 
         private static PropertyInfo[] GetRequiredAttributes(Type type)
@@ -53,5 +78,22 @@ namespace Manifest.Utils
             }
             return result.ToArray();
         }
+
+        private static bool HasMaxLength(PropertyInfo propertyInfo)
+        {
+            var attr = propertyInfo.GetCustomAttributes(typeof(MaxLengthAttribute), false).FirstOrDefault();
+            if (attr == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private static int GetMaxLength(PropertyInfo propertyInfo)
+        {
+            MaxLengthAttribute attr = (MaxLengthAttribute)propertyInfo.GetCustomAttributes(typeof(MaxLengthAttribute), false).FirstOrDefault();
+            return attr.Length;
+        }
+
     }
 }

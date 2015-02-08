@@ -11,8 +11,9 @@
         </TextBlock>
         <Button Name="btnNewContainer" Click="BtnNewContainer_OnClick" Margin="0 10 0 10" DockPanel.Dock="Top">افزودن کانتینر جدید</Button>
         <DataGrid Name="gridContainer" FlowDirection="LeftToRight" HorizontalAlignment="Left" IsReadOnly="True" AutoGenerateColumns="False" 
-                      CanUserAddRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False"
-                      SelectionMode="Single" FontSize="12" BorderThickness="1" GridLinesVisibility="All">
+                      CanUserAddRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" 
+                      SelectionMode="Single" FontSize="12" BorderThickness="1" GridLinesVisibility="All" MaxWidth="800" MaxHeight="600" 
+                      HorizontalScrollBarVisibility="Disabled">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="ContentTemplate">

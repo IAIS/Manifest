@@ -45,5 +45,10 @@ namespace Manifest.Shared
         public Int32 AgentsManifestSequenceNumber { get; set; }
 
         public ObservableCollection<BillOfLading> BillOfLadings;
+
+        public override string ToString()
+        {
+            return this.GetType().Name + " [LineCode: " + this.LineCode + "] ";
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace Manifest.UI.Steps.Hoopad
             const string message = @"برای افزودن کالای جدید از قسمت اطلاعات کانتینر و ستون افزودن کالا استفاده نمایید";
             const string caption = "ثبت کالای جدید";
             MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK,
-                MessageBoxOptions.RightAlign);
+                MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading);
         }
 
         private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
@@ -39,6 +39,7 @@ namespace Manifest.UI.Steps.Hoopad
         private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
             Consignment consignment =  ((FrameworkElement)sender).DataContext as Consignment;
+            ParameterUtility.RemoveConsignment(consignment);
             _consignments.Remove(consignment);
             HandleDataGrid();
         }

@@ -43,5 +43,10 @@ namespace Manifest.Shared
         {
             return (ContainerNumber != null ? ContainerNumber.GetHashCode() : 0);
         }
+
+        public override string ToString()
+        {
+            return this.GetType().Name + " [ContainerNumber: " + this.ContainerNumber + "] ";
+        }
     }
 }

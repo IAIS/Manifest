@@ -6,8 +6,9 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d">
     <!-- TODO: set @SelectedSource -->
-    <mui:ModernTab Layout="List" FlowDirection="RightToLeft" SelectedSource="/UI\Steps\Lotka\UploadVoyage.xaml">
+    <mui:ModernTab Layout="List" FlowDirection="RightToLeft" SelectedSource="/UI\Steps\Lotka\Intro.xaml">
         <mui:ModernTab.Links>
+            <mui:Link DisplayName="توضیحات اولیه" ImageSource="/Assets/lightbulb.png" Source="/UI\Steps\Lotka\Intro.xaml"/>
             <mui:Link DisplayName="اطلاعات مانیفست" ImageSource="/Assets/support.png" Source="/UI\Steps\Lotka\UploadVoyage.xaml"/>
             <mui:Link DisplayName="اطلاعات بارنامه" ImageSource="/Assets/world.png" Source="/UI\Steps\Lotka\UploadBL.xaml"/>
             <mui:Link DisplayName="تعیین ارتباطات" ImageSource="/Assets/link.png" Source="/UI\Steps\Lotka\UploadRelation.xaml"/>

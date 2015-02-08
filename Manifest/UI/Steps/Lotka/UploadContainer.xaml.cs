@@ -72,8 +72,7 @@ namespace Manifest.UI.Steps.Lotka
 
         private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            String containerNumber = ((Button)sender).CommandParameter.ToString();
-            Container container = _containers.FirstOrDefault(c => c.ContainerNumber.Equals(containerNumber));
+            Container container = ((FrameworkElement)sender).DataContext as Container;
             ContainerDetails window = new ContainerDetails();
             window.Show();
             window.Init(container);
@@ -82,10 +81,9 @@ namespace Manifest.UI.Steps.Lotka
 
         private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            String containerNumber = ((Button)sender).CommandParameter.ToString();
-            Container container = _containers.FirstOrDefault(c => c.ContainerNumber.Equals(containerNumber));
+            Container container = ((FrameworkElement)sender).DataContext as Container;
             _containers.Remove(container);
-            
+            ParameterUtility.RemoveContainer(container);
             HandleDataGrid();
         }
 
@@ -103,8 +101,7 @@ namespace Manifest.UI.Steps.Lotka
 
         private void BtnAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            String containerNumber = ((Button)sender).CommandParameter.ToString();
-            Container container = _containers.FirstOrDefault(c => c.ContainerNumber.Equals(containerNumber));
+            Container container = ((FrameworkElement)sender).DataContext as Container;
             Consignment consignment = new Consignment();
             container.Consignments.Add(consignment);
             ConsignmentDetails window = new ConsignmentDetails();

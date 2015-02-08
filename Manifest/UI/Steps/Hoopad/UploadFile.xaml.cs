@@ -64,7 +64,6 @@ namespace Manifest.UI.Steps.Hoopad
             e.Result = voyage;
         }
 
-
         private void BtnUploadFile_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -102,6 +101,22 @@ namespace Manifest.UI.Steps.Hoopad
         {
             ucVoyage.Init(ParameterUtility.GetVoyage());
 
+        }
+
+        public override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            try
+            {
+                if (Utils.Validator.Validate(ParameterUtility.GetVoyage()) == false)
+                {
+                    return;
+                }
+            }
+            catch (UserInterfaceException ex)
+            {
+                ShowError(ex);
+                e.Cancel = true;
+            }
         }
     }
 }

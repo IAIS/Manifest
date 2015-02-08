@@ -66,7 +66,7 @@
                                                 <Button Padding="10 5" Command="ApplicationCommands.Open" Cursor="Hand">
                                                     <Image Source="/Manifest;component/Assets/open_file.png"/>
                                                 </Button>
-                                                <Button Padding="10 5" Command="ApplicationCommands.SaveAs" Cursor="Hand">
+                                                <Button Padding="10 5" Command="ApplicationCommands.SaveAs"  Cursor="Hand">
                                                     <Image Source="/Manifest;component/Assets/save.png" />
                                                 </Button>
                                             </ToolBar>

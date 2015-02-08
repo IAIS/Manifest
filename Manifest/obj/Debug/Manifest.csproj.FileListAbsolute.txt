@@ -72,3 +72,7 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\bin\Debug\FirstFloor.Moder
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\bin\Debug\FirstFloor.ModernUI.xml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\bin\Debug\log4net.xml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\Manifest.application
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\Intro.g.cs
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Hoopad\Intro.baml
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Lotka\Intro.g.cs
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Lotka\Intro.baml

@@ -61,7 +61,9 @@ namespace Manifest.UI.Steps.Hoopad
             String path = e.Argument as String;
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             serializer.MaxJsonLength = Int32.MaxValue;
-            Voyage voyage = serializer.Deserialize<Voyage>(File.ReadAllText(path));
+            String hexContent = File.ReadAllText(path);
+            String plainContent = Utils.CommonUtility.HexStringToString(hexContent, Encoding.UTF8);
+            Voyage voyage = serializer.Deserialize<Voyage>(plainContent);
             ParameterUtility.SetVoyage(voyage);
         }
 
@@ -94,8 +96,9 @@ namespace Manifest.UI.Steps.Hoopad
             String path = e.Argument as String;
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             serializer.MaxJsonLength = Int32.MaxValue;
-            String content = serializer.Serialize(ParameterUtility.GetVoyage());
-            File.WriteAllText(path, content);
+            String plainContent = serializer.Serialize(ParameterUtility.GetVoyage());
+            String hexContent = Utils.CommonUtility.StringToHexString(plainContent, Encoding.UTF8);
+            File.WriteAllText(path, hexContent);
         }
 
         private void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)

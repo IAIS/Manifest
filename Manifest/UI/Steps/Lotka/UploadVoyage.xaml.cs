@@ -91,34 +91,5 @@ namespace Manifest.UI.Steps.Lotka
                 e.Cancel = true;
             }
         }
-
-        private void BtnTest_OnClick(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Multiselect = false;
-                dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-                if (dialog.ShowDialog() == true)
-                {
-                    XmlConverter.Convert<Data>(dialog.FileName);
-                }
-            }
-            catch (UserInterfaceException ex)
-            {
-                ShowError(ex);
-            }
-            catch (FormatException ex)
-            {
-                UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
-                ShowError(exception);
-            }
-            catch (Exception ex)
-            {
-                UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.VoyageOpenError, ex);
-                ShowError(exception);
-            }
-            
-        }
     }
 }

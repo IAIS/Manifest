@@ -29,7 +29,10 @@ namespace Manifest.Resources
             "هنگام باز کردن فایل مانیفست خطا رخ داده است، لطفا فایل مورد نظر را بررسی کرده و دوباره امتحان کنید";
 
         // 20001
-        public const String Validation = "ستون {0} نمی تواند خالی باشد.";
+        public const String ValidationBlank = "مقدار {0} نمی تواند خالی باشد.";
+
+        // 20003
+        public const String ValidationMaxLength = "اندازه ی مقدار {0} بیشتر از حد مجاز است.";
 
         // 20002
         public const String Format = 

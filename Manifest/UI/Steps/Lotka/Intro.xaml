@@ -1,0 +1,28 @@
+﻿<utils:MyControl x:Class="Manifest.UI.Steps.Lotka.Intro"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:utils="clr-namespace:Manifest.Utils" mc:Ignorable="d">
+    <ScrollViewer>
+        <WrapPanel Orientation="Vertical">
+            <TextBlock Margin="0 10 0 1" TextWrapping="Wrap" TextAlignment="Justify">
+        همکار گرامی لطفا هنگام استفاده از این سامانه موارد زیر را مد نظر داشته باشید:
+            </TextBlock>
+            <TextBlock Margin="0 10 0 1" TextWrapping="Wrap" TextAlignment="Justify">
+            فقط از زبان انگلیسی برای وارد کردن اطلاعات استفاده نمایید.
+            </TextBlock>
+            <TextBlock Margin="0 10 0 1" TextWrapping="Wrap" TextAlignment="Justify">
+        وارد کردن مواردی که در کنار آن ها علامت 
+        <TextBlock Foreground="Red">*</TextBlock>
+        آمده است اجباری و بقیه ی موارد اختیاری است.
+    </TextBlock>
+            <TextBlock Margin="0 10 0 1" TextWrapping="Wrap" TextAlignment="Justify">
+        فرآیند تبدیل تنها زمانی به پایان می رسد که خروجی این برنامه را دریافت کرده و در سامانه ی اظهار از راه دور ثبت نمایید.
+            </TextBlock>
+            <TextBlock Margin="0 10 0 1" TextWrapping="Wrap" TextAlignment="Justify">
+            در حین تبدیل اطلاعات می تواند اطلاعات خود را ذخیره نمایید و بعدا دوباره اقدام به وارد نمودن اطلاعات نمایید.
+            </TextBlock>
+        </WrapPanel>
+    </ScrollViewer>
+</utils:MyControl>

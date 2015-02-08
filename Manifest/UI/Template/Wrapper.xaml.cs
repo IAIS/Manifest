@@ -16,7 +16,7 @@ namespace Manifest.UI
             {
                 this.ContentSource = new Uri("/UI/Steps/Hoopad/Main.xaml", UriKind.Relative);
             }
-            if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Lootka)
+            if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Lotka)
             {
                 this.ContentSource = new Uri("/UI/Steps/Lotka/Main.xaml", UriKind.Relative);
             }

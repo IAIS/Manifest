@@ -73,5 +73,10 @@ namespace Manifest.Shared
             UnitOfTemperature = "C";
             DangerousGoodIndicator = "";
         }
+
+        public override string ToString()
+        {
+            return this.GetType().Name + " [SerialNumber: " + this.SerialNumber + "] ";
+        }
     }
 }

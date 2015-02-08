@@ -31,8 +31,7 @@ namespace Manifest.UI.Steps.Hoopad
 
         private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            String billNo = ((Button)sender).CommandParameter.ToString();
-            BillOfLading billOfLading = _billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(billNo));
+            BillOfLading billOfLading = ((FrameworkElement)sender).DataContext as BillOfLading;
             BillOfLadingDetails window = new BillOfLadingDetails();
             window.Show();
             window.Init(billOfLading);
@@ -40,8 +39,7 @@ namespace Manifest.UI.Steps.Hoopad
 
         private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            String billNo = ((Button)sender).CommandParameter.ToString();
-            BillOfLading billOfLading = _billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(billNo));
+            BillOfLading billOfLading = ((FrameworkElement)sender).DataContext as BillOfLading;
             _billOfLadings.Remove(billOfLading);
             HandleDataGrid();
         }
@@ -58,8 +56,7 @@ namespace Manifest.UI.Steps.Hoopad
 
         private void BtnAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            String billNo = ((Button)sender).CommandParameter.ToString();
-            BillOfLading billOfLading = _billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(billNo));
+            BillOfLading billOfLading = ((FrameworkElement)sender).DataContext as BillOfLading;
             Container container = new Container();
             billOfLading.Containers.Add(container);
             ContainerDetails window = new ContainerDetails();

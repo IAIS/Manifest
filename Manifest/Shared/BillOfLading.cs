@@ -188,5 +188,11 @@ namespace Manifest.Shared
 
         [MaxLength(600)]
         public String Remarks { get; set; }
+
+        public override string ToString()
+        {
+
+            return this.GetType().Name + " [BillOfLadingNo: " + this.BillOfLadingNo + "] ";
+        }
     }
 }

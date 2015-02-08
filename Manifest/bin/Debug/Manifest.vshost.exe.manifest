@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pIXyVEo3kONmEfHJMMCW3ZJTnIH7Tq+vUELVBURPi7c=</dsig:DigestValue>
+        <dsig:DigestValue>USRKtr7DBG5vBGxwHU0/eZdT++DI9nX3amJPLF4x5h8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="2583040">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="2598912">
       <assemblyIdentity name="Manifest" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>u9hUPOJ7j1ll8iy45nJmBilL863hzipXC5Jc++xKneE=</dsig:DigestValue>
+        <dsig:DigestValue>V0zHRzkq6wgYCCg6OwjGa55F8AvKbhpmHqV7C5N6DLY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

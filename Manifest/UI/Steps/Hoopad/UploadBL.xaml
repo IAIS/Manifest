@@ -18,7 +18,7 @@
                     <Setter Property="ContentTemplate">
                         <Setter.Value>
                             <DataTemplate>
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center"  Text="{Binding}"></TextBlock>
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center" Text="{Binding}"></TextBlock>
                             </DataTemplate>
                         </Setter.Value>
                     </Setter>

@@ -8,7 +8,7 @@
         <expiration maximumAge="0" unit="days" />
       </update>
     </subscription>
-    <deploymentProvider codebase="file:///C:/Users/AbouzarKamaee/Source/Repos/Manifest/Manifest/Deploy/Manifest.application" />
+    <deploymentProvider codebase="https://epl.irica.ir/manifest/Manifest.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
@@ -21,7 +21,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>w/m/d/sscKyvZiaZQzrQYeaYarunnlkpyozucQR+9+w=</dsig:DigestValue>
+        <dsig:DigestValue>g14MgWFJ+uO3OHC/vEHm9zU5x2laXE76oub+D/s0QcA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

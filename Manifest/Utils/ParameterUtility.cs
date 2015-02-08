@@ -84,5 +84,42 @@ namespace Manifest.Utils
             }
             return result;
         }
+
+        /// <summary>
+        /// <paramref name="consignment"/>
+        /// را از کانتینر مربوط به آن حذف می کند.
+        /// </summary>
+        /// <param name="consignment"></param>
+        /// <returns>
+        /// در صورتی که با موفقیت حذف شود مقدار درست و در غیر 
+        /// اینصورت مقدار نادرست باز می گرداند.
+        /// </returns>
+        public static bool RemoveConsignment(Consignment consignment)
+        {
+            ObservableCollection<Container> containers = GetContainers();
+            foreach (Container container in containers)
+            {
+                if (container.Consignments.Contains(consignment))
+                {
+                    container.Consignments.Remove(consignment);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool RemoveContainer(Container container)
+        {
+            ObservableCollection<BillOfLading> billOfLadings = GetBillOfLading();
+            foreach (BillOfLading billOfLading in billOfLadings)
+            {
+                if (billOfLading.Containers.Contains(container))
+                {
+                    billOfLading.Containers.Remove(container);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

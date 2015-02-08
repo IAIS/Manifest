@@ -36,7 +36,6 @@ namespace Manifest.Utils
             return _instance;
         }
 
-
         /// <summary>
         /// به ازای هر ویژگی در 
         /// <paramref name="instance"/>

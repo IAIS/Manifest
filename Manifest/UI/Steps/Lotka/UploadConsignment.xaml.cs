@@ -40,6 +40,7 @@ namespace Manifest.UI.Steps.Lotka
         {
             Consignment consignment =  ((FrameworkElement)sender).DataContext as Consignment;
             _consignments.Remove(consignment);
+            ParameterUtility.RemoveConsignment(consignment);
             HandleDataGrid();
         }
 
