@@ -7,6 +7,7 @@ using Manifest.Converter;
 using Manifest.Resources;
 using Manifest.Shared;
 using Manifest.Template.Hoopad;
+using Manifest.UI.Details;
 using Manifest.Utils;
 using Microsoft.Win32;
 using Warehouse.Exceptions;

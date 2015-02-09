@@ -46,7 +46,7 @@ namespace Manifest.UI.Details {
     public partial class ContainerDetails : FirstFloor.ModernUI.Windows.Controls.ModernWindow, System.Windows.Markup.IComponentConnector {
         
         
-        #line 9 "..\..\..\..\UI\Details\ContainerDetails.xaml"
+        #line 12 "..\..\..\..\UI\Details\ContainerDetails.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal Manifest.UserControl.uContainer ucContainer;
         

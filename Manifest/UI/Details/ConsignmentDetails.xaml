@@ -6,6 +6,9 @@
              xmlns:userControl="clr-namespace:Manifest.UserControl"
              xmlns:mui="http://firstfloorsoftware.com/ModernUI" mc:Ignorable="d" 
              SizeToContent="WidthAndHeight" MaxHeight="600" MaxWidth="800">
+    <mui:ModernWindow.Resources>
+        <Style x:Key="BlankWindow" TargetType="mui:ModernWindow" BasedOn="{StaticResource EmptyWindow}" />
+    </mui:ModernWindow.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical" CanVerticallyScroll="True">
             <userControl:uConsignment   x:Name="ucConsignment" />

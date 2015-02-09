@@ -4,6 +4,9 @@
         xmlns:userControl="clr-namespace:Manifest.UserControl"
         xmlns:mui="http://firstfloorsoftware.com/ModernUI" 
         SizeToContent="WidthAndHeight" Title="ContainerDetails">
+    <mui:ModernWindow.Resources>
+        <Style x:Key="BlankWindow" TargetType="mui:ModernWindow" BasedOn="{StaticResource EmptyWindow}" />
+    </mui:ModernWindow.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical" CanVerticallyScroll="True">
             <userControl:uContainer x:Name="ucContainer" />
