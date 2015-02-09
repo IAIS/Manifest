@@ -85,5 +85,15 @@ namespace Manifest.Utils
             string res = encoding.GetString(d);
             return res;
         }
+
+        public static String GetPublishedVersion()
+        {
+            if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+            {
+                return System.Deployment.Application.ApplicationDeployment.CurrentDeployment.
+                    CurrentVersion.ToString();
+            }
+            return "0";
+        }
     }
 }

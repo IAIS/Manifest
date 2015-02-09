@@ -10,6 +10,7 @@ using Manifest.Converter;
 using Manifest.Resources;
 using Manifest.Shared;
 using Manifest.Template.Hoopad;
+using Manifest.UI.Template;
 using Manifest.Utils;
 using Microsoft.Win32;
 using Warehouse.Exceptions;
@@ -25,7 +26,6 @@ namespace Manifest.UI.Steps.Hoopad
         public UploadFile()
         {
             InitializeComponent();
-
         }
 
         private void WorkerOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -34,6 +34,8 @@ namespace Manifest.UI.Steps.Hoopad
             ucVoyage.Init(voyage);
             btnUploadFile.IsEnabled = false;
             IsLoaded();
+            
+
         }
 
         private void WorkerOnDoWork(object sender, DoWorkEventArgs e)

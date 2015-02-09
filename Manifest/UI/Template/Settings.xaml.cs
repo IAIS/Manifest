@@ -33,6 +33,7 @@ namespace Manifest.UI.Template
             base.OnNavigatedTo(e);
             cbxApplicationType.ItemsSource = Enum.GetNames(typeof (ApplicaionType));
             cbxApplicationType.SelectedIndex = (int)ConfiguraionManager.GetInstance().GetApplicaionType();
+            lblVersion.Text = Utils.CommonUtility.GetPublishedVersion();
         }
 
         private void BtnSave_OnClick(object sender, RoutedEventArgs e)

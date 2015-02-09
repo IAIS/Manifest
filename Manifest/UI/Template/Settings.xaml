@@ -15,12 +15,19 @@
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Padding="5" Margin="5" Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom">
             Application Type
         </TextBlock>
         <ComboBox Name="cbxApplicationType" Padding="5" Margin="5" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"></ComboBox>
-        <Button Name="btnSave" Margin="5"  Grid.Column="0" Grid.Row="2" Click="BtnSave_OnClick">_Save</Button>
-        <Button Name="btnCancel" Command="NavigationCommands.BrowseBack" Margin="5" Grid.Column="1" Grid.Row="2">Cancel</Button>
+        <TextBlock Padding="5" Margin="5" Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom">
+            Application Type
+        </TextBlock>
+        <TextBlock Padding="5" Margin="5" Grid.Column="1" Grid.Row="2" Name="lblVersion" VerticalAlignment="Bottom">
+        </TextBlock>
+        <Button Name="btnSave" Margin="5"  Grid.Column="0" Grid.Row="4" Click="BtnSave_OnClick">_Save</Button>
+        <Button Name="btnCancel" Command="NavigationCommands.BrowseBack" Margin="5" Grid.Column="1" Grid.Row="4">Cancel</Button>
     </Grid>
 </utils:MyControl>
