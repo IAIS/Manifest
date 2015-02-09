@@ -30,12 +30,18 @@ namespace Manifest.UI.Steps.Hoopad
 
         private void WorkerOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            Voyage voyage = e.Result as Voyage;
-            ucVoyage.Init(voyage);
-            btnUploadFile.IsEnabled = false;
-            IsLoaded();
-            
-
+            if (e.Cancelled == true)
+            {
+                IsLoaded();
+                return;
+            }
+            else
+            {
+                Voyage voyage = e.Result as Voyage;
+                ucVoyage.Init(voyage);
+                btnUploadFile.IsEnabled = false;
+                IsLoaded();
+            }
         }
 
         private void WorkerOnDoWork(object sender, DoWorkEventArgs e)
@@ -72,18 +78,21 @@ namespace Manifest.UI.Steps.Hoopad
             catch (UserInterfaceException ex)
             {
                 ShowError(ex);
+                e.Cancel = true;
             }
             catch (FormatException ex)
             {
                 UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
                 ShowError(exception);
+                e.Cancel = true;
             }
             catch (Exception ex)
             {
                 UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.VoyageOpenError, ex);
                 ShowError(exception);
+                e.Cancel = true;
             }
-            }
+        }
 
         private void BtnUploadFile_OnClick(object sender, RoutedEventArgs e)
         {

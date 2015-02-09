@@ -82,3 +82,5 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\Sett
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\bin\Debug\Microsoft.Windows.Shell.dll
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\About.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\About.baml
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\Main.g.cs
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\Main.baml

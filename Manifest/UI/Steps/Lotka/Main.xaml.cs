@@ -1,4 +1,10 @@
-﻿namespace Manifest.UI.Steps.Lotka
+﻿using System;
+using System.Windows;
+using System.Windows.Media.Imaging;
+using FirstFloor.ModernUI.Presentation;
+using FirstFloor.ModernUI.Windows.Controls;
+
+namespace Manifest.UI.Steps.Lotka
 {
     /// <summary>
     /// Interaction logic for Main.xaml
@@ -8,6 +14,7 @@
         public Main()
         {
             InitializeComponent();
+            
         }
     }
 }
