@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\App.xaml
-291468211552
+271205676229
 3-3539819
-67-1494520298
+65524818364
 14-1438966082
-UI\Details\BillOfLadingDetails.xaml;UI\Details\ConsignmentDetails.xaml;UI\Details\ContainerDetails.xaml;UI\Details\ReationDetails.xaml;UI\Details\VoyageDetails.xaml;UI\Steps\Hoopad\Confirmation.xaml;UI\Steps\Hoopad\Intro.xaml;UI\Steps\Hoopad\Main.xaml;UI\Steps\Hoopad\UploadBL.xaml;UI\Steps\Hoopad\UploadConsignment.xaml;UI\Steps\Hoopad\UploadContainer.xaml;UI\Steps\Hoopad\UploadFile.xaml;UI\Steps\Lotka\Confirmation.xaml;UI\Steps\Lotka\Intro.xaml;UI\Steps\Lotka\Main.xaml;UI\Steps\Lotka\UploadBL.xaml;UI\Steps\Lotka\UploadConsignment.xaml;UI\Steps\Lotka\UploadContainer.xaml;UI\Steps\Lotka\UploadRelation.xaml;UI\Steps\Lotka\UploadVoyage.xaml;UI\Template\About.xaml;UI\Template\Main.xaml;UI\Template\Settings.xaml;UI\Template\Wrapper.xaml;UserControl\uBillOfLading.xaml;UserControl\uConsignment.xaml;UserControl\uContainer.xaml;UserControl\uRelation.xaml;UserControl\uVoyage.xaml;
+UI\Details\BillOfLadingDetails.xaml;UI\Details\ConsignmentDetails.xaml;UI\Details\ContainerDetails.xaml;UI\Details\ReationDetails.xaml;UI\Details\VoyageDetails.xaml;UI\Steps\Hoopad\Confirmation.xaml;UI\Steps\Hoopad\Intro.xaml;UI\Steps\Hoopad\UploadBL.xaml;UI\Steps\Hoopad\UploadConsignment.xaml;UI\Steps\Hoopad\UploadContainer.xaml;UI\Steps\Hoopad\UploadFile.xaml;UI\Steps\Lotka\Confirmation.xaml;UI\Steps\Lotka\Intro.xaml;UI\Steps\Lotka\UploadBL.xaml;UI\Steps\Lotka\UploadConsignment.xaml;UI\Steps\Lotka\UploadContainer.xaml;UI\Steps\Lotka\UploadRelation.xaml;UI\Steps\Lotka\UploadVoyage.xaml;UI\Template\About.xaml;UI\Template\Main.xaml;UI\Template\Settings.xaml;UI\Template\Wrapper.xaml;UserControl\uBillOfLading.xaml;UserControl\uConsignment.xaml;UserControl\uContainer.xaml;UserControl\uRelation.xaml;UserControl\uVoyage.xaml;
 
 False
 
