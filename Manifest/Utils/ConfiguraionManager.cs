@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,10 @@ namespace Manifest.Utils
 
         public void SetApplicationType(String applicationType)
         {
-            System.Configuration.ConfigurationManager.AppSettings["ApplicationType"] = applicationType;
+            System.Configuration.Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            configuration.AppSettings.Settings["ApplicationType"].Value = applicationType;
+            configuration.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
         }
     }
 }
