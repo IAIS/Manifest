@@ -73,6 +73,7 @@ namespace Manifest.UI.Steps.Hoopad
                     {
                         break;
                     }
+                    consignment.Finilize();
                 }
             }
             catch (UserInterfaceException ex)

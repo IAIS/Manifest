@@ -136,6 +136,7 @@ namespace Manifest.UI.Steps.Lotka
                     {
                         break;
                     }
+                    billOfLading.Finilize();
                 }
             }
             catch (UserInterfaceException ex)

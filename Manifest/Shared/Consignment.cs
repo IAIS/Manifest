@@ -5,6 +5,19 @@ namespace Manifest.Shared
 {
     public class Consignment
     {
+        public Consignment()
+        {
+            RefrigerationRequired = "N";
+            UnitOfTemperature = "C";
+            DangerousGoodIndicator = "N";
+            UsedOrNewIndicator = "N";
+        }
+
+        public void Finilize()
+        {
+            PackageTypeCode = new Utils.PackageTypeConverter().GetPackageTypeCode(PackageType);
+        }
+
         //TODO: Should Be Number Based On JEA
         [Required]
         public String SerialNumber { get; set; }
@@ -59,13 +72,6 @@ namespace Manifest.Shared
         public Double MaximumTemperatureOfRefrigeration { get; set; }
 
         public String UnitOfRefregerationTemperature { get; set; }
-
-        public Consignment()
-        {
-            RefrigerationRequired = "0";
-            UnitOfTemperature = "C";
-            DangerousGoodIndicator = "";
-        }
 
         public override string ToString()
         {

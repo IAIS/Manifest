@@ -9,7 +9,8 @@ namespace Manifest.Shared
     {
         public Container()
         {
-            Consignments = new List<Consignment>();   
+            Consignments = new List<Consignment>();
+            CheckDigit = "1";
         }
 
         [Required]

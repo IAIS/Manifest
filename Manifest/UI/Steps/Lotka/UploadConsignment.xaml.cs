@@ -73,6 +73,7 @@ namespace Manifest.UI.Steps.Lotka
                     {
                         break;
                     }
+                    consignment.Finilize();
                 }
             }
             catch (UserInterfaceException ex)

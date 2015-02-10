@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 
 namespace Manifest.Shared
@@ -11,6 +12,66 @@ namespace Manifest.Shared
         public BillOfLading()
         {
             Containers = new ObservableCollection<Container>();
+            TradeCode = "I";
+            CargoCode = "F";
+            ConsolidatedCargoIndicator = "Y";
+            BoxPartenringAgentCode = "-";
+            BoxPartenringLineCode = "-";
+            ConsigneeCode = "0";
+        }
+
+        public void Finilize()
+        {
+            if (String.IsNullOrWhiteSpace(this.CountryOfOrigin))
+            {
+                if (PortCodeOfOrigin != null)
+                {
+                    if (PortCodeOfOrigin.Length == 5)
+                    {
+                        CountryOfOrigin = PortCodeOfOrigin.Substring(0, 2);
+                    }
+                }    
+            }
+            if (String.IsNullOrWhiteSpace(this.ConsigneeName))
+            {
+                this.ConsigneeName = "-";
+                if (ConsigneeAddress != null)
+                {
+                    if (ConsigneeAddress.Contains("\n"))
+                    {
+                        this.ConsigneeName = ConsigneeAddress.Split('\n').FirstOrDefault();
+                    }
+                }
+            }
+            if (String.IsNullOrEmpty(this.Notify1Name))
+            {
+                this.Notify1Name = "-";
+                if (this.Notify1Address != null)
+                {
+                    if (Notify1Address.Contains('\n'))
+                    {
+                        this.Notify1Name = Notify1Name.Split('\n').FirstOrDefault();
+                    }
+                }
+            }
+            if (!String.IsNullOrWhiteSpace(CommodityCode))
+            {
+                foreach (Container container in this.Containers)
+                {
+                    foreach (Consignment consignment in container.Consignments)
+                    {
+                        if (String.IsNullOrWhiteSpace(consignment.CommodityCode))
+                        {
+                            consignment.CommodityCode = CommodityCode;
+                        }
+                    }
+                }
+            }
+            if (Math.Abs(NoOfContainers) < 0.000001)
+            {
+                NoOfContainers = this.Containers.Count;
+            }
+            PackageTypeCode = new Utils.PackageTypeConverter().GetPackageTypeCode(PackageType);
         }
 
         public ObservableCollection<Container> Containers { get; set; }

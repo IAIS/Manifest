@@ -94,6 +94,7 @@ namespace Manifest.UI.Steps.Hoopad
                     {
                         break;
                     }
+                    billOfLading.Finilize();
                 }
             }
             catch (UserInterfaceException ex)

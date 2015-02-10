@@ -61,15 +61,19 @@ namespace Manifest.UI.Steps.Hoopad
                     {
                         Container container = new Container();
                         ClassConverter.Convert(containerDataContainer, container);
+                        ClassConverter.Convert(containerDataContainer, billOfLading);
                         foreach (PricingDataPrice pricingDataPrice in blsbl.PricingData)
                         {
                             Consignment consignment = new Consignment();
                             ClassConverter.Convert(pricingDataPrice, consignment);
                             ClassConverter.Convert(containerDataContainer, consignment);
+                            ClassConverter.Convert(blsbl, consignment);
+                            consignment.Finilize();
                             container.Consignments.Add(consignment);
                         }
                         billOfLading.Containers.Add(container);
                     }
+                    billOfLading.Finilize();
                     voyage.BillOfLadings.Add(billOfLading);
                 }
                 e.Result = voyage;

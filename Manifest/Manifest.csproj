@@ -30,7 +30,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>24</ApplicationRevision>
+    <ApplicationRevision>25</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -228,6 +228,7 @@
     <Compile Include="Utils\ControlCreator.cs" />
     <Compile Include="Utils\HexEncoding.cs" />
     <Compile Include="Utils\MyControl.cs" />
+    <Compile Include="Utils\PackageTypeConverter.cs" />
     <Compile Include="Utils\ParameterUtility.cs" />
     <Compile Include="Utils\Printer.cs" />
     <Compile Include="Utils\RowToIndexConv.cs" />
