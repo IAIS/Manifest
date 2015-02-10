@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Deployment.Application;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Manifest.Template.Hoopad;
 using Warehouse.Exceptions;
 
@@ -12,10 +14,9 @@ namespace Manifest.Converter
     public class ClassConverter
     {
         private static ClassConverter _instance;
-        private const String StructurePath = "Structure/Map.xml";
+        private static readonly String StructurePath = System.AppDomain.CurrentDomain.BaseDirectory + "Structure\\Map.xml";
         private ClassConverter()
         {
-
         }
 
         public static ClassConverter GetInstance()

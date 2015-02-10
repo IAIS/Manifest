@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Windows;
 using FirstFloor.ModernUI.Windows.Controls;
 using FirstFloor.ModernUI.Windows.Navigation;
+using log4net;
 using Manifest.Converter;
 using Manifest.Resources;
 using Manifest.Shared;
@@ -23,6 +24,7 @@ namespace Manifest.UI.Steps.Hoopad
     /// </summary>
     public partial class UploadFile : MyControl
     {
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public UploadFile()
         {
             InitializeComponent();
@@ -86,12 +88,14 @@ namespace Manifest.UI.Steps.Hoopad
             }
             catch (FormatException ex)
             {
+                Log.Error("Format Exception Error While Uploading File(WorkerOnDoWork) in Hoopad Mode.", ex);
                 UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
                 ShowError(exception);
                 e.Cancel = true;
             }
             catch (Exception ex)
             {
+                Log.Error("Unspecific Exception Error While Uploading File(WorkerOnDoWork) in Hoopad Mode.", ex);
                 UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.VoyageOpenError, ex);
                 ShowError(exception);
                 e.Cancel = true;
@@ -113,7 +117,6 @@ namespace Manifest.UI.Steps.Hoopad
                     worker.RunWorkerCompleted += WorkerOnRunWorkerCompleted;
                     worker.RunWorkerAsync(dialog.FileName);
                 }
-
             }
             catch (UserInterfaceException ex)
             {
@@ -121,11 +124,13 @@ namespace Manifest.UI.Steps.Hoopad
             }
             catch (FormatException ex)
             {
+                Log.Error("Format Exception Error While Uploading File(BtnUploadFile_OnClick) in Hoopad Mode.", ex);
                 UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
                 ShowError(exception);
             }
             catch (Exception ex)
             {
+                Log.Error("Unspecific Exception Error While Uploading File(BtnUploadFile_OnClick) in Hoopad Mode.", ex);
                 UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.VoyageOpenError, ex);
                 ShowError(exception);
             }
