@@ -38,5 +38,31 @@ namespace Manifest.Utils
             configuration.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
         }
+
+        public String GetLineCode()
+        {
+            return System.Configuration.ConfigurationManager.AppSettings["LineCode"];
+        }
+
+        public void SetLineCode(String lineCode)
+        {
+            System.Configuration.Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            configuration.AppSettings.Settings["LineCode"].Value = lineCode;
+            configuration.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+        }
+
+        public String GetVoyageAgentCode()
+        {
+            return System.Configuration.ConfigurationManager.AppSettings["VoyageAgentCode"];
+        }
+
+        public void SetVoyageAgentCode(String voyageAgentCode)
+        {
+            System.Configuration.Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            configuration.AppSettings.Settings["VoyageAgentCode"].Value = voyageAgentCode;
+            configuration.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+        }
     }
 }

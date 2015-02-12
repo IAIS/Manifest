@@ -64,6 +64,10 @@ namespace Manifest.UI.Steps.Hoopad
             {
                 this.gridContainer.Visibility = Visibility.Visible;
             }
+            foreach (Container container in _containers)
+            {
+                container.Finalize();
+            }
         }
 
         private void BtnAdd_OnClick(object sender, RoutedEventArgs e)
@@ -120,6 +124,7 @@ namespace Manifest.UI.Steps.Hoopad
             {
                 foreach (Container container in _containers)
                 {
+                    container.Finalize();
                     if (Utils.Validator.Validate(container) == false)
                     {
                         break;

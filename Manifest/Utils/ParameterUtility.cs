@@ -13,7 +13,16 @@ namespace Manifest.Utils
     {
         public static Voyage GetVoyage()
         {
-            return ((App)Application.Current).Voyage;
+            Voyage voyage = ((App)Application.Current).Voyage;
+            if (String.IsNullOrWhiteSpace(voyage.LineCode))
+            {
+                voyage.LineCode = ConfiguraionManager.GetInstance().GetLineCode();
+            }
+            if (String.IsNullOrWhiteSpace(voyage.VoyageAgentCode))
+            {
+                voyage.VoyageAgentCode = ConfiguraionManager.GetInstance().GetVoyageAgentCode();
+            }
+            return voyage;
         }
 
         public static void SetVoyage(Voyage voyage)

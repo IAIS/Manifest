@@ -13,6 +13,17 @@ namespace Manifest.Shared
             CheckDigit = "1";
         }
 
+        public void Finalize()
+        {
+            foreach (Consignment consignment in Consignments)
+            {
+                if (String.IsNullOrWhiteSpace(consignment.SerialNumber))
+                {
+                    consignment.SerialNumber = new Random().Next(100000).ToString();
+                }
+            }
+        }
+
         [Required]
         public String ContainerNumber { get; set; }
 

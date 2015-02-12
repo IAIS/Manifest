@@ -34,12 +34,16 @@ namespace Manifest.UI.Template
             cbxApplicationType.ItemsSource = Enum.GetNames(typeof (ApplicaionType));
             cbxApplicationType.SelectedIndex = (int)ConfiguraionManager.GetInstance().GetApplicaionType();
             lblVersion.Text = Utils.CommonUtility.GetPublishedVersion();
+            txtLineCode.Text = ConfiguraionManager.GetInstance().GetLineCode();
+            txtVoyageAgentCode.Text = ConfiguraionManager.GetInstance().GetVoyageAgentCode();
         }
 
         private void BtnSave_OnClick(object sender, RoutedEventArgs e)
         {
             Wrapper window = (Wrapper)Window.GetWindow(this);
             ConfiguraionManager.GetInstance().SetApplicationType(cbxApplicationType.SelectedValue.ToString());
+            ConfiguraionManager.GetInstance().SetLineCode(txtLineCode.Text);
+            ConfiguraionManager.GetInstance().SetVoyageAgentCode(txtVoyageAgentCode.Text);
             Wrapper newWindows = new Wrapper();
             newWindows.Show();
             window.Close();

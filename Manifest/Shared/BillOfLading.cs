@@ -18,6 +18,7 @@ namespace Manifest.Shared
             BoxPartenringAgentCode = "-";
             BoxPartenringLineCode = "-";
             ConsigneeCode = "0";
+            CheckDigit = "1";
         }
 
         public void Finilize()
@@ -134,7 +135,6 @@ namespace Manifest.Shared
 
         public String OriginalShipperName { get; set; }
 
-        [Required]
         public String OriginalShipperAddess { get; set; }
 
         public String ShipperName { get; set; }

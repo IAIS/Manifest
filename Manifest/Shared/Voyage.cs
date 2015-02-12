@@ -13,6 +13,7 @@ namespace Manifest.Shared
         public Voyage()
         {
             BillOfLadings = new ObservableCollection<BillOfLading>();
+            MessageType = "MFI";
         }
 
         [Required]

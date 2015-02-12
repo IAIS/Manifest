@@ -139,7 +139,6 @@ namespace Manifest.UI.Steps.Hoopad
         public override void OnNavigatedTo(FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)
         {
             ucVoyage.Init(ParameterUtility.GetVoyage());
-
         }
 
         public override void OnNavigatingFrom(NavigatingCancelEventArgs e)
