@@ -17,7 +17,7 @@ namespace Manifest.UI.Template
     /// <summary>
     /// Interaction logic for Main.xaml
     /// </summary>
-    public partial class Main : MyControl
+    public partial class Main : DetailsPage
     {
         public Main()
         {

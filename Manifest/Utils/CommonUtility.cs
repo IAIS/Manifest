@@ -95,5 +95,64 @@ namespace Manifest.Utils
             }
             return "0";
         }
+
+        public static PropertyInfo[] GetProperties(Object instance, Filters filter)
+        {
+            Type type = instance.GetType();
+
+            switch (filter)
+            {
+                case Filters.AllFields:
+                    {
+                        PropertyInfo[] properties = type.GetProperties();
+                        List<PropertyInfo> result = new List<PropertyInfo>();
+                        foreach (PropertyInfo property in properties)
+                        {
+                            if (Utils.CommonUtility.IsSimpleProperty(property))
+                            {
+                                result.Add(property);
+                            }
+                        }
+                        return result.ToArray();
+                    }
+                case Filters.RequiredFields:
+                    {
+                        PropertyInfo[] properties = type.GetProperties();
+                        List<PropertyInfo> result = new List<PropertyInfo>();
+                        foreach (PropertyInfo property in properties)
+                        {
+                            if (Utils.CommonUtility.IsSimpleProperty(property))
+                            {
+                                if (Utils.CommonUtility.IsRequired(property))
+                                {
+                                    result.Add(property);
+                                }
+                            }
+                        }
+                        return result.ToArray();
+                    }
+                case Filters.EmptyRequiredFields:
+                    {
+                        PropertyInfo[] properties = type.GetProperties();
+                        List<PropertyInfo> result = new List<PropertyInfo>();
+                        foreach (PropertyInfo property in properties)
+                        {
+                            if (Utils.CommonUtility.IsSimpleProperty(property))
+                            {
+                                if (Utils.CommonUtility.IsRequired(property))
+                                {
+                                    var value = property.GetValue(instance, null);
+                                    if (value == null || String.IsNullOrEmpty(value.ToString()))
+                                    {
+                                        result.Add(property);
+                                    }
+                                }
+                            }
+                        }
+                        return result.ToArray();
+                    }
+            }
+            return null;
+        }
     }
 }

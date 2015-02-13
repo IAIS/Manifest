@@ -18,7 +18,7 @@ namespace Manifest.UI.Steps.Lotka
     /// <summary>
     /// Interaction logic for UploadRelation.xaml
     /// </summary>
-    public partial class UploadRelation : MyControl
+    public partial class UploadRelation : DetailsPage
     {
         private ObservableCollection<JRelation> _relations;
 

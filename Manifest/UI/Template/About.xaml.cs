@@ -18,7 +18,7 @@ namespace Manifest.UI.Template
     /// <summary>
     /// Interaction logic for About.xaml
     /// </summary>
-    public partial class About : MyControl
+    public partial class About : DetailsPage
     {
         public About()
         {

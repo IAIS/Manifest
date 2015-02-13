@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Documents;
+using Manifest.Resources;
 
 namespace Manifest.Utils
 {
@@ -35,7 +38,7 @@ namespace Manifest.Utils
         /// اضافه می کند و باز می گرداند
         /// </summary>
         /// <param name="instance"></param>
-        public Panel CreateControl(T instance)
+        public Panel CreateControl(T instance, Filters filter)
         {
             Grid grid = new Grid();    
             grid.HorizontalAlignment = HorizontalAlignment.Left;
@@ -49,13 +52,9 @@ namespace Manifest.Utils
             }
             
             int rowIndex = 0;
-
-            foreach (PropertyInfo propertyInfo in instance.GetType().GetProperties())
+            PropertyInfo[] properties = CommonUtility.GetProperties(instance, filter);
+            foreach (PropertyInfo propertyInfo in properties)
             {
-                if (!CommonUtility.IsSimpleProperty(propertyInfo))
-                {
-                    continue;
-                }
                 RowDefinition row = new RowDefinition();
                 row.MinHeight = 30;
                 grid.RowDefinitions.Add(row);
@@ -119,6 +118,9 @@ namespace Manifest.Utils
             }
             return grid;
         }
+
+        
+
 
         private void TextOnLostFocus(object sender, RoutedEventArgs routedEventArgs)
         {

@@ -18,7 +18,7 @@ namespace Manifest.UI.Steps.Lotka
     /// <summary>
     /// Interaction logic for UploadContainer.xaml
     /// </summary>
-    public partial class UploadContainer : MyControl
+    public partial class UploadContainer : DetailsPage
     {
         private ObservableCollection<Container> _containers;
 
@@ -104,9 +104,9 @@ namespace Manifest.UI.Steps.Lotka
             Container container = ((FrameworkElement)sender).DataContext as Container;
             Consignment consignment = new Consignment();
             container.Consignments.Add(consignment);
-            ConsignmentDetails window = new ConsignmentDetails();
+            Template.Details window = new Template.Details();
             window.Show();
-            window.Init(consignment);
+            window.Init(consignment, Filters.AllFields);
         }
 
         private void AddContainer(Container container)

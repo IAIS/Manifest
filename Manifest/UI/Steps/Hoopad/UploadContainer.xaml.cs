@@ -20,7 +20,7 @@ namespace Manifest.UI.Steps.Hoopad
     /// <summary>
     /// Interaction logic for UploadContainer.xaml
     /// </summary>
-    public partial class UploadContainer : MyControl
+    public partial class UploadContainer : DetailsPage
     {
         private ObservableCollection<Container> _containers;
 
@@ -75,9 +75,9 @@ namespace Manifest.UI.Steps.Hoopad
             Container container = ((FrameworkElement)sender).DataContext as Container;
             Consignment consignment = new Consignment();
             container.Consignments.Add(consignment);
-            ConsignmentDetails window = new ConsignmentDetails();
+            Template.Details window = new Template.Details();
             window.Show();
-            window.Init(consignment);
+            window.Init(consignment, DetailsManager.GetInstance().GetConsignmentFilter());
         }
 
         private void AddContainer(Container container)
@@ -136,6 +136,11 @@ namespace Manifest.UI.Steps.Hoopad
                 ShowError(ex);
                 e.Cancel = true;
             }
+        }
+
+        private void GridJFlightConsignment_OnLoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = (e.Row.GetIndex() + 1).ToString();
         }
     }
 }

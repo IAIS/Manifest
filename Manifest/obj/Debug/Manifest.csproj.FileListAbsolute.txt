@@ -12,14 +12,10 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\bin\Debug\FirstFloor.Moder
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\bin\Debug\log4net.xml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\Manifest.csprojResolveAssemblyReference.cache
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\Wrapper.baml
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uBillOfLading.baml
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uConsignment.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uContainer.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uRelation.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uVoyage.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\App.baml
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Details\BillOfLadingDetails.g.cs
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Details\ConsignmentDetails.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Details\ContainerDetails.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Details\ReationDetails.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Details\VoyageDetails.g.cs
@@ -37,8 +33,6 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Lotka\U
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Lotka\UploadRelation.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Steps\Lotka\UploadVoyage.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\Wrapper.g.cs
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uBillOfLading.g.cs
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uConsignment.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uContainer.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uRelation.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uVoyage.g.cs
@@ -47,8 +41,6 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\Manifest_Content
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\Manifest_MarkupCompile.cache
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\Manifest_MarkupCompile.lref
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Details\BillOfLadingDetails.baml
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Details\ConsignmentDetails.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Details\ContainerDetails.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Details\ReationDetails.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Details\VoyageDetails.baml
@@ -80,3 +72,9 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\Abou
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\About.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\Main.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\Main.baml
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uDetails.baml
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uDetails.g.cs
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\Details.g.cs
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UI\Template\Details.baml
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uBillOfLadingDetails.g.cs
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Debug\UserControl\uBillOfLadingDetails.baml

@@ -18,10 +18,8 @@ namespace Manifest.UI.Steps.Lotka
     /// <summary>
     /// Interaction logic for UploadBL.xaml
     /// </summary>
-    public partial class UploadBL : MyControl
+    public partial class UploadBL : DetailsPage
     {
-        private ObservableCollection<BillOfLading> _billOfLadings;
-
         public UploadBL()
         {
             InitializeComponent();
@@ -36,20 +34,13 @@ namespace Manifest.UI.Steps.Lotka
                 dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (dialog.ShowDialog() == true)
                 {
-
                     List<BillOfLading> billOfLadings = SimpleConverter.Convert<BillOfLading>(dialog.FileName,
                         "Manifest.Shared.BillOfLading");
-                    _billOfLadings.Clear();
-                    foreach (BillOfLading billOfLading in billOfLadings)
-                    {
-                        _billOfLadings.Add(billOfLading);
-                    }
+                    ObservableCollection<BillOfLading> temp  = new ObservableCollection<BillOfLading>(billOfLadings);
+                    ParameterUtility.SetBillOfLading(temp);
+                    UBillOfLadingDetails.Init(temp);
                 }
-                if (_billOfLadings.Count > 0)
-                {
-                    gridJFlightConsignment.Visibility = Visibility.Visible;
-                }
-                ParameterUtility.SetBillOfLading(_billOfLadings);
+                
             }
             catch (UserInterfaceException ex)
             {
@@ -65,79 +56,24 @@ namespace Manifest.UI.Steps.Lotka
                 UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.BillOfLadingOpenError, ex);
                 ShowError(exception);
             }
-            finally
-            {
-                HandleDataGrid();
-            }
-        }
-
-        private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
-        {
-            BillOfLading billOfLading = ((FrameworkElement)sender).DataContext as BillOfLading;
-            BillOfLadingDetails window = new BillOfLadingDetails();
-            window.Show();
-            window.Init(billOfLading);
-        }
-
-        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
-        {
-            BillOfLading billOfLading = ((FrameworkElement)sender).DataContext as BillOfLading;
-            _billOfLadings.Remove(billOfLading);
-            HandleDataGrid();
         }
 
         private void BtnNewBillOfLading_OnClick(object sender, RoutedEventArgs e)
         {
             BillOfLading billOfLading = new BillOfLading();
-            _billOfLadings.Add(billOfLading);
-            BillOfLadingDetails window = new BillOfLadingDetails();
-            window.Show();
-            window.Init(billOfLading);
-            HandleDataGrid();
-        }
-
-        private void BtnAdd_OnClick(object sender, RoutedEventArgs e)
-        {
-            BillOfLading billOfLading = ((FrameworkElement)sender).DataContext as BillOfLading;
-            Container container = new Container();
-            billOfLading.Containers.Add(container);
-            ContainerDetails window = new ContainerDetails();
-            window.Show();
-            window.Init(container);
-            HandleDataGrid();
-        }
-
-        private void HandleDataGrid()
-        {
-            if (_billOfLadings.Count > 0)
-            {
-                gridJFlightConsignment.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                gridJFlightConsignment.Visibility = Visibility.Hidden;
-            }
+            UBillOfLadingDetails.Add(billOfLading);
         }
 
         public override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _billOfLadings = ParameterUtility.GetBillOfLading();
-            gridJFlightConsignment.ItemsSource = _billOfLadings;
-            HandleDataGrid();
+            UBillOfLadingDetails.Init(ParameterUtility.GetBillOfLading());
         }
 
         public override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             try
             {
-                foreach (BillOfLading billOfLading in _billOfLadings)
-                {
-                    if (Utils.Validator.Validate(billOfLading) == false)
-                    {
-                        break;
-                    }
-                    billOfLading.Finilize();
-                }
+                UBillOfLadingDetails.Validate();
             }
             catch (UserInterfaceException ex)
             {

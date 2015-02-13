@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Manifest.Shared;
+using Manifest.Utils;
 
 namespace Manifest.UserControl
 {
@@ -28,7 +29,7 @@ namespace Manifest.UserControl
 
         public void Init(JRelation relation)
         {
-            Panel panel = Utils.ControlCreator<JRelation>.GetInstance().CreateControl(relation);
+            Panel panel = Utils.ControlCreator<JRelation>.GetInstance().CreateControl(relation, Filters.AllFields);
             this.AddChild(panel);
         }
     }

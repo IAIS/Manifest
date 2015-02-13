@@ -1,4 +1,4 @@
-﻿<utils:MyControl x:Class="Manifest.UI.Steps.Hoopad.UploadConsignment" 
+﻿<utils:DetailsPage x:Class="Manifest.UI.Steps.Hoopad.UploadConsignment" 
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,9 +9,9 @@
 
         </TextBlock>
         <Button Name="btnNewConsignment" Click="BtnNewConsignment_OnClick" Margin="0 10 0 10" DockPanel.Dock="Top">افزودن اطلاعات کالای جدید</Button>
-        <DataGrid Name="gridJFlightConsignment" FlowDirection="LeftToRight" HorizontalAlignment="Left" IsReadOnly="True" AutoGenerateColumns="False" 
-                      CanUserAddRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False"
-                      SelectionMode="Single" FontSize="12" BorderThickness="1" GridLinesVisibility="All">
+        <DataGrid Name="gridJFlightConsignment" FlowDirection="LeftToRight" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" IsReadOnly="True"
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" 
+                  CanUserResizeRows="False" SelectionMode="Single" FontSize="12" BorderThickness="1" GridLinesVisibility="All">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="ContentTemplate">
@@ -24,7 +24,7 @@
                 </Style>
             </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=SerialNumber}" Header="SerialNumber">
+                <DataGridTextColumn Binding="{Binding Path=SerialNumber}" Width="*" Header="SerialNumber">
                 </DataGridTextColumn>
                 <!--                    <DataGridTextColumn Binding="{Binding Path=CommodityCode}" Header="CommodityCode">-->
                 <!--                        <DataGridTextColumn.ElementStyle>-->
@@ -40,11 +40,11 @@
                 <!--                            </Style>-->
                 <!--                        </DataGridTextColumn.ElementStyle>-->
                 <!--                    </DataGridTextColumn>-->
-                <DataGridTextColumn Binding="{Binding Path=CommodityCode}" Header="CommodityCode">
+                <DataGridTextColumn Binding="{Binding Path=CommodityCode}" Width="*" Header="CommodityCode">
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=NoOfPallets}" Header="NoOfPallets">
+                <DataGridTextColumn Binding="{Binding Path=NoOfPallets}" Width="*" Header="NoOfPallets">
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=ConsignmentWeightInKg}" Header="ConsignmentWeightInKg">
+                <DataGridTextColumn Binding="{Binding Path=ConsignmentWeightInKg}" Width="*" Header="ConsignmentWeightInKg">
                 </DataGridTextColumn>
                 <!--                    <DataGridTextColumn Binding="{Binding Path=Notify1Name}" Header="Notify1Name">-->
                 <!--                        <DataGridTextColumn.ElementStyle>-->
@@ -74,4 +74,4 @@
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>
-</utils:MyControl>
+</utils:DetailsPage>

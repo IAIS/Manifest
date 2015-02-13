@@ -11,7 +11,7 @@ namespace Manifest.UI.Steps.Lotka
     /// <summary>
     /// Interaction logic for UploadConsignment.xaml
     /// </summary>
-    public partial class UploadConsignment : MyControl
+    public partial class UploadConsignment : DetailsPage
     {
         private ObservableCollection<Consignment> _consignments; 
 
@@ -31,9 +31,9 @@ namespace Manifest.UI.Steps.Lotka
         private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
         {
             Consignment consignment = ((FrameworkElement)sender).DataContext as Consignment;
-            ConsignmentDetails window = new ConsignmentDetails();
+            Template.Details window = new Template.Details();
             window.Show();
-            window.Init(consignment);
+            window.Init(consignment, Filters.AllFields);
         }
 
         private void BtnDelete_OnClick(object sender, RoutedEventArgs e)

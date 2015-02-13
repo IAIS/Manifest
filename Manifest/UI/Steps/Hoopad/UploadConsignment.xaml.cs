@@ -11,13 +11,15 @@ namespace Manifest.UI.Steps.Hoopad
     /// <summary>
     /// Interaction logic for UploadConsignment.xaml
     /// </summary>
-    public partial class UploadConsignment : MyControl
+    public partial class UploadConsignment : DetailsPage
     {
-        private ObservableCollection<Consignment> _consignments; 
+        private ObservableCollection<Consignment> _consignments;
+        private DetailsManager _manager;
 
         public UploadConsignment()
         {
             InitializeComponent();
+            _manager = DetailsManager.GetInstance();
         }
 
         private void BtnNewConsignment_OnClick(object sender, RoutedEventArgs e)
@@ -31,9 +33,9 @@ namespace Manifest.UI.Steps.Hoopad
         private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
         {
             Consignment consignment = ((FrameworkElement)sender).DataContext as Consignment;
-            ConsignmentDetails window = new ConsignmentDetails();
+            Template.Details window = new Template.Details();
             window.Show();
-            window.Init(consignment);
+            window.Init(consignment, _manager.GetConsignmentFilter());
         }
 
         private void BtnDelete_OnClick(object sender, RoutedEventArgs e)

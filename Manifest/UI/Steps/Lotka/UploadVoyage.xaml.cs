@@ -17,7 +17,7 @@ namespace Manifest.UI.Steps.Lotka
     /// <summary>
     /// Interaction logic for UploadVoyage.xaml
     /// </summary>
-    public partial class UploadVoyage : MyControl
+    public partial class UploadVoyage : DetailsPage
     {
 
         public UploadVoyage()

@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using Manifest.Shared;
+using Manifest.Utils;
 
 namespace Manifest.UserControl
 {
@@ -19,7 +20,7 @@ namespace Manifest.UserControl
         public void Init(Voyage voyage)
         {
             this.Voyage = voyage;
-            Panel panel = Utils.ControlCreator<Voyage>.GetInstance().CreateControl(voyage);
+            Panel panel = Utils.ControlCreator<Voyage>.GetInstance().CreateControl(voyage, Filters.AllFields);
             this.Content = null;
             this.AddChild(panel);       
         }

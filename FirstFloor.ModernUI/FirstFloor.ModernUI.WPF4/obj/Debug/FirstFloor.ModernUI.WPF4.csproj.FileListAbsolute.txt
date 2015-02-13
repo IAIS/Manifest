@@ -2,7 +2,6 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.Mode
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.ModernUI.WPF4\bin\Debug\FirstFloor.ModernUI.dll
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.ModernUI.WPF4\bin\Debug\FirstFloor.ModernUI.pdb
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.ModernUI.WPF4\bin\Debug\Microsoft.Windows.Shell.dll
-C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.ModernUI.WPF4\obj\Debug\FirstFloor.ModernUI.WPF4.csprojResolveAssemblyReference.cache
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.ModernUI.WPF4\obj\Debug\Button.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.ModernUI.WPF4\obj\Debug\Calendar.baml
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\FirstFloor.ModernUI\FirstFloor.ModernUI.WPF4\obj\Debug\CheckBox.baml

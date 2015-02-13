@@ -22,7 +22,7 @@ namespace Manifest.UI.Steps.Hoopad
     /// <summary>
     /// Interaction logic for UploadFile.xaml
     /// </summary>
-    public partial class UploadFile : MyControl
+    public partial class UploadFile : DetailsPage
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public UploadFile()

@@ -29,7 +29,7 @@
     <UpdateUrl>https://epl.irica.ir/manifest/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>32</ApplicationRevision>
+    <ApplicationRevision>33</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -136,12 +136,6 @@
     <Compile Include="Template\Hoopad\NotifyExtraInfo.cs" />
     <Compile Include="Template\Hoopad\PricingDataPrice.cs" />
     <Compile Include="Template\Hoopad\Shipper.cs" />
-    <Compile Include="UI\Details\BillOfLadingDetails.xaml.cs">
-      <DependentUpon>BillOfLadingDetails.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Details\ConsignmentDetails.xaml.cs">
-      <DependentUpon>ConsignmentDetails.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Details\ContainerDetails.xaml.cs">
       <DependentUpon>ContainerDetails.xaml</DependentUpon>
     </Compile>
@@ -193,6 +187,9 @@
     <Compile Include="UI\Template\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Template\Details.xaml.cs">
+      <DependentUpon>Details.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Template\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
@@ -206,14 +203,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UserControl\uBillOfLading.xaml.cs">
-      <DependentUpon>uBillOfLading.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl\uConsignment.xaml.cs">
-      <DependentUpon>uConsignment.xaml</DependentUpon>
+    <Compile Include="UserControl\uBillOfLadingDetails.xaml.cs">
+      <DependentUpon>uBillOfLadingDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControl\uContainer.xaml.cs">
       <DependentUpon>uContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\uContainerDetails.xaml.cs">
+      <DependentUpon>uContainerDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\uDetails.xaml.cs">
+      <DependentUpon>uDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControl\uRelation.xaml.cs">
       <DependentUpon>uRelation.xaml</DependentUpon>
@@ -222,24 +222,21 @@
     <Compile Include="UserControl\uVoyage.xaml.cs">
       <DependentUpon>uVoyage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Details.cs" />
+    <Compile Include="Utils\DetailsPage.cs" />
+    <Compile Include="Utils\IDetails.cs" />
+    <Compile Include="Utils\RowToIndexConverter.cs" />
     <Compile Include="Utils\CommonUtility.cs" />
     <Compile Include="Utils\ConfiguraionManager.cs" />
     <Compile Include="Utils\ControlCreator.cs" />
+    <Compile Include="Utils\DetailsManager.cs" />
+    <Compile Include="Utils\Filters.cs" />
     <Compile Include="Utils\HexEncoding.cs" />
-    <Compile Include="Utils\MyControl.cs" />
     <Compile Include="Utils\PackageTypeConverter.cs" />
     <Compile Include="Utils\ParameterUtility.cs" />
     <Compile Include="Utils\Printer.cs" />
     <Compile Include="Utils\RowToIndexConv.cs" />
     <Compile Include="Utils\Validator.cs" />
-    <Page Include="UI\Details\BillOfLadingDetails.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Details\ConsignmentDetails.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\Details\ContainerDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -308,6 +305,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Template\Details.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Template\Main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -320,15 +321,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControl\uBillOfLading.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControl\uConsignment.xaml">
+    <Page Include="UserControl\uBillOfLadingDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\uContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\uContainerDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\uDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

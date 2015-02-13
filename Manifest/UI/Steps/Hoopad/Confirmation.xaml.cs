@@ -16,7 +16,7 @@ namespace Manifest.UI.Steps.Hoopad
     /// <summary>
     /// Interaction logic for Confirmation.xaml
     /// </summary>
-    public partial class Confirmation : MyControl
+    public partial class Confirmation : DetailsPage
     {
         public Confirmation()
         {

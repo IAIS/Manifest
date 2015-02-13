@@ -25,13 +25,16 @@ namespace Manifest
         {
             base.OnStartup(e);
             log4net.Config.XmlConfigurator.Configure();
-//            const string path = "C:\\Users\\AbouzarKamaee\\Desktop\\2.man";
-//            JavaScriptSerializer serializer = new JavaScriptSerializer();
-//            serializer.MaxJsonLength = Int32.MaxValue;
-//            String hexContent = File.ReadAllText(path);
-//            String plainContent = Utils.CommonUtility.HexStringToString(hexContent, Encoding.UTF8);
-//            Voyage voyage = serializer.Deserialize<Voyage>(plainContent);
-//            ParameterUtility.SetVoyage(voyage);
+#if DEBUG
+            const string path = "C:\\Users\\AbouzarKamaee\\Desktop\\2.man";
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = Int32.MaxValue;
+            String hexContent = File.ReadAllText(path);
+            String plainContent = Utils.CommonUtility.HexStringToString(hexContent, Encoding.UTF8);
+            Voyage voyage = serializer.Deserialize<Voyage>(plainContent);
+            ParameterUtility.SetVoyage(voyage);
+        
+#endif
         }
 
         public Voyage Voyage { get; set; }

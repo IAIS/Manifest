@@ -19,7 +19,7 @@ namespace Manifest.UI.Steps.Lotka
     /// <summary>
     /// Interaction logic for Intro.xaml
     /// </summary>
-    public partial class Intro : MyControl
+    public partial class Intro : DetailsPage
     {
         public Intro()
         {

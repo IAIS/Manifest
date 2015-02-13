@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Manifest.Shared;
+using Manifest.Utils;
 
 namespace Manifest.UserControl
 {
@@ -32,7 +33,7 @@ namespace Manifest.UserControl
         public void Init(Container container)
         {
             this.Container = container;
-            Panel panel = Utils.ControlCreator<Container>.GetInstance().CreateControl(container);
+            Panel panel = Utils.ControlCreator<Container>.GetInstance().CreateControl(container, Filters.AllFields);
             this.AddChild(panel);
         }
     }

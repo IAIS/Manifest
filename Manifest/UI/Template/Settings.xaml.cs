@@ -21,7 +21,7 @@ namespace Manifest.UI.Template
     /// <summary>
     /// Interaction logic for Settings.xaml
     /// </summary>
-    public partial class Settings : MyControl
+    public partial class Settings : DetailsPage
     {
         public Settings()
         {

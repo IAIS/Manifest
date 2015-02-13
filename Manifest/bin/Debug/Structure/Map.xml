@@ -4,16 +4,12 @@
     <sourceClass>Manifest.Template.Hoopad.Manifest</sourceClass>
     <destinationClass>Manifest.Shared.Voyage</destinationClass>
     <property>
-      <src>ProjectCode</src>
-      <dest>LineCode</dest>
-    </property>
-    <property>
-      <src>ProjectCode</src>
-      <dest>VoyageAgentCode</dest>
-    </property>
-    <property>
       <src>ProjectVesselName</src>
       <dest>VesselName</dest>
+    </property>
+    <property>
+      <src>ProjectCode</src>
+      <dest>AgentsVoyageNumber</dest>
     </property>
   </map>
   <map>
@@ -29,7 +25,7 @@
     </property>
     <property>
       <src>DESCRIPTION</src>
-      <dest>Remarks</dest>
+      <dest>CommodityDescription</dest>
     </property>
     <property>
       <src>OriginPort</src>
@@ -49,7 +45,7 @@
     </property>
     <property>
       <src>Consignee</src>
-      <dest>BillOfLadingOwnerAddress</dest>
+      <dest>ConsigneeAddress</dest>
     </property>
     <property>
       <src>Marks</src>
@@ -71,21 +67,41 @@
       <src>LocalVessel</src>
       <dest>OriginalVesselName</dest>
     </property>
+    <property>
+      <src>BLDate</src>
+      <dest>DateOfLoading</dest>
+    </property>
   </map>
   <map>
     <sourceClass>Manifest.Template.Hoopad.Shipper</sourceClass>
     <destinationClass>Manifest.Shared.BillOfLading</destinationClass>
     <property>
       <src>ShipperName</src>
+      <dest>ShipperAddess</dest>
+    </property>
+    <property>
+      <src>ShipperAddress</src>
       <dest>ShipperName</dest>
     </property>
     <property>
       <src>ShipperAddress</src>
-      <dest>ShipperAddess</dest>
+      <dest>OriginalShipperAddess</dest>
     </property>
     <property>
       <src>ShipperCode</src>
       <dest>ShipperCountryCode</dest>
+    </property>
+  </map>
+  <map>
+    <sourceClass>Manifest.Template.Hoopad.ContainerDataContainer</sourceClass>
+    <destinationClass>Manifest.Shared.BillOfLading</destinationClass>
+    <property>
+      <src>PackageQty</src>
+      <dest>Packages</dest>
+    </property>
+    <property>
+      <src>PackageUnit</src>
+      <dest>PackageType</dest>
     </property>
   </map>
   <map>
@@ -134,10 +150,6 @@
     <property>
       <src>PackageUnit</src>
       <dest>PackageType</dest>
-    </property>
-    <property>
-      <src>PackageUnit</src>
-      <dest>PackageTypeCode</dest>
     </property>
   </map>
   <map>
