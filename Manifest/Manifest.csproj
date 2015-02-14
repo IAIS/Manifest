@@ -206,6 +206,9 @@
     <Compile Include="UserControl\uBillOfLadingDetails.xaml.cs">
       <DependentUpon>uBillOfLadingDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\uConsignmentDetails.xaml.cs">
+      <DependentUpon>uConsignmentDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\uContainer.xaml.cs">
       <DependentUpon>uContainer.xaml</DependentUpon>
     </Compile>
@@ -322,6 +325,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControl\uBillOfLadingDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\uConsignmentDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

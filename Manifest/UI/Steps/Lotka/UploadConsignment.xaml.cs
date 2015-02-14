@@ -28,53 +28,16 @@ namespace Manifest.UI.Steps.Lotka
                 MessageBoxOptions.RightAlign);
         }
 
-        private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
-        {
-            Consignment consignment = ((FrameworkElement)sender).DataContext as Consignment;
-            Template.Details window = new Template.Details();
-            window.Show();
-            window.Init(consignment, Filters.AllFields);
-        }
-
-        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
-        {
-            Consignment consignment =  ((FrameworkElement)sender).DataContext as Consignment;
-            _consignments.Remove(consignment);
-            ParameterUtility.RemoveConsignment(consignment);
-            HandleDataGrid();
-        }
-
-        private void HandleDataGrid()
-        {
-            if (_consignments.Count == 0)
-            {
-                gridJFlightConsignment.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                gridJFlightConsignment.Visibility = Visibility.Visible;
-            }
-        }
-
         public override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _consignments = ParameterUtility.GetConsignments();
-            gridJFlightConsignment.ItemsSource = _consignments;
-            HandleDataGrid();
+            UConsignmentDetails.Init(ParameterUtility.GetConsignments());
         }
 
         public override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             try
             {
-                foreach (Consignment consignment in _consignments)
-                {
-                    if (Utils.Validator.Validate(consignment) == false)
-                    {
-                        break;
-                    }
-                    consignment.Finilize();
-                }
+                UConsignmentDetails.Validate();
             }
             catch (UserInterfaceException ex)
             {

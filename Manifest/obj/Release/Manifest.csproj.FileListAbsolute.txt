@@ -76,3 +76,9 @@ C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UserControl\uD
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UI\Template\Details.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UserControl\uDetails.g.cs
 C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UI\Template\Details.baml
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UserControl\uBillOfLadingDetails.g.cs
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UserControl\uConsignmentDetails.g.cs
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UserControl\uContainerDetails.g.cs
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UserControl\uBillOfLadingDetails.baml
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UserControl\uConsignmentDetails.baml
+C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\obj\Release\UserControl\uContainerDetails.baml

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:userControl="clr-namespace:Manifest.UserControl"
              xmlns:utils="clr-namespace:Manifest.Utils" mc:Ignorable="d">
-    <DockPanel FlowDirection="LeftToRight" Margin="10" DataContext="{Binding ElementName=uploadBLWindowHoopad}">
+    <DockPanel FlowDirection="LeftToRight" Margin="10">
         <TextBlock TextWrapping="Wrap" TextAlignment="Justify" FlowDirection="RightToLeft" DockPanel.Dock="Top" >
                 همکار گرامی در صورت نیاز می توانید اطلاعات بارنامه ها را ویرایش کنید. 
                 بعد از اطمینان از صحت اطلاعات به مرحله ی بعد (ثبت اطلاعات کانتینر) مراجعه نمایید.

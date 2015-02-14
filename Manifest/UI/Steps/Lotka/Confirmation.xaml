@@ -10,7 +10,7 @@
         همکار گرامی در صورتی که از اطلاعات وارد شده در مراحل قبل مطمئن هستید می توانید خروجی برنامه را در سامانه ی اظهار از راه دور وارد کرده و بر اساس آن اظهار نمایید
             </TextBlock>
             <Button Name="btnSubmit" Click="BtnSubmit_OnClick" Margin="0 10 0 1">ذخیره فایل خروجی</Button>
-            <Button Name="btnZip" Click="BtnZip_OnClick" Margin="0 10 0 10">فشرده سازی و ذخیره فایل خروجی</Button>
+            <Button Name="btnZip" IsEnabled="False" Click="BtnZip_OnClick" Margin="0 10 0 10">فشرده سازی و ذخیره فایل خروجی</Button>
             <TextBox Name="txtResult" AcceptsReturn="True" TextWrapping="Wrap"></TextBox>
         </StackPanel>
     </ScrollViewer>

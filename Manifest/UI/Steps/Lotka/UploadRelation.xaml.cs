@@ -170,5 +170,10 @@ namespace Manifest.UI.Steps.Lotka
                 e.Cancel = true;
             }
         }
+
+        private void GridRelation_OnLoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = (e.Row.GetIndex() + 1).ToString();
+        }
     }
 }

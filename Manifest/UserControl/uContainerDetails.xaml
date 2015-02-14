@@ -7,7 +7,7 @@
              mc:Ignorable="d" >
     <WrapPanel Orientation="Vertical" DataContext="{Binding ElementName=containerDetails}">
         <TextBox Text="{Binding FilterString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="txtSearch" Margin="0 10 0 1" Foreground="DimGray" 
-                 GotFocus="UIElement_OnGotFocus" LostFocus="TxtSearch_OnLostFocus" HorizontalAlignment="Stretch" Padding="2" Visibility="{Binding Visibility, ElementName=gridJFlightConsignment}"/>
+                 GotFocus="UIElement_OnGotFocus" LostFocus="TxtSearch_OnLostFocus" HorizontalAlignment="Stretch" Padding="2" Visibility="{Binding Visibility, ElementName=containerDetails}"/>
         <DataGrid Name="gridContainer" FlowDirection="LeftToRight" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" IsReadOnly="True" 
                   AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" 
                   CanUserResizeRows="False" SelectionMode="Single" FontSize="12" VerticalContentAlignment="Stretch" BorderThickness="1" GridLinesVisibility="All" 

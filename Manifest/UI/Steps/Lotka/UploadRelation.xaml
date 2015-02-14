@@ -13,35 +13,67 @@
             </TextBlock>
             <Button Name="btnUploadContainer" Click="BtnUploadContainer_OnClick" Margin="0 10 0 1">بارگزاری ارتباطات</Button>
             <Button Name="btnNew" Click="BtnNew_OnClick" Margin="0 1 0 10">افزودن ارتباط جدید</Button>
-            <DataGrid Name="gridRelation" FlowDirection="LeftToRight" HorizontalAlignment="Left" IsReadOnly="True" AutoGenerateColumns="False" 
-                      CanUserAddRows="False" CanUserSortColumns="False" CanUserDeleteRows="True" CanUserReorderColumns="False" CanUserResizeRows="True"
-                      SelectionMode="Single" FontSize="12" BorderThickness="1" GridLinesVisibility="All" 
-                      VerticalScrollBarVisibility="Hidden">
+            <DataGrid Name="gridRelation" FlowDirection="LeftToRight" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" IsReadOnly="True" 
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" 
+                  CanUserResizeRows="False" SelectionMode="Single" FontSize="10" VerticalContentAlignment="Stretch" BorderThickness="1" GridLinesVisibility="All" 
+                  LoadingRow="GridRelation_OnLoadingRow">
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="ContentTemplate">
                             <Setter.Value>
                                 <DataTemplate>
-                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center"  Text="{Binding}"></TextBlock>
+                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center" Padding="5" Margin="5" Text="{Binding}"></TextBlock>
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.RowHeaderStyle>
+                    <Style TargetType="DataGridRowHeader">
+                        <Setter Property="ContentTemplate">
+                            <Setter.Value>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Padding="5 " Margin="5" Text="{Binding}" TextAlignment="Center"></TextBlock>
                                 </DataTemplate>
                             </Setter.Value>
                         </Setter>
                     </Style>
-                </DataGrid.ColumnHeaderStyle>
+                </DataGrid.RowHeaderStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=BolNumber}" Header="BolNumber">
+                    <DataGridTextColumn Binding="{Binding Path=BolNumber}" Width="*" Header="BolNumber">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Path=Number}" Header=" ContainerNumber">
+                    <DataGridTextColumn Binding="{Binding Path=Number}" Width="*" Header=" ContainerNumber">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Path=QuantityInConsignment}" Header="QuantityInConsignment">
+                    <DataGridTextColumn Binding="{Binding Path=QuantityInConsignment}" Width="*" Header="QuantityInConsignment">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Path=ConsignmentWeightInKg}" Header="ConsignmentWeightInKg">
+                    <DataGridTextColumn Binding="{Binding Path=ConsignmentWeightInKg}" Width="*" Header="ConsignmentWeightInKg">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                     <DataGridTemplateColumn Header="Edit">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Name="btnEdit" Click="BtnEdit_OnClick" CommandParameter="{Binding Path=Number}" BorderThickness="0">
-                                    <Image Source="../../Assets/edit.png"/>
+                                    <Image Source="/Manifest;component/Assets/edit.png"/>
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -50,7 +82,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Name="btnDelete" Click="BtnDelete_OnClick"  CommandParameter="{Binding Path=Number}" BorderThickness="0">
-                                    <Image Source="../../Assets/delete.png"/>
+                                    <Image Source="/Manifest;component/Assets/delete.png" />
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

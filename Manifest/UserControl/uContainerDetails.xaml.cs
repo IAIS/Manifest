@@ -55,27 +55,28 @@ namespace Manifest.UserControl
         private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
         {
             Container container = ((FrameworkElement)sender).DataContext as Container;
-            UI.Details.ContainerDetails window = new UI.Details.ContainerDetails();
+            ContainerDetails window = new ContainerDetails();
             window.Show();
             window.Init(container);
+            HandleDataGrid();
         }
 
         private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
             Container container = ((FrameworkElement)sender).DataContext as Container;
             _containers.Remove(container);
+            ParameterUtility.RemoveContainer(container);
             HandleDataGrid();
         }
 
         private void BtnAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            BillOfLading billOfLading = ((FrameworkElement)sender).DataContext as BillOfLading;
-            Container container = new Container();
-            billOfLading.Containers.Add(container);
-            ContainerDetails window = new ContainerDetails();
+            Container container = ((FrameworkElement)sender).DataContext as Container;
+            Consignment consignment = new Consignment();
+            container.Consignments.Add(consignment);
+            UI.Template.Details window = new UI.Template.Details();
             window.Show();
-            window.Init(container);
-            HandleDataGrid();
+            window.Init(consignment, DetailsManager.GetInstance().GetConsignmentFilter());
         }
 
         public void Init(ObservableCollection<Container> items)
@@ -106,7 +107,50 @@ namespace Manifest.UserControl
 
         public void HandleDataGrid()
         {
-            throw new NotImplementedException();
+            if (_containers.Count == 0)
+            {
+                this.gridContainer.Visibility = Visibility.Hidden;
+            }
+            if (_containers.Count > 0)
+            {
+                this.gridContainer.Visibility = Visibility.Visible;
+            }
+            foreach (Container container in _containers)
+            {
+                container.Finalize();
+            }
+        }
+
+
+        private void AddContainer(Container container)
+        {
+            BillOfLading persistedBillOfLading =
+                            ParameterUtility.GetBillOfLading()
+                                .FirstOrDefault(b => b.Containers.Any(c => c.ContainerNumber.Equals(container.ContainerNumber)));
+            if (persistedBillOfLading != null)
+            {
+                Container persistedContainer = persistedBillOfLading.Containers.FirstOrDefault
+                    (c => c.ContainerNumber.Equals(container.ContainerNumber));
+                persistedBillOfLading.Containers.Remove(persistedContainer);
+                persistedBillOfLading.Containers.Add(container);
+                container.Consignments = persistedContainer.Consignments;
+                _containers.Remove(persistedContainer);
+                _containers.Add(container);
+            }
+            else
+            {
+                // فایل مشکل دارد
+            }
+        }
+
+        private void RemoveContainer(Container container)
+        {
+            BillOfLading persistedBillOfLading =
+                            ParameterUtility.GetBillOfLading()
+                                .FirstOrDefault(b => b.Containers.Any(c => c.ContainerNumber.Equals(container.ContainerNumber)));
+            Container persistedContainer = persistedBillOfLading.Containers.FirstOrDefault
+                    (c => c.ContainerNumber.Equals(container.ContainerNumber));
+            persistedBillOfLading.Containers.Remove(persistedContainer);
         }
     }
 }
