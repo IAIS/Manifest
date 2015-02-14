@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Files>
   <File class="Manifest.Shared.Voyage">
-    <Property name="VoyageAgentCode"/>
+    <Property name="AgentsVoyageNumber"/>
     <Uknown/>
     <Property name="VesselName"/>
     <Uknown/>
