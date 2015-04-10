@@ -87,7 +87,7 @@ namespace Manifest.UI.Steps.Lotka
                         String fileName = "Manifest_" + DateTime.Now.ToString("yyyyMMddHHmmss");
                         zip.AddEntry(fileName, GetResult(), System.Text.Encoding.ASCII);
                         zip.Save(dialog.FileName);
-                    }ب
+                    }
                 }
             }
             catch (Exception ex)
