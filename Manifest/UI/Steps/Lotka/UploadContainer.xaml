@@ -11,7 +11,7 @@
                 همکار گرامی لطفا فایل حاوی اطلاعات کانتینر را ثبت کرده و در صورت نیاز اطلاعات آن را ویرایش کنید.
                 بعد از اطمینان از صحت اطلاعات به مرحله ی بعد (ثبت ارتباطات) مراجعه نمایید.
         </TextBlock>
-        <Button Name="btnUploadContainer" DockPanel.Dock="Top" Click="BtnUploadContainer_OnClick" Margin="0 10 0 1">بارگزاری اطلاعات کانتینر</Button>
+        <Button Name="btnUploadContainer" DockPanel.Dock="Top" Click="BtnUploadContainer_OnClick" Margin="0 10 0 1">بارگذاری اطلاعات کانتینر</Button>
         <Button Name="btnNewContainer" DockPanel.Dock="Top" Click="BtnNewContainer_OnClick" Margin="0 1 0 10">افزودن کانتینر جدید</Button>
         <userControl:uContainerDetails x:Name="UContainerDetails"/>
     </DockPanel>

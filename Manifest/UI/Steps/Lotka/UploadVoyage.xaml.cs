@@ -38,7 +38,7 @@ namespace Manifest.UI.Steps.Lotka
                     {
                         const string caption = "ثبت اطلاعات بارنامه";
                         const string content =
-                            @"با بارگزاری اطلاعات مانیفست تمام بارنامه های ثبت شده و اطلاعات کانتینر و کالاهای مرتبط با آن ها حدف می شوند.
+                            @"با بارگذاری اطلاعات مانیفست تمام بارنامه های ثبت شده و اطلاعات کانتینر و کالاهای مرتبط با آن ها حدف می شوند.
 \nآیا مطمئن هستید می خواهید اطلاعات بارنامه را ثبت کنید؟";
                         if (MessageBox.Show(String.Format(content), caption, MessageBoxButton.YesNo,
                             MessageBoxImage.Warning,

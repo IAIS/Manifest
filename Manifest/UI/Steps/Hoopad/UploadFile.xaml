@@ -11,7 +11,7 @@
                 همکار گرامی در این مرحله می توانید فایل حاوی اطلاعات مانیفست را بارگذاری کنید و یا این اطلاعات را به صورت دستی وارد کنید. 
                 بعد از اطمینان از صحت اطلاعات وارد شده به مرحله ی بعد (ثبت اطلاعات بارنامه مراجعه کنید)
             </TextBlock>
-            <Button Name="btnUploadFile" Margin="0 10 0 10" Click="BtnUploadFile_OnClick">بارگزاری اطلاعات مانیفست</Button>
+            <Button Name="btnUploadFile" Margin="0 10 0 10" Click="BtnUploadFile_OnClick">بارگذاری اطلاعات مانیفست</Button>
             <userControl:uVoyage x:Name="ucVoyage" />
         </StackPanel>
     </ScrollViewer>

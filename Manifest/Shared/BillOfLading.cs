@@ -145,12 +145,12 @@ namespace Manifest.Shared
         public String OriginalBolNumber { get; set; }
 
         [Display(Order = 224), MyStringLength(90)]
-        public String OriginalShipperName { get; set; }
+        public String OriginalShippShipperName { get; set; }
 
         [Display(Order = 225), MyStringLength(144)]
         public String OriginalShipperAddess { get; set; }
 
-        [Display(Order = 226), MyStringLength(90)]
+        [Required, Display(Order = 226), MyStringLength(90)]
         public String ShipperName { get; set; }
 
         [Required, Display(Order = 227), MyStringLength(720)]

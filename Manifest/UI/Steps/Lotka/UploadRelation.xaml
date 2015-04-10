@@ -11,7 +11,7 @@
                 هر ارتباط مشخص می کند کانتینر متعلق به کدام بارنامه است، به این منظور می توانید از فایل مربوطه استفاده کنید و یا ارتباطات را به صورت دستی اضافه کنید. 
                 بعد از تعیین تمام کانتینرهای بارنامه ها به قسمت بعد (اطلاعات کانتینر) مراجعه کرده و اطلاعات کانتینرها را تکمیل کنید.
             </TextBlock>
-            <Button Name="btnUploadContainer" Click="BtnUploadContainer_OnClick" Margin="0 10 0 1">بارگزاری ارتباطات</Button>
+            <Button Name="btnUploadContainer" Click="BtnUploadContainer_OnClick" Margin="0 10 0 1">بارگذاری ارتباطات</Button>
             <Button Name="btnNew" Click="BtnNew_OnClick" Margin="0 1 0 10">افزودن ارتباط جدید</Button>
             <DataGrid Name="gridRelation" FlowDirection="LeftToRight" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" IsReadOnly="True" 
                   AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" 

@@ -10,7 +10,7 @@
             <TextBlock TextWrapping="Wrap" TextAlignment="Justify" DockPanel.Dock="Top" FlowDirection="RightToLeft" >
                 در حال حاضر برای ورود اطلاعات کالا تنها امکان ورود دستی اطلاعات وجود دارد.
             </TextBlock>
-            <Button Name="btnUploadConsignment" DockPanel.Dock="Top" IsEnabled="False" Margin="0 10 0 1">بارگزاری اطلاعات کالا</Button>
+            <Button Name="btnUploadConsignment" DockPanel.Dock="Top" IsEnabled="False" Margin="0 10 0 1">بارگذاری اطلاعات کالا</Button>
         <Button Name="btnNewConsignment" DockPanel.Dock="Top" Click="BtnNewConsignment_OnClick" Margin="0 1 0 10">افزودن اطلاعات کالای جدید</Button>
             <userControl:uConsignmentDetails x:Name="UConsignmentDetails"/>
     </DockPanel>

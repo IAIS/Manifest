@@ -38,7 +38,7 @@ namespace Manifest.UI.Template
                 });
                 modernTab.Links.Add(new Link()
                 {
-                    DisplayName = "بارگزاری فایل",
+                    DisplayName = "بارگذاری فایل",
                     ImageSource = new BitmapImage(new Uri(@"/Manifest;component/Assets/upload_page.png", UriKind.Relative)),
                     Source = new Uri(@"/Manifest;component/UI\Steps\Hoopad\UploadFile.xaml", UriKind.Relative)
                 });

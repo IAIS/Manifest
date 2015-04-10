@@ -126,7 +126,7 @@ namespace Manifest.UI.Steps.Lotka
         {
             ObservableCollection<BillOfLading> billOfLadings = ParameterUtility.GetBillOfLading();
             BillOfLading billOfLading = billOfLadings.FirstOrDefault(b => b.BillOfLadingNo.Equals(relation.BolNumber));
-            if (billOfLading == null)   // اطلاعات بارگزاری شده مشکل دار است
+            if (billOfLading == null)   // اطلاعات بارگذاری شده مشکل دار است
             {
                 return;
             }
