@@ -5,6 +5,7 @@ using System.IO.Compression;
 using System.Text;
 using System.Windows;
 using FirstFloor.ModernUI.Windows.Navigation;
+using Ionic.Zip;
 using Manifest.Resources;
 using Manifest.Shared;
 using Manifest.Utils;
@@ -81,15 +82,12 @@ namespace Manifest.UI.Steps.Lotka
                 dialog.Filter = "Zip files (*.zip)|*.zip|All files (*.*)|*.*";
                 if (dialog.ShowDialog() == true)
                 {
-//                    using (ZipArchive archive = new ZipArchive(new FileStream(dialog.FileName, FileMode.Create), ZipArchiveMode.Create, true))
-//                    {
-//                        ZipArchiveEntry entry = archive.CreateEntry("Manifest_" + DateTime.Now.ToString("yyyyMMddHHmmss"), CompressionLevel.Optimal);
-//                        using (var zipStream = entry.Open())
-//                        {
-//                            byte[] value = System.Text.Encoding.ASCII.GetBytes(GetResult());
-//                            zipStream.Write(value, 0, value.Length);
-//                        }
-//                    }
+                    using (ZipFile zip = new ZipFile())
+                    {
+                        String fileName = "Manifest_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+                        zip.AddEntry(fileName, GetResult(), System.Text.Encoding.ASCII);
+                        zip.Save(dialog.FileName);
+                    }
                 }
             }
             catch (Exception ex)

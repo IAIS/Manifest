@@ -78,6 +78,9 @@
     <StartupObject>Manifest.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\packages\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
@@ -104,10 +107,10 @@
     <Compile Include="Converter\IConverter.cs" />
     <Compile Include="Converter\XmlConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
+      <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\ExceptionMessage.cs" />
     <Compile Include="Converter\SimpleConverter.cs" />
@@ -228,6 +231,8 @@
     <Compile Include="Utils\Details.cs" />
     <Compile Include="Utils\DetailsPage.cs" />
     <Compile Include="Utils\IDetails.cs" />
+    <Compile Include="Utils\MyStringLength.cs" />
+    <Compile Include="Utils\PortCodeConverter.cs" />
     <Compile Include="Utils\RowToIndexConverter.cs" />
     <Compile Include="Utils\CommonUtility.cs" />
     <Compile Include="Utils\ConfiguraionManager.cs" />
@@ -362,11 +367,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="RFID.pfx" />
     <Resource Include="Fonts\B Titr.TTF">
@@ -486,6 +486,12 @@
       <Project>{a0ea4572-2726-4585-8e17-3a81a0eafa61}</Project>
       <Name>FirstFloor.ModernUI.WPF4</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

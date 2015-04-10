@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Windows.Documents;
+using Manifest.Utils;
 
 namespace Manifest.Shared
 {
+    [MetadataType(typeof(Container))]
     public class Container
     {
         public Container()
@@ -13,29 +14,19 @@ namespace Manifest.Shared
             CheckDigit = "1";
         }
 
-        public void Finalize()
-        {
-            foreach (Consignment consignment in Consignments)
-            {
-                if (String.IsNullOrWhiteSpace(consignment.SerialNumber))
-                {
-                    consignment.SerialNumber = new Random().Next(100000).ToString();
-                }
-            }
-        }
-
-        [Required]
+        [Required, Display(Order = 41), MyStringLength(30)]
         public String ContainerNumber { get; set; }
 
-        [Required]
+        [Required, Display(Order = 42), MyStringLength(3)]
         public String CheckDigit { get; set; }
 
-        [Required]
+        [Required, Display(Order = 43)]
         public Double TareWeightInMT { get; set; }
 
-        [Required]
+        [Required, Display(Order = 44), MyStringLength(30)]
         public String SealNo { get; set; }
 
+        // ReSharper disable once FieldCanBeMadeReadOnly.Global
         public List<Consignment> Consignments;
 
         protected bool Equals(Container other)
@@ -48,7 +39,7 @@ namespace Manifest.Shared
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((Container) obj);
+            return Equals((Container)obj);
         }
 
         public override int GetHashCode()
@@ -59,6 +50,11 @@ namespace Manifest.Shared
         public override string ToString()
         {
             return this.GetType().Name + " [ContainerNumber: " + this.ContainerNumber + "] ";
+        }
+
+        public void Finalize()
+        {
+            // DO Nothnig
         }
     }
 }

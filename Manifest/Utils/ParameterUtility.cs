@@ -32,12 +32,12 @@ namespace Manifest.Utils
 
         public static ObservableCollection<BillOfLading> GetBillOfLading()
         {
-            return GetVoyage().BillOfLadings;
+            return new ObservableCollection<BillOfLading>(GetVoyage().BillOfLadings);
         }
 
         public static void SetBillOfLading(ObservableCollection<BillOfLading> billOfLadings)
         {
-            GetVoyage().BillOfLadings = billOfLadings;
+            GetVoyage().BillOfLadings = billOfLadings.ToList();
         }
 
         public static ObservableCollection<Consignment> GetConsignments()

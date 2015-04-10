@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Manifest.Template.Hoopad;
 
 namespace Manifest.Utils
 {
@@ -20,15 +22,30 @@ namespace Manifest.Utils
         {
             StringBuilder builder = new StringBuilder();
             Type type = instance.GetType();
-            foreach (PropertyInfo propertyInfo in type.GetProperties())
+            PropertyInfo[] properties = (from prop in type.GetProperties()
+                               let display = Attribute.GetCustomAttribute(prop, typeof(DisplayAttribute)) as DisplayAttribute
+                               where display != null
+                               let order = display.Order
+                               orderby order ascending
+                               select prop).ToArray();
+            for(int i = 0; i < properties.Length; i++)
             {
+                PropertyInfo propertyInfo = properties[i];
                 if (CommonUtility.IsSimpleProperty(propertyInfo))
                 {
                     builder.Append("\"" + propertyInfo.GetValue(instance, null) + "\",");    
                 }
             }
-            // برای  پاک کردن یک ویرگول اضافی که در حلقه ی بالا اضافه شده است
-            return builder.ToString().Substring(0, builder.Length - 1);
+            if (builder.ToString().Length >= 1)
+            {
+                // برای  پاک کردن یک ویرگول اضافی که در حلقه ی بالا اضافه شده است
+                return builder.ToString().Substring(0, builder.Length - 1);
+            }
+            else
+            {
+                return builder.ToString();
+            }
+            
         }
     }
 }

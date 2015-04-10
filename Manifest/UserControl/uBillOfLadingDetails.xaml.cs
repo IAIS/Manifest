@@ -38,6 +38,7 @@ namespace Manifest.UserControl
         {
             BillOfLading billOfLading = ((FrameworkElement)sender).DataContext as BillOfLading;
             _billOfLadings.Remove(billOfLading);
+            ParameterUtility.GetVoyage().BillOfLadings.Remove(billOfLading);
             HandleDataGrid();
         }
 
@@ -115,6 +116,7 @@ namespace Manifest.UserControl
         public void Add(BillOfLading billOfLading)
         {
             _billOfLadings.Add(billOfLading);
+            ParameterUtility.GetVoyage().BillOfLadings.Add(billOfLading);
             UI.Template.Details window = new UI.Template.Details();
             window.Show();
             window.Init(billOfLading, _manager.GetBillOfLadingFilters());

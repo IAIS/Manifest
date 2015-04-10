@@ -162,7 +162,9 @@ C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\obj\Relea
 C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\obj\Release\UserControl\uConsignmentDetails.baml
 C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\obj\Release\UserControl\uContainerDetails.baml
 C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\obj\Release\Manifest.g.resources
-C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\obj\Release\Manifest.Properties.Resources.resources
 C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\obj\Release\Manifest.csproj.GenerateResource.Cache
 C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\obj\Release\Manifest.exe.manifest
 C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\obj\Release\Manifest.application
+C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\obj\Release\Manifest.Resource.resources
+C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\bin\Release\Ionic.Zip.dll
+C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\bin\Release\Ionic.Zip.xml

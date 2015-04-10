@@ -5,13 +5,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using Manifest.Shared;
 
 namespace Manifest.Utils
 {
@@ -86,16 +81,6 @@ namespace Manifest.Utils
             return res;
         }
 
-        public static String GetPublishedVersion()
-        {
-            if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
-            {
-                return System.Deployment.Application.ApplicationDeployment.CurrentDeployment.
-                    CurrentVersion.ToString();
-            }
-            return "0";
-        }
-
         public static PropertyInfo[] GetProperties(Object instance, Filters filter)
         {
             Type type = instance.GetType();
@@ -154,5 +139,85 @@ namespace Manifest.Utils
             }
             return null;
         }
+
+        public static bool IsEmpty(String value)
+        {
+            if (String.IsNullOrWhiteSpace(value))
+            {
+                return true;
+            }
+            if (value.Trim().Equals("0"))
+            {
+                return true;
+            }
+            // TODO: Uncomment Code Below In Proper Time
+//            if (value.Trim().Equals("-"))
+//            {
+//                return true;
+//            }
+            return false;
+        }
+
+        public static bool HasMaxLength(PropertyInfo propertyInfo)
+        {
+            var attr = propertyInfo.GetCustomAttributes(typeof(MyStringLengthAttribute), false).FirstOrDefault();
+            if (attr == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static int GetMaxLength(PropertyInfo propertyInfo)
+        {
+            MyStringLengthAttribute attr = (MyStringLengthAttribute)propertyInfo.GetCustomAttributes(typeof(MyStringLengthAttribute), false).FirstOrDefault();
+            return attr.MaximumLength;
+        }
+
+
+        /// <summary>
+        /// Return <paramref name="dateTime"/> in DD-MMM-CCYY Format.
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public static string ConvertDateTime(String dateTime)
+        {
+            if (dateTime == null)
+            {
+                return null;
+            }
+            if (dateTime.Length == 11) // به فرمت مناسب نشان داده شده است
+            {
+                return dateTime;
+            }
+            else if (dateTime.Length == 8) // به فرمت هوپاد است
+            {
+                string year = dateTime.Substring(0, 4);
+                string month = dateTime.Substring(4, 2);
+                string day = dateTime.Substring(6, 2);
+                DateTime res = new DateTime(Int32.Parse(year), Int32.Parse(month), Int32.Parse(day));
+                return res.ToString("dd-MMM-yyyy");
+            }
+            return "-";
+        }
+
+        public static String GetPublishedVersion()
+        {
+            try
+            {
+                if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+                {
+                    return System.Deployment.Application.ApplicationDeployment.CurrentDeployment.
+                        CurrentVersion.ToString();
+                }
+            }
+            catch (Exception)
+            {
+                // Debuge Mode
+            }
+
+            return "0";
+        }
+
     }
 }
