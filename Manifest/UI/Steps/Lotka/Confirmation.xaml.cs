@@ -32,7 +32,7 @@ namespace Manifest.UI.Steps.Lotka
                 dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
                 if (dialog.ShowDialog() == true)
                 {
-                    
+
                     File.WriteAllText(dialog.FileName, GetResult(), Encoding.ASCII);
                 }
             }
@@ -94,7 +94,6 @@ namespace Manifest.UI.Steps.Lotka
             {
                 throw new UserInterfaceException(10301, ExceptionMessage.VoyagSave, ex);
             }
-            
         }
     }
 }
