@@ -18,7 +18,7 @@ namespace Manifest.Shared
             RotationNumber = "";
             NoOfInstalment = 1;
             PortCodeOfDischarge = "-";
-            ExpectedToArriveDate = "-";
+            ExpectedToArriveDate = DateTime.Now;
             if (String.IsNullOrWhiteSpace(this.LineCode))
             {
                 this.LineCode = ConfiguraionManager.GetInstance().GetLineCode();
@@ -60,23 +60,23 @@ namespace Manifest.Shared
         [Required, Display(Order = 14), MyStringLength(30)]
         public String AgentsVoyageNumber { get; set; }
 
-        [Display(Order = 15), MyStringLength(15)]
+        [Required, Display(Order = 15), MyStringLength(15)]
         public String PortCodeOfDischarge { get; set; }
 
-        [Display(Order = 16), MyStringLength(33)]
-        public String ExpectedToArriveDate { get; set; }
+        [Required, Display(Order = 16), MyStringLength(33)]
+        public DateTime ExpectedToArriveDate { get; set; }
 
         [Display(Order = 17), MyStringLength(18)]
         public String RotationNumber { get; set; }
 
-        [Display(Order = 18), MyStringLength(9)]
+        [Required, Display(Order = 18), MyStringLength(9)]
         public String MessageType { get; set; }
 
-        [Display(Order = 19)]
+        [Required, Display(Order = 19)]
         public Int32 NoOfInstalment { get; set; }
 
         [Required, Display(Order = 110), MyStringLength(15)]
-        public string AgentsManifestSequenceNumber { get; set; }
+        public String AgentsManifestSequenceNumber { get; set; }
 
         public List<BillOfLading> BillOfLadings;
 

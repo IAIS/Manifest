@@ -201,6 +201,11 @@ namespace Manifest.Utils
             return "-";
         }
 
+        public static string ConvertDateTime(DateTime dateTime)
+        {
+            return dateTime.ToString("dd-MMM-yyyy");
+        }
+
         public static String GetPublishedVersion()
         {
             try

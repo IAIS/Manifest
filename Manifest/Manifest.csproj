@@ -228,8 +228,11 @@
     <Compile Include="UserControl\uVoyage.xaml.cs">
       <DependentUpon>uVoyage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ComboBoxesValues.cs" />
+    <Compile Include="Utils\DataGridRowsManager.cs" />
     <Compile Include="Utils\Details.cs" />
     <Compile Include="Utils\DetailsPage.cs" />
+    <Compile Include="Utils\Formater.cs" />
     <Compile Include="Utils\IDetails.cs" />
     <Compile Include="Utils\MyStringLength.cs" />
     <Compile Include="Utils\PortCodeConverter.cs" />

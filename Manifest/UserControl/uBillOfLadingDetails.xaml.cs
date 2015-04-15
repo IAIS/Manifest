@@ -99,16 +99,46 @@ namespace Manifest.UserControl
             HandleDataGrid();
         }
 
+        public void changeRowColor(BillOfLading billOfLading, Boolean complete)
+        {
+            var rows = DataGridRowsManager.GetDataGridRows(gridJFlightConsignment);
+
+            foreach (DataGridRow row in rows)
+            {
+                BillOfLading temp = row.Item as BillOfLading;
+
+                if (temp.BillOfLadingNo.Equals("") || temp.BillOfLadingNo.Equals(billOfLading.BillOfLadingNo))
+                {
+                    if (!complete)
+                        row.Background = Brushes.Tomato;
+                    if (complete)
+                        row.Background = Brushes.White;
+                }
+            }
+
+        }
+
+
         public bool Validate()
         {
+
             foreach (BillOfLading billOfLading in _billOfLadings)
             {
-                if (Utils.Validator.Validate(billOfLading) == false)
+                try
                 {
-                    return false;
+                    Utils.Validator.Validate(billOfLading);
+                    changeRowColor(billOfLading, true);
+                    billOfLading.Finilize();
+
                 }
-                billOfLading.Finilize();
+                catch (UserInterfaceException ex)
+                {
+                    changeRowColor(billOfLading, false);
+                    throw;
+                }
+
             }
+
             return true;
             
         }

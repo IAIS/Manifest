@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows;
@@ -6,6 +7,13 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using Manifest.Resources;
+using System.ComponentModel;
+using System.Linq;
+//using System.Net.NetworkInformation;
+//using System.Windows.Automation.Peers;
+
+
+
 
 namespace Manifest.Utils
 {
@@ -13,9 +21,24 @@ namespace Manifest.Utils
     {
         private static ControlCreator<T> _instance = null;
 
+        string[] comboPropertyInfo = new string[12];
+        
         private ControlCreator()
         {
+            comboPropertyInfo[0] = "TradeCode";
+            comboPropertyInfo[1] = "TransShipmentMode";
+            comboPropertyInfo[2] = "CargoCode";
+            comboPropertyInfo[3] = "ConsolidatedCargoIndicator";
+            comboPropertyInfo[4] = "StorageRequestCode";
+            comboPropertyInfo[5] = "SlacIndicator";
 
+            /****** Consignmenet.cs *******/
+            comboPropertyInfo[6] = "UsedOrNewIndicator";
+            comboPropertyInfo[7] = "DangerousGoodIndicator";
+            comboPropertyInfo[8] = "UnitOfTemperature";
+            comboPropertyInfo[9] = "StorageRequestedForDangerousGoods";
+            comboPropertyInfo[10] = "RefrigerationRequired";
+            comboPropertyInfo[11] = "UnitOfRefregerationTemperature";
         }
 
         public static ControlCreator<T> GetInstance()
@@ -44,13 +67,18 @@ namespace Manifest.Utils
             grid.HorizontalAlignment = HorizontalAlignment.Left;
             grid.FlowDirection = FlowDirection.LeftToRight;
 
-            for (int i = 0; i < 3; i ++)
-            {
-                ColumnDefinition column = new ColumnDefinition();
-                column.Width = new GridLength(200);
-                grid.ColumnDefinitions.Add(column);
-            }
-            
+            ColumnDefinition column1 = new ColumnDefinition();
+            column1.Width = new GridLength(250);
+            grid.ColumnDefinitions.Add(column1);
+
+            ColumnDefinition column2 = new ColumnDefinition();
+            column2.Width = new GridLength(150);
+            grid.ColumnDefinitions.Add(column2);
+
+            ColumnDefinition column3 = new ColumnDefinition();
+            column3.Width = new GridLength(150);
+            grid.ColumnDefinitions.Add(column3);
+
             int rowIndex = 0;
             PropertyInfo[] properties = CommonUtility.GetProperties(instance, filter);
             foreach (PropertyInfo propertyInfo in properties)
@@ -60,13 +88,38 @@ namespace Manifest.Utils
                 grid.RowDefinitions.Add(row);
 
                 TextBlock label = new TextBlock();
-                label.Text = propertyInfo.Name;
+                label.Text = Formater.GetTitle(propertyInfo.Name);
                 label.Margin = new Thickness(5);
                 Grid.SetColumn(label, 0);
                 Grid.SetRow(label, rowIndex);
                 grid.Children.Add(label);
 
-                if (propertyInfo.PropertyType == typeof(DateTime))
+                if (comboPropertyInfo.Contains(propertyInfo.Name))
+                {
+                    ArrayList comboList = new ArrayList();
+                    comboList = ComboBoxesValues.comboListCreator(propertyInfo.Name);
+                    ComboBox comboPicker = new ComboBox();
+                    comboPicker.ItemsSource = comboList;
+
+                    //Dictionary<string, string> comboDictionary = new Dictionary<string, string>();
+                    //comboDictionary.Add("t", "test");
+                    //comboDictionary.Add("r", "rest");
+
+                    comboPicker.Name = propertyInfo.Name;
+                    comboPicker.Margin = new Thickness(5);
+                    Binding valueBinder = new Binding(propertyInfo.Name);
+                    valueBinder.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                    valueBinder.Source = instance;
+                    valueBinder.NotifyOnValidationError = true;
+                    valueBinder.ValidatesOnExceptions = true;
+                    valueBinder.ValidatesOnDataErrors = true;
+                    valueBinder.Mode = BindingMode.TwoWay;
+                    BindingOperations.SetBinding(comboPicker, ComboBox.TextProperty, valueBinder);
+                    Grid.SetColumn(comboPicker, 1);
+                    Grid.SetRow(comboPicker, rowIndex);
+                    grid.Children.Add(comboPicker);
+                }
+                else if (propertyInfo.PropertyType == typeof(DateTime))
                 {
                     DatePicker datePicker = new DatePicker();
                     datePicker.Name = propertyInfo.Name;

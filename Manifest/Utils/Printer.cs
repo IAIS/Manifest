@@ -33,7 +33,14 @@ namespace Manifest.Utils
                 PropertyInfo propertyInfo = properties[i];
                 if (CommonUtility.IsSimpleProperty(propertyInfo))
                 {
-                    builder.Append("\"" + propertyInfo.GetValue(instance, null) + "\",");    
+                    if(propertyInfo.PropertyType == typeof(DateTime))
+                    {
+                        builder.Append("\"" + CommonUtility.ConvertDateTime((DateTime)propertyInfo.GetValue(instance, null)) + "\",");    
+                    }
+                    else
+                    {
+                        builder.Append("\"" + propertyInfo.GetValue(instance, null) + "\",");    
+                    }
                 }
             }
             if (builder.ToString().Length >= 1)

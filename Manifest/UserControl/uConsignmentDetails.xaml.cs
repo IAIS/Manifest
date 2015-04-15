@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Manifest.Shared;
 using Manifest.Utils;
+using Warehouse.Exceptions;
 
 namespace Manifest.UserControl
 {
@@ -40,15 +41,43 @@ namespace Manifest.UserControl
             HandleDataGrid();
         }
 
+        public void changeRowColor(Consignment consignment, Boolean complete)
+        {
+            var rows = DataGridRowsManager.GetDataGridRows(gridConsignment);
+
+            foreach (DataGridRow row in rows)
+            {
+                Consignment temp = row.Item as Consignment;
+
+                if (temp.SerialNumber.Equals("") || temp.SerialNumber.Equals(consignment.SerialNumber))
+                {
+                    if (!complete)
+                        row.Background = Brushes.Tomato;
+                    if (complete)
+                        row.Background = Brushes.White;
+                }
+            }
+
+        }
+
         public bool Validate()
         {
+
             foreach (Consignment consignment in _consignments)
             {
-                if (Utils.Validator.Validate(consignment) == false)
+                try
                 {
-                    break;
+                    Utils.Validator.Validate(consignment);
+                    changeRowColor(consignment, true);
+                    consignment.Finilize();
+
                 }
-                consignment.Finilize();
+                catch (UserInterfaceException ex)
+                {
+                    changeRowColor(consignment, false);
+                    throw;
+                }
+
             }
             return true;
         }

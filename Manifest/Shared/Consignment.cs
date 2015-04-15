@@ -12,6 +12,8 @@ namespace Manifest.Shared
             UnitOfTemperature = "C";
             DangerousGoodIndicator = "N";
             UsedOrNewIndicator = "N";
+            StorageRequestedForDangerousGoods = "D";
+            UnitOfRefregerationTemperature = "C";
         }
 
         public void Finilize()
@@ -22,7 +24,7 @@ namespace Manifest.Shared
         [Required, Display(Order = 31), MyStringLength(18)]
         public String SerialNumber { get; set; }
 
-        [Display(Order = 32), MyStringLength(600)]
+        [Required, Display(Order = 32), MyStringLength(600)]
         public String MarksAndNumbers { get; set; }
 
         [Required, Display(Order = 33), MyStringLength(300)]

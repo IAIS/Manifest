@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Manifest.Shared;
 using Manifest.UI.Details;
 using Manifest.Utils;
+using Warehouse.Exceptions;
 
 namespace Manifest.UserControl
 {
@@ -88,17 +89,48 @@ namespace Manifest.UserControl
             HandleDataGrid();
         }
 
+        public void changeRowColor(Container container, Boolean complete)
+        {
+            var rows = DataGridRowsManager.GetDataGridRows(gridContainer);
+
+            foreach (DataGridRow row in rows)
+            {
+                Container temp = row.Item as Container;
+
+                if (temp.ContainerNumber.Equals("") || temp.ContainerNumber.Equals(container.ContainerNumber))
+                {
+                    if (!complete)
+                        row.Background = Brushes.Tomato;
+                    if (complete)
+                        row.Background = Brushes.White;
+                }
+            }
+
+        }
+
+
         public bool Validate()
         {
+
             foreach (Container container in _containers)
             {
-                if (Utils.Validator.Validate(container) == false)
+                try
                 {
-                    return false;
+                    Utils.Validator.Validate(container);
+                    changeRowColor(container, true);
+                    container.Finalize();
+
                 }
+                catch (UserInterfaceException ex)
+                {
+                    changeRowColor(container, false);
+                    throw;
+                }
+
             }
             return true;
         }
+
 
         public void Add(Container item)
         {

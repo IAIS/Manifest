@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Windows.Controls;
 using Manifest.Utils;
+
+
 
 namespace Manifest.Shared
 {
@@ -25,6 +28,9 @@ namespace Manifest.Shared
             ContainerServiceType = "FCL/FCL";
             ConsigneeName = "-";
             Notify1Name = "-";
+            SlacIndicator = "Y";
+            BillOfLadingNo = "";
+            DateOfLoading = DateTime.Now.Date;
         }
 
         public void Finilize()
@@ -57,7 +63,6 @@ namespace Manifest.Shared
             {
                 TradeCode = "T";
             }
-            this.DateOfLoading = CommonUtility.ConvertDateTime(this.DateOfLoading);
             Double packages = 0;
             Double weight = 0;
             foreach(Container container in this.Containers)
@@ -97,7 +102,7 @@ namespace Manifest.Shared
         public String PortCodeOfDestination { get; set; }
 
         [Display(Order = 28), MyStringLength(33)]
-        public String DateOfLoading { get; set; }
+        public DateTime DateOfLoading { get; set; }
 
         [Display(Order = 29), MyStringLength(24)]
         public String ManifestRegistrationNumber { get; set; }
@@ -195,13 +200,13 @@ namespace Manifest.Shared
         [Display(Order = 240), MyStringLength(720)]
         public String Notify3Address { get; set; }
 
-        [Display(Order = 241), MyStringLength(600)]
+        [Required, Display(Order = 241), MyStringLength(600)]
         public String MarksAndNumbers { get; set; }
 
         [Required, Display(Order = 242), MyStringLength(30)]
         public String CommodityCode { get; set; }
 
-        [Display(Order = 243), MyStringLength(900)]
+        [Required, Display(Order = 243), MyStringLength(900)]
         public String CommodityDescription { get; set; }
 
         [Required, Display(Order = 244)]
