@@ -120,6 +120,28 @@ namespace Manifest.UI.Template
                 });
                 this.AddChild(modernTab);
             }
+            if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Fake)
+            {
+                ModernTab modernTab = new ModernTab()
+                {
+                    Layout = TabLayout.List,
+                    FlowDirection = FlowDirection.RightToLeft,
+                    SelectedSource = new Uri(@"/Manifest;component/UI\Steps\Fake\UploadFile.xaml", UriKind.Relative)
+                };
+                modernTab.Links.Add(new Link()
+                {
+                    DisplayName = "بارگذاری فایل",
+                    ImageSource = new BitmapImage(new Uri(@"/Manifest;component/Assets/upload_page.png", UriKind.Relative)),
+                    Source = new Uri(@"/Manifest;component/UI\Steps\Fake\UploadFile.xaml", UriKind.Relative)
+                });
+                modernTab.Links.Add(new Link()
+                {
+                    DisplayName = "تایید و ثبت نهایی",
+                    ImageSource = new BitmapImage(new Uri(@"/Manifest;component/Assets/check_mark.png", UriKind.Relative)),
+                    Source = new Uri(@"/Manifest;component/UI\Steps\Fake\Confirmation.xaml", UriKind.Relative)
+                });
+                this.AddChild(modernTab);
+            }
         }
 
         private void NewCommand_OnExecuted(object sender, ExecutedRoutedEventArgs e)

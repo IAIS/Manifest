@@ -9,6 +9,7 @@ namespace Manifest.Shared
     public enum ApplicaionType
     {
         Hoopad, 
-        Lotka
+        Lotka, 
+        Fake,   
     }
 }

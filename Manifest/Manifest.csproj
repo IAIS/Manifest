@@ -148,6 +148,12 @@
     <Compile Include="UI\Details\VoyageDetails.xaml.cs">
       <DependentUpon>VoyageDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Steps\Fake\Confirmation.xaml.cs">
+      <DependentUpon>Confirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Steps\Fake\UploadFile.xaml.cs">
+      <DependentUpon>UploadFile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Steps\Hoopad\Confirmation.xaml.cs">
       <DependentUpon>Confirmation.xaml</DependentUpon>
     </Compile>
@@ -234,6 +240,7 @@
     <Compile Include="Utils\DetailsPage.cs" />
     <Compile Include="Utils\Formater.cs" />
     <Compile Include="Utils\IDetails.cs" />
+    <Compile Include="Utils\FakeHelper.cs" />
     <Compile Include="Utils\MyStringLength.cs" />
     <Compile Include="Utils\PortCodeConverter.cs" />
     <Compile Include="Utils\RowToIndexConverter.cs" />
@@ -259,6 +266,14 @@
     <Page Include="UI\Details\VoyageDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Steps\Fake\Confirmation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Steps\Fake\UploadFile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Steps\Hoopad\Confirmation.xaml">
       <Generator>MSBuild:Compile</Generator>
