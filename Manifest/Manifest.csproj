@@ -29,7 +29,7 @@
     <UpdateUrl>https://epl.irica.ir/manifest/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>39</ApplicationRevision>
+    <ApplicationRevision>40</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -238,9 +238,9 @@
     <Compile Include="Utils\DataGridRowsManager.cs" />
     <Compile Include="Utils\Details.cs" />
     <Compile Include="Utils\DetailsPage.cs" />
+    <Compile Include="Utils\FakeHelper.cs" />
     <Compile Include="Utils\Formater.cs" />
     <Compile Include="Utils\IDetails.cs" />
-    <Compile Include="Utils\FakeHelper.cs" />
     <Compile Include="Utils\MyStringLength.cs" />
     <Compile Include="Utils\PortCodeConverter.cs" />
     <Compile Include="Utils\RowToIndexConverter.cs" />
