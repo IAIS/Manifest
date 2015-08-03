@@ -43,8 +43,18 @@ namespace Manifest.Utils
 
         public static List<String> readNextSplitedLine(StreamReader file)
         {
+            String[] strArray;
             String str = file.ReadLine();
-            String[] strArray = str.Split(new string[] { "\",\"" }, StringSplitOptions.None);
+            if (str != null)
+            {
+                strArray = str.Split(new string[] { "\",\"" }, StringSplitOptions.None);               
+            }
+            else
+            {
+                strArray = new string[1];
+                strArray[0] = "0";
+            }
+ 
             List<String> lineList = strArray.ToList();
             lineList[lineList.Count - 1] = lineList[lineList.Count - 1].Trim('\"');
             return lineList;

@@ -33,10 +33,16 @@ namespace Manifest.Utils
                     if ((properties[i].PropertyType == typeof (Int32) || properties[i].PropertyType == typeof (Double)) &&
                         input[i].CompareTo("")==0)
                         input[i] = "0";
+                    try
+                    {
+                        object propValue = typeConverter.ConvertFromString(input[i]);
+                        properties[i].SetValue(instance, propValue, null);
+                    }
+                    catch (Exception)
+                    {
+                        //TODO LOG
+                    }
                     
-                    object propValue = typeConverter.ConvertFromString(input[i]);
-                    properties[i].SetValue(instance, propValue, null);
-
                 }
             }
             return instance;
