@@ -11,7 +11,7 @@ namespace Manifest.UI
     {
         public Wrapper()
         {
-            if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Hoopad)
+            if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Hoopad )
             {
                 this.ContentSource = new Uri("/UI/Steps/Hoopad/Main.xaml", UriKind.Relative);
             }

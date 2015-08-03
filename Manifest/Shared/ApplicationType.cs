@@ -10,6 +10,7 @@ namespace Manifest.Shared
     {
         Hoopad, 
         Lotka, 
-        Fake,   
+        Fake,
+        Import
     }
 }

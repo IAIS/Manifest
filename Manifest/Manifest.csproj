@@ -105,6 +105,7 @@
     </ApplicationDefinition>
     <Compile Include="Converter\ClassConverter.cs" />
     <Compile Include="Converter\IConverter.cs" />
+    <Compile Include="Converter\TxtConverter.cs" />
     <Compile Include="Converter\XmlConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Resource.Designer.cs">
@@ -235,6 +236,7 @@
       <DependentUpon>uVoyage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\ComboBoxesValues.cs" />
+    <Compile Include="Utils\ConvertTextFile.cs" />
     <Compile Include="Utils\DataGridRowsManager.cs" />
     <Compile Include="Utils\Details.cs" />
     <Compile Include="Utils\DetailsPage.cs" />
@@ -254,6 +256,7 @@
     <Compile Include="Utils\ParameterUtility.cs" />
     <Compile Include="Utils\Printer.cs" />
     <Compile Include="Utils\RowToIndexConv.cs" />
+    <Compile Include="Utils\Scanner.cs" />
     <Compile Include="Utils\Validator.cs" />
     <Page Include="UI\Details\ContainerDetails.xaml">
       <SubType>Designer</SubType>

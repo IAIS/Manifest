@@ -46,7 +46,12 @@ namespace Manifest.UI.Steps.Hoopad
             }
         }
 
-        private void WorkerOnDoWork(object sender, DoWorkEventArgs e)
+        /// <summary>
+        /// خواندن فایل فورمت هوپاد دریا
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HoopadWorkerOnDoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
@@ -88,14 +93,52 @@ namespace Manifest.UI.Steps.Hoopad
             }
             catch (FormatException ex)
             {
-                Log.Error("Format Exception Error While Uploading File(WorkerOnDoWork) in Hoopad Mode.", ex);
+                Log.Error("Format Exception Error While Uploading File(HoopadWorkerOnDoWork) in Hoopad Mode.", ex);
                 UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
                 ShowError(exception);
                 e.Cancel = true;
             }
             catch (Exception ex)
             {
-                Log.Error("Unspecific Exception Error While Uploading File(WorkerOnDoWork) in Hoopad Mode.", ex);
+                Log.Error("Unspecific Exception Error While Uploading File(HoopadWorkerOnDoWork) in Hoopad Mode.", ex);
+                UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.VoyageOpenError, ex);
+                ShowError(exception);
+                e.Cancel = true;
+            }
+        }
+        
+        /// <summary>
+        /// خواندن فایل فورمت استاندارد داخلی
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ImportWorkerOnDoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                String path = e.Argument as String;
+
+//                Voyage voyage = ParameterUtility.GetVoyage();
+                Voyage voyage = ConvertTextFile.ConvertToVoyage(TxtConverter.Convert(path));
+                ParameterUtility.SetVoyage(voyage);
+                e.Result = voyage;
+
+            }
+            catch (UserInterfaceException ex)
+            {
+                ShowError(ex);
+                e.Cancel = true;
+            }
+            catch (FormatException ex)
+            {
+                Log.Error("Format Exception Error While Uploading File(ImportWorkerOnDoWork) in Import Mode.", ex);
+                UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
+                ShowError(exception);
+                e.Cancel = true;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Unspecific Exception Error While Uploading File(ImportWorkerOnDoWork) in Import Mode.", ex);
                 UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.VoyageOpenError, ex);
                 ShowError(exception);
                 e.Cancel = true;
@@ -108,12 +151,28 @@ namespace Manifest.UI.Steps.Hoopad
             {
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Multiselect = false;
-                dialog.Filter = "Xml files (*.xml)|*.xml|All files (*.*)|*.*";
+
+                if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Import)
+                {
+                    dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                }
+                else if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Hoopad)
+                {
+                    dialog.Filter = "Xml files (*.xml)|*.xml|All files (*.*)|*.*";
+                }
+
                 if (dialog.ShowDialog() == true)
                 {
                     IsLoading();
                     BackgroundWorker worker = new BackgroundWorker();
-                    worker.DoWork += WorkerOnDoWork;
+                    if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Import)
+                    {
+                        worker.DoWork += ImportWorkerOnDoWork;
+                    }
+                    else if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Hoopad)
+                    {
+                        worker.DoWork += HoopadWorkerOnDoWork;
+                    }
                     worker.RunWorkerCompleted += WorkerOnRunWorkerCompleted;
                     worker.RunWorkerAsync(dialog.FileName);
                 }

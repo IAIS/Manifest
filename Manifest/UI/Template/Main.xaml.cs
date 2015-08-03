@@ -22,7 +22,8 @@ namespace Manifest.UI.Template
         public Main()
         {
             InitializeComponent();
-            if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Hoopad)
+            if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Hoopad ||
+                Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Import)
             {
                 ModernTab modernTab = new ModernTab()
                 {
