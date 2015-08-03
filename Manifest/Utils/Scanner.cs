@@ -24,20 +24,30 @@ namespace Manifest.Utils
                                          select prop).ToArray();
             for (int i = 0; i < properties.Length; i++)
             {
-                //PropertyInfo propertyInfo = properties[i];
-                if (CommonUtility.IsSimpleProperty(properties[i]))
+                try
                 {
-                    
-                    TypeConverter typeConverter = TypeDescriptor.GetConverter(properties[i].PropertyType);
-                    
-                    if ((properties[i].PropertyType == typeof (Int32) || properties[i].PropertyType == typeof (Double)) &&
-                        input[i].CompareTo("")==0)
-                        input[i] = "0";
-                    
-                    object propValue = typeConverter.ConvertFromString(input[i]);
-                    properties[i].SetValue(instance, propValue, null);
+                    //PropertyInfo propertyInfo = properties[i];
+                    if (CommonUtility.IsSimpleProperty(properties[i]))
+                    {
 
+                        TypeConverter typeConverter = TypeDescriptor.GetConverter(properties[i].PropertyType);
+
+                        if ((properties[i].PropertyType == typeof (Int32) ||
+                             properties[i].PropertyType == typeof (Double)) && input[i].Equals(""))
+                        {
+                            input[i] = "0";                                 
+                        }
+
+                        object propValue = typeConverter.ConvertFromString(input[i]);
+                        properties[i].SetValue(instance, propValue, null);
+
+                    }
                 }
+                catch (Exception)
+                {
+                    //TODO: DO log   
+                }
+                
             }
             return instance;
         }
