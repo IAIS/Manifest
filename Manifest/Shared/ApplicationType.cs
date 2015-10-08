@@ -11,6 +11,7 @@ namespace Manifest.Shared
         Hoopad, 
         Lotka, 
         Fake,
-        Import
+        Import, 
+        DHL
     }
 }

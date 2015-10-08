@@ -46,6 +46,11 @@ namespace Manifest.UI.Steps.Hoopad
             }
         }
 
+        private void DHLWorkerOnDoWork(object sender, DoWorkEventArgs e)
+        {
+            
+        }
+
         /// <summary>
         /// خواندن فایل فورمت هوپاد دریا
         /// </summary>
@@ -160,6 +165,10 @@ namespace Manifest.UI.Steps.Hoopad
                 {
                     dialog.Filter = "Xml files (*.xml)|*.xml|All files (*.*)|*.*";
                 }
+                else if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.DHL)
+                {
+                    dialog.Filter = "Excel 97-2003 (*.xls)|*.xls|Excel (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                }
 
                 if (dialog.ShowDialog() == true)
                 {
@@ -172,6 +181,10 @@ namespace Manifest.UI.Steps.Hoopad
                     else if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Hoopad)
                     {
                         worker.DoWork += HoopadWorkerOnDoWork;
+                    }
+                    else if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.DHL)
+                    {
+                        worker.DoWork += DHLWorkerOnDoWork;
                     }
                     worker.RunWorkerCompleted += WorkerOnRunWorkerCompleted;
                     worker.RunWorkerAsync(dialog.FileName);
