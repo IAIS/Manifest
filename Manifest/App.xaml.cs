@@ -35,6 +35,10 @@ namespace Manifest
             ParameterUtility.SetVoyage(voyage);
         
 #endif
+            if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.Fake)
+            {
+                FakeServiceHelper.GetInstance().Init();
+            }
         }
 
         public Voyage Voyage { get; set; }

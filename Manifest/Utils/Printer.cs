@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Manifest.Shared;
 using Manifest.Template.Hoopad;
 
 namespace Manifest.Utils
@@ -53,6 +55,31 @@ namespace Manifest.Utils
                 return builder.ToString();
             }
             
+        }
+
+        /// <summary>
+        /// نتیجه را به صورت یک رشته باز می گرداند
+        /// </summary>
+        /// <returns></returns>
+        public static String GetResult()
+        {
+            StringBuilder builder = new StringBuilder("");
+            builder.AppendLine("\"VOY\"," + Printer.Print(ParameterUtility.GetVoyage()));
+
+            ObservableCollection<BillOfLading> billOfLadings = ParameterUtility.GetBillOfLading();
+            foreach (BillOfLading billOfLading in billOfLadings)
+            {
+                builder.AppendLine("\"BOL\"," + Printer.Print(billOfLading));
+                foreach (Container container in billOfLading.Containers)
+                {
+                    builder.AppendLine("\"CTR\"," + Printer.Print(container));
+                    foreach (Consignment consignment in container.Consignments)
+                    {
+                        builder.AppendLine("\"CON\"," + Printer.Print(consignment));
+                    }
+                }
+            }
+            return builder.ToString();
         }
     }
 }

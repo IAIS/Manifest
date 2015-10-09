@@ -43,14 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FirstFloor.ModernUI.dll" size="233984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FirstFloor.ModernUI.dll" size="230400">
       <assemblyIdentity name="FirstFloor.ModernUI" version="1.0.6.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>yKFXzk+zrDj/5DpeaG2Ot7hKyWU=</dsig:DigestValue>
+        <dsig:DigestValue>sl6TkKtD/w9ZtRb/krNJgyHtAeo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HttpServer.dll" size="127488">
+      <assemblyIdentity name="HttpServer" version="1.0.0.0" publicKeyToken="D7063C47C583695A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>A7YRmMVhbCmomX8QTdjZCAC6+nQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -79,14 +91,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="2633728">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="2630544">
       <assemblyIdentity name="Manifest" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>8IlbOHeZGBL6uLWeYz1fu5uClY8=</dsig:DigestValue>
+        <dsig:DigestValue>/vFYYkH/7H4Hl+v509YCEp4/E6Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -111,13 +123,13 @@
       <dsig:DigestValue>LtWj8JKGRhGUvJJsA+T1qL+iT1o=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Manifest.exe.config" size="1472">
+  <file name="Manifest.exe.config" size="1470">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>nxaCFnbNNDc5+9/iZzFkct6IZNc=</dsig:DigestValue>
+      <dsig:DigestValue>H0YB1cYYPRiS7uf7edDILBLpBoY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Structure\Map.xml" size="4566">

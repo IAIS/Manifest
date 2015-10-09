@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -8,10 +7,8 @@ using System.Text;
 using System.Windows;
 using FirstFloor.ModernUI.Windows.Navigation;
 using log4net;
-using Manifest.Converter;
 using Manifest.Resources;
 using Manifest.Shared;
-using Manifest.Template.Hoopad;
 using Manifest.Utils;
 using Microsoft.Win32;
 using Warehouse.Exceptions;

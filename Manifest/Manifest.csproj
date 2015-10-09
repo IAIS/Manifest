@@ -78,6 +78,9 @@
     <StartupObject>Manifest.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HttpServer">
+      <HintPath>..\packages\HttpServer.1.0.0\HttpServer.dll</HintPath>
+    </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\packages\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
     </Reference>
@@ -241,6 +244,7 @@
     <Compile Include="Utils\Details.cs" />
     <Compile Include="Utils\DetailsPage.cs" />
     <Compile Include="Utils\FakeHelper.cs" />
+    <Compile Include="Utils\FakeServiceHelper.cs" />
     <Compile Include="Utils\Formater.cs" />
     <Compile Include="Utils\IDetails.cs" />
     <Compile Include="Utils\MyStringLength.cs" />
