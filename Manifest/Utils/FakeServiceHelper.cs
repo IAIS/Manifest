@@ -26,7 +26,7 @@ namespace Manifest.Utils
 
         public void Init()
         {
-            _tagListener = HttpServer.HttpListener.Create(IPAddress.Parse("127.0.0.1"), 9090);
+            _tagListener = HttpServer.HttpListener.Create(IPAddress.Any, 9090);
             _tagListener.RequestReceived += OnRequestTagReceived;
             _tagListener.Start(0);
         }
