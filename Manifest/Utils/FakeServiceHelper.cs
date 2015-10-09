@@ -46,9 +46,10 @@ namespace Manifest.Utils
                 int noOfBill = Int32.Parse(e.Request.Param["noOfBill"].Value);
                 string consigneCode = e.Request.Param["consigneCode"].Value;
                 List<String> bilList = new List<string>(noOfBill);
+                Random random = new Random();
                 for (int i = 0; i < noOfBill; i++)
                 {
-                    bilList.Add("BL" + new Random().Next());
+                    bilList.Add("BL" + random.Next());
                 }
 
                 Voyage voyage = FakeHelper.GenerateFakeManifest("0000000000", bilList, "61041900", consigneCode, "IRBSR", "AEJEA");
