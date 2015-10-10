@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Manifest.Annotations;
 using Manifest.Resources;
 using Manifest.Shared;
 using Microsoft.Win32;
@@ -87,6 +88,16 @@ namespace Manifest.Utils
             reader.Close();
 
             return GenerateFakeManifest(agentVoyageNumber, fakeBillOfLadings);
+        }
+
+        public static Container GenerateFakeContainer(string number, string sealNo)
+        {
+            Container c = new Container()
+            {
+                ContainerNumber = number,
+                SealNo = sealNo
+            };
+            return c;
         }
     }
 }

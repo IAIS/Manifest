@@ -76,8 +76,14 @@
     <StartupObject>Manifest.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Excel">
+      <HintPath>..\packages\ExcelDataReader.2.1.2.3\lib\net20\Excel.dll</HintPath>
+    </Reference>
     <Reference Include="HttpServer">
       <HintPath>..\packages\HttpServer.1.0.0\HttpServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\packages\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
@@ -89,6 +95,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
@@ -107,6 +114,7 @@
     <Compile Include="Converter\ClassConverter.cs" />
     <Compile Include="Converter\IConverter.cs" />
     <Compile Include="Converter\TxtConverter.cs" />
+    <Compile Include="Converter\XlsxConverter.cs" />
     <Compile Include="Converter\XmlConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Resource.Designer.cs">
@@ -391,6 +399,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="RFID.pfx" />
     <Resource Include="Fonts\B Titr.TTF">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security;
 using System.Web.UI;
 using System.Windows;
 using FirstFloor.ModernUI.Windows.Controls;
@@ -48,6 +49,32 @@ namespace Manifest.UI.Steps.Hoopad
 
         private void DHLWorkerOnDoWork(object sender, DoWorkEventArgs e)
         {
+            try
+            {
+                String path = e.Argument as String;
+                Voyage voyage = XlsxConverter.ConvertExcelToVoyage(path); ;
+                ParameterUtility.SetVoyage(voyage);
+                e.Result = voyage;
+            }
+            catch (UserInterfaceException ex)
+            {
+                ShowError(ex);
+                e.Cancel = true;
+            }
+            catch (FormatException ex)
+            {
+                Log.Error("Format Exception Error While Uploading File(ImportWorkerOnDoWork) in Import Mode.", ex);
+                UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
+                ShowError(exception);
+                e.Cancel = true;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Unspecific Exception Error While Uploading File(ImportWorkerOnDoWork) in Import Mode.", ex);
+                UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.VoyageOpenError, ex);
+                ShowError(exception);
+                e.Cancel = true;
+            }
             
         }
 
