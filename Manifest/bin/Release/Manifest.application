@@ -3,6 +3,11 @@
   <assemblyIdentity name="Manifest.application" version="1.0.0.46" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <description asmv2:publisher="Manifest" asmv2:product="Manifest" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true">
+    <subscription>
+      <update>
+        <expiration maximumAge="0" unit="days" />
+      </update>
+    </subscription>
     <deploymentProvider codebase="https://epl.irica.ir/manifest/Manifest.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
@@ -16,7 +21,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>pTZIJcT32IFGubn1/pczp85sr4Y=</dsig:DigestValue>
+        <dsig:DigestValue>93FtwxObPI38L08FHje4v6GJRDo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
