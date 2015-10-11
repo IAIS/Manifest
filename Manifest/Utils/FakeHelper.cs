@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Markup;
 using Manifest.Annotations;
 using Manifest.Resources;
 using Manifest.Shared;
@@ -13,18 +14,22 @@ namespace Manifest.Utils
 {
     public class FakeHelper
     {
-        public static Voyage GenerateFakeManifest(String agentVoyageNumber, List<String> fakeBillOfLadings, string commodityCode = "99999999", string consigneCode = "0", string portCodeOfDischarge = "irnot", string portCodeOfLoading = "irnot")
+        public static Voyage GenerateFakeManifest(String agentVoyageNumber, List<String> fakeBillOfLadings, string agentVoyageCode = "1*1",
+            string commodityCode = "99999999", string consigneCode = "0", string portCodeOfDischarge = "irnot", string portCodeOfDestination = "irnot", string portCodeOfLoading = "irnot")
         {
+
+            Random random = new Random();
+
             Voyage manifest = new Voyage
             {
-                AgentsVoyageNumber = "1*1",
-                AgentsManifestSequenceNumber = "1*1",
-                VesselName = "1*1", 
-                PortCodeOfDischarge = portCodeOfDischarge, 
+                AgentsVoyageNumber = agentVoyageCode,
+                AgentsManifestSequenceNumber = agentVoyageCode,
+                VesselName = agentVoyageCode,
+                PortCodeOfDischarge = portCodeOfDischarge,
+                VoyageAgentCode = agentVoyageNumber,
             };
 
 
-            manifest.VoyageAgentCode = agentVoyageNumber;
             manifest.LineCode = manifest.VoyageAgentCode;
 
             foreach (string fakeBillOfLading in fakeBillOfLadings)
@@ -35,14 +40,14 @@ namespace Manifest.Utils
                     PortCodeOfOrigin = portCodeOfLoading,
                     PortCodeOfLoading = portCodeOfLoading,
                     PortCodeOfDischarge = portCodeOfDischarge,
-                    PortCodeOfDestination = portCodeOfDischarge,
+                    PortCodeOfDestination = portCodeOfDestination,
                     CountryOfOrigin = "ir",
                     ShipperName = manifest.VoyageAgentCode,
                     ShipperAddress = "-",
                     ConsigneeAddress = "-",
                     Notify1Address = "-",
                     MarksAndNumbers = "-",
-                    ConsigneeCode = consigneCode, 
+                    ConsigneeCode = consigneCode,
                     CommodityCode = commodityCode,
                     CommodityDescription = "-",
                     Packages = 1.0,
@@ -52,23 +57,39 @@ namespace Manifest.Utils
                     GrossWeightInKg = 1.0
                 };
 
-                Container container = new Container()
-                {
-                    ContainerNumber = "F123456",
-                    SealNo = "F996633"
-                };
+                bool isFirstTime = true;
 
-                container.Consignments.Add(new Consignment()
+                while (isFirstTime || random.Next() % 3 == 0)
                 {
-                    SerialNumber = "F234567",
-                    MarksAndNumbers = "Fake Commodity",
-                    CargoDescription = "Fake Cargo Description",
-                    CommodityCode = "123457890",
-                    PackageType = "Pallet",
-                    PackageTypeCode = "PLT"
-                });
+                    Container container = new Container()
+                    {
+                        ContainerNumber = "FAKE" + random.Next(100000, 999999).ToString() + "-" + random.Next(0, 9),
+                        SealNo = "F996633"
+                    };
 
-                bol.Containers.Add(container);
+                    while (isFirstTime || random.Next() % 2 == 0)
+                    {
+                        container.Consignments.Add(new Consignment()
+                        {
+                            SerialNumber = "F234567",
+                            MarksAndNumbers = "Fake Commodity",
+                            CargoDescription = "Fake Cargo Description",
+                            CommodityCode = GetCommodityCode(commodityCode),
+                            PackageType = "Pallet",
+                            PackageTypeCode = "PLT"
+                        });
+                        isFirstTime = false;
+                    }
+
+
+                    bol.Containers.Add(container);
+
+                    
+                    if (agentVoyageCode.Equals("0"))
+                    {
+                        break;
+                    }
+                }
 
                 manifest.BillOfLadings.Add(bol);
             }
@@ -98,6 +119,21 @@ namespace Manifest.Utils
                 SealNo = sealNo
             };
             return c;
+        }
+
+        public static string GetCommodityCode(string seed)
+        {
+            if (seed.Equals("99999999"))
+            {
+                return "99999999";
+            }
+            else
+            {
+                Random random = new Random();
+                List<string> commodityCodes = new List<string>() {"09083110", "10064000", "10063000"};
+                int index = random.Next(commodityCodes.Count);
+                return commodityCodes[index];
+            }
         }
     }
 }

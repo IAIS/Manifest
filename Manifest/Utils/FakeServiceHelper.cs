@@ -52,10 +52,11 @@ namespace Manifest.Utils
                     bilList.Add("BL" + random.Next());
                 }
 
-                Voyage voyage = FakeHelper.GenerateFakeManifest("0000000000", bilList, "61041900", consigneCode, "IRBSR", "AEJEA");
+                Voyage voyage = FakeHelper.GenerateFakeManifest("0000000000", bilList, random.Next().ToString(), "61041900", consigneCode, "IRBSR", "IRBND", "AEJEA");
                 Utils.ParameterUtility.SetVoyage(voyage);
+
+                ArchiveHelper.Compress("C:\\Tests\\fake-manifest\\fake-manifest.zip");
                 String fakeManifest = Utils.Printer.GetResult();
-                    //.Replace(System.Environment.NewLine, "<br/>");
                 SendResponse(fakeManifest, response);
             }
             catch (Exception ex)

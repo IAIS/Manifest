@@ -40,7 +40,7 @@ namespace Manifest.UI.Steps.Fake
             }
         }
 
-        
+
 
         public override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -56,17 +56,10 @@ namespace Manifest.UI.Steps.Fake
         {
             try
             {
-
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "Zip files (*.zip)|*.zip|All files (*.*)|*.*";
+                SaveFileDialog dialog = new SaveFileDialog { Filter = "Zip files (*.zip)|*.zip|All files (*.*)|*.*" };
                 if (dialog.ShowDialog() == true)
                 {
-                    using (ZipFile zip = new ZipFile())
-                    {
-                        String fileName = "Manifest_" + DateTime.Now.ToString("yyyyMMddHHmmss");
-                        zip.AddEntry(fileName, Printer.GetResult(), System.Text.Encoding.ASCII);
-                        zip.Save(dialog.FileName);
-                    }
+                    ArchiveHelper.Compress(dialog.FileName);
                 }
             }
             catch (Exception ex)

@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FirstFloor.ModernUI.dll" size="233984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FirstFloor.ModernUI.dll" size="230400">
       <assemblyIdentity name="FirstFloor.ModernUI" version="1.0.6.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>9lmCWPsKeEmU4nt5KY8aCnyJR7Y=</dsig:DigestValue>
+        <dsig:DigestValue>2HlPp1WAtvmv3ojsDDwrZrfDZCw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -115,14 +115,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="2638848">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Manifest.exe" size="2633616">
       <assemblyIdentity name="Manifest" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Fj4BNkQ3jaQ07J7wZCQ/oG53u5k=</dsig:DigestValue>
+        <dsig:DigestValue>GA1Ji/Vfg5qR7wENb97qNJn9//Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -147,13 +147,13 @@
       <dsig:DigestValue>LtWj8JKGRhGUvJJsA+T1qL+iT1o=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Manifest.exe.config" size="1469">
+  <file name="Manifest.exe.config" size="1470">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>iVTTW3qtYXu0oHPywLkmfYmLfWI=</dsig:DigestValue>
+      <dsig:DigestValue>H0YB1cYYPRiS7uf7edDILBLpBoY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Structure\Map.xml" size="4566">

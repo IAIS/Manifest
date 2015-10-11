@@ -244,6 +244,7 @@
     <Compile Include="UserControl\uVoyage.xaml.cs">
       <DependentUpon>uVoyage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ArchiveHelper.cs" />
     <Compile Include="Utils\ComboBoxesValues.cs" />
     <Compile Include="Utils\ConvertTextFile.cs" />
     <Compile Include="Utils\DataGridRowsManager.cs" />
