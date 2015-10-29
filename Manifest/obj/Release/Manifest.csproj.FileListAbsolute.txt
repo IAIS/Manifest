@@ -983,3 +983,7 @@ C:\Users\Abouzar\Source\Repos\final-final-converter\Manifest\obj\Release\Manifes
 C:\Users\Abouzar\Source\Repos\final-final-converter\Manifest\obj\Release\Manifest.csproj.GenerateResource.Cache
 C:\Users\Abouzar\Source\Repos\final-final-converter\Manifest\obj\Release\Manifest.exe.manifest
 C:\Users\Abouzar\Source\Repos\final-final-converter\Manifest\obj\Release\Manifest.application
+C:\Users\BARCA\Source\Repos\converter\Manifest\bin\Release\Excel.dll
+C:\Users\BARCA\Source\Repos\converter\Manifest\bin\Release\HttpServer.dll
+C:\Users\BARCA\Source\Repos\converter\Manifest\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\Users\BARCA\Source\Repos\converter\Manifest\bin\Release\Excel.pdb
