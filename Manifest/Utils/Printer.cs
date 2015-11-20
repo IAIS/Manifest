@@ -41,7 +41,7 @@ namespace Manifest.Utils
                     }
                     else
                     {
-                        builder.Append("\"" + propertyInfo.GetValue(instance, null) + "\",");    
+                        builder.Append("\"" + GetValue(propertyInfo, instance) + "\",");    
                     }
                 }
             }
@@ -54,7 +54,22 @@ namespace Manifest.Utils
             {
                 return builder.ToString();
             }
-            
+        }
+
+        /// <summary>
+        /// با توجه به فرمت انتخاب شده امکان وجود خط جدید و ... در فایل نهایی وجود ندارد
+        /// </summary>
+        /// <param name="propertyInfo"></param>
+        /// <param name="instance"></param>
+        /// <returns></returns>
+        private static string GetValue(PropertyInfo propertyInfo, Object instance)
+        {
+            var value = propertyInfo.GetValue(instance, null) as String;
+            if (value == null)
+            {
+                return "";
+            }
+            return value.Replace("\r", "").Replace("\n", "");
         }
 
         /// <summary>
@@ -81,5 +96,6 @@ namespace Manifest.Utils
             }
             return builder.ToString();
         }
+
     }
 }
