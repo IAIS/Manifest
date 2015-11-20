@@ -78,6 +78,43 @@ namespace Manifest.UI.Steps.Hoopad
             
         }
 
+
+        /// <summary>
+        /// Iran Air Worker
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void IranAirWorkerOnDoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                String path = e.Argument as String;
+                Voyage voyage = XlsxConverter.ConvertExcelToVoyage(path); ;
+                ParameterUtility.SetVoyage(voyage);
+                e.Result = voyage;
+            }
+            catch (UserInterfaceException ex)
+            {
+                ShowError(ex);
+                e.Cancel = true;
+            }
+            catch (FormatException ex)
+            {
+                Log.Error("Format Exception Error While Uploading File(ImportWorkerOnDoWork) in Import Mode.", ex);
+                UserInterfaceException exception = new UserInterfaceException(20002, ExceptionMessage.Format, ex);
+                ShowError(exception);
+                e.Cancel = true;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Unspecific Exception Error While Uploading File(ImportWorkerOnDoWork) in Import Mode.", ex);
+                UserInterfaceException exception = new UserInterfaceException(10001, ExceptionMessage.VoyageOpenError, ex);
+                ShowError(exception);
+                e.Cancel = true;
+            }
+
+        }
+
         /// <summary>
         /// خواندن فایل فورمت هوپاد دریا
         /// </summary>
@@ -196,6 +233,10 @@ namespace Manifest.UI.Steps.Hoopad
                 {
                     dialog.Filter = "Excel 97-2003 (*.xls)|*.xls|Excel (*.xlsx)|*.xlsx|All files (*.*)|*.*";
                 }
+                else if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.IranAir)
+                {
+                    dialog.Filter = "Excel 97-2003 (*.xls)|*.xls|Excel (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                }
 
                 if (dialog.ShowDialog() == true)
                 {
@@ -212,6 +253,10 @@ namespace Manifest.UI.Steps.Hoopad
                     else if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.DHL)
                     {
                         worker.DoWork += DHLWorkerOnDoWork;
+                    }
+                    else if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.IranAir)
+                    {
+                        worker.DoWork += IranAirWorkerOnDoWork;
                     }
                     worker.RunWorkerCompleted += WorkerOnRunWorkerCompleted;
                     worker.RunWorkerAsync(dialog.FileName);

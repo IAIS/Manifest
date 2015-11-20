@@ -12,6 +12,7 @@ namespace Manifest.Shared
         Lotka, 
         Fake,
         Import, 
-        DHL
+        DHL,
+        IranAir
     }
 }
