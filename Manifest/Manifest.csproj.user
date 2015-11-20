@@ -2,8 +2,8 @@
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
-    <PublishUrlHistory>C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\Deploy\|C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\Deploy\|C:\Users\AbouzarKamaee\Desktop\F3\|C:\Users\AbouzarKamaee\Desktop\Finaize\|C:\Users\AbouzarKamaee\Desktop\Finl\</PublishUrlHistory>
-    <InstallUrlHistory>https://epl.irica.ir/manifest/|http://epl.irica.ir/manifest/</InstallUrlHistory>
+    <PublishUrlHistory>C:\Users\Abouzar\Source\Repos\converter\Manifest\Deploy\|C:\Users\AbouzarKamaee\Source\Repos\Final-Converter\converter\Manifest\Deploy\|C:\Users\AbouzarKamaee\Source\Repos\Manifest\Manifest\Deploy\|C:\Users\AbouzarKamaee\Desktop\F3\|C:\Users\AbouzarKamaee\Desktop\Finaize\</PublishUrlHistory>
+    <InstallUrlHistory>http://epl.irica.ir/manifest/|https://epl.irica.ir/manifest/</InstallUrlHistory>
     <SupportUrlHistory />
     <UpdateUrlHistory>https://epl.irica.ir/manifest/</UpdateUrlHistory>
     <BootstrapperUrlHistory />
