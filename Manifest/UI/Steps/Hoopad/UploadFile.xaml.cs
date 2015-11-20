@@ -52,7 +52,7 @@ namespace Manifest.UI.Steps.Hoopad
             try
             {
                 String path = e.Argument as String;
-                Voyage voyage = XlsxConverter.ConvertExcelToVoyage(path); ;
+                Voyage voyage = XlsxConverter.ConvertDHLExcelToVoyage(path); ;
                 ParameterUtility.SetVoyage(voyage);
                 e.Result = voyage;
             }
@@ -89,7 +89,7 @@ namespace Manifest.UI.Steps.Hoopad
             try
             {
                 String path = e.Argument as String;
-                Voyage voyage = XlsxConverter.ConvertExcelToVoyage(path); ;
+                Voyage voyage = XlsxConverter.ConvertIranAirExcelToVoyage(path); ;
                 ParameterUtility.SetVoyage(voyage);
                 e.Result = voyage;
             }
@@ -235,7 +235,7 @@ namespace Manifest.UI.Steps.Hoopad
                 }
                 else if (Utils.ConfiguraionManager.GetInstance().GetApplicaionType() == ApplicaionType.IranAir)
                 {
-                    dialog.Filter = "Excel 97-2003 (*.xls)|*.xls|Excel (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                    dialog.Filter = "Excel (*.xlsx)|*.xlsx|Excel 97-2003 (*.xls)|*.xls|All files (*.*)|*.*";
                 }
 
                 if (dialog.ShowDialog() == true)

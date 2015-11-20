@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -222,6 +223,73 @@ namespace Manifest.Utils
             }
 
             return "0";
+        }
+
+        /// <summary>
+        /// تاریخ هجری به فرمت 
+        /// YYYY/MM/DD
+        /// را به تاریخ میلادی تبدیل می کند
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static DateTime DateConverterHijriToMiladi(String date)
+        {
+            PersianCalendar calendar = new PersianCalendar();
+
+            char[] chr = { '/' };
+
+            int year = ConvetToInt(date.Split(chr)[0]);
+            if (year < 1300)
+                year += 1300;
+            int month =ConvetToInt(date.Split(chr)[1]);
+            int day = ConvetToInt(date.Split(chr)[2].Split(' ')[0]);
+
+            int hour;
+            int minute;
+            int sec;
+            if (date.Contains(" "))
+            {
+                string time = date.Split(' ')[1];
+                hour = ConvetToInt(time.Split(':')[0]);
+                minute = ConvetToInt(time.Split(':')[1]);
+                sec = ConvetToInt(time.Split(':')[2]);
+            }
+            else
+            {
+                hour = minute = sec = 0;
+            }
+            return calendar.ToDateTime(year, month, day, hour, minute, sec, 0);
+        }
+
+        public static Int32 ConvetToInt(String input)
+        {
+            String text = CorrectNumber(input);
+            Int32 res;
+            if (Int32.TryParse(text, out res))
+            {
+                return res;
+            }
+            return -1;
+
+        }
+
+
+        /// <summary>
+        /// اعداد فارسی رو به انگلیسی تبدیل می کند که در به نوع داده عددی قابل تبدیل باشند
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static String CorrectNumber(String input)
+        {
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                return null;
+            }
+            for (int i = 0; i < PersianNumber.Length; i++)
+            {
+                input = input.Replace(PersianNumber[i], EnglishNumber[i]);
+            }
+            return input;
         }
 
     }

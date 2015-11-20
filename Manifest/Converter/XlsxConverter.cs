@@ -14,7 +14,7 @@ namespace Manifest.Converter
     public static class XlsxConverter
     {
         
-        public static Voyage ConvertExcelToVoyage(string filePath)
+        public static Voyage ConvertDHLExcelToVoyage(string filePath)
         {
             DataTable dt = ConvertFileToDataSet(filePath).Tables[0];
             Voyage v = ParameterUtility.GetVoyage();
@@ -31,7 +31,7 @@ namespace Manifest.Converter
             Dictionary<string, BillOfLading> dictionary = new Dictionary<string, BillOfLading>();
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                Consignment cons = ConvertLineToConsignment(dt.Rows[i]);
+                Consignment cons = ConvertLineToDHLConsignment(dt.Rows[i]);
 
                 if (dictionary.ContainsKey(dt.Rows[i][1].ToString()))
                 {
@@ -39,7 +39,7 @@ namespace Manifest.Converter
                 }
                 else
                 {
-                    BillOfLading bol = ConvertLineToBOL(dt.Rows[i]);
+                    BillOfLading bol = ConvertLineToDhlBOL(dt.Rows[i]);
                     bol.Containers[0].Consignments.Add(cons);
                     dictionary.Add(bol.BillOfLadingNo , bol);
                 }
@@ -55,7 +55,100 @@ namespace Manifest.Converter
             
         }
 
-        private static BillOfLading ConvertLineToBOL(DataRow dataRow)
+        public static Voyage ConvertIranAirExcelToVoyage(string filePath)
+        {
+            DataTable dt = ConvertFileToDataSet(filePath).Tables[0];
+            Voyage v = ParameterUtility.GetVoyage();
+            string lineCode = dt.Rows[0][2].ToString();
+            v.LineCode = lineCode;
+            v.VoyageAgentCode = "IranAirCoding";
+            v.VesselName = "IranAir";
+            v.ExpectedToArriveDate = CommonUtility.DateConverterHijriToMiladi(dt.Rows[0][1].ToString());
+            v.AgentsVoyageNumber = dt.Rows[0][0].ToString(); //شماره مانیفست ایران ایر
+            v.PortCodeOfDischarge = "TEH-IR"; //پورت مقصد
+            v.NoOfInstalment = dt.Rows.Count;
+            v.AgentsManifestSequenceNumber = v.AgentsVoyageNumber; // فعلا شماره مانیفست // Agent's refrence number for a manifest for Customs
+
+            Dictionary<string, BillOfLading> dictionary = new Dictionary<string, BillOfLading>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Consignment cons = ConvertLineToIranAirConsignment(dt.Rows[i]);
+
+                if (dictionary.ContainsKey(dt.Rows[i][3].ToString()))
+                {
+                    dictionary[dt.Rows[i][3].ToString()].Containers[0].Consignments.Add(cons);
+                    dictionary[dt.Rows[i][3].ToString()].MarksAndNumbers += cons.MarksAndNumbers;
+                }
+                else
+                {
+                    BillOfLading bol = ConvertLineToIranAirBOL(dt.Rows[i]);
+                    bol.Containers[0].Consignments.Add(cons);
+                    dictionary.Add(bol.BillOfLadingNo, bol);
+                }
+
+            }
+
+            foreach (BillOfLading bol in dictionary.Values)
+            {
+                v.BillOfLadings.Add(bol);
+            }
+
+            return v;
+
+        }
+
+        private static BillOfLading ConvertLineToIranAirBOL(DataRow dataRow)
+        {
+            BillOfLading bol = new BillOfLading();
+            bol.BillOfLadingNo = dataRow[3].ToString();
+            bol.BoxPartenringLineCode = "BoxPartenring (Required)";
+            bol.BoxPartenringAgentCode = "BoxPartenring (Required)";
+            bol.PortCodeOfOrigin = (dataRow[6].ToString() == "") ? "Origin" : (dataRow[6].ToString().Length>15)?dataRow[6].ToString().Substring(0,15):dataRow[6].ToString();
+            bol.PortCodeOfLoading = bol.PortCodeOfOrigin;
+
+            bol.PortCodeOfDischarge = "IRTEH";
+            bol.PortCodeOfDestination = "IRTEH";
+            bol.CountryOfOrigin = "??"; // (Required)
+
+            bol.ShipperName = bol.PortCodeOfOrigin; // (Required)
+            bol.ShipperAddress = bol.PortCodeOfOrigin;// (Required)
+
+            bol.ConsigneeName = dataRow[11].ToString(); // در مانیفست هما gyrandeh
+            bol.ConsigneeCode = "defaulCode"; // (Required)
+            bol.ConsigneeAddress = (dataRow[9].ToString()=="")? "Address or Tel (Required)": dataRow[9].ToString(); // در مانیفست هما Address
+
+            bol.Notify1Address = bol.ConsigneeAddress;
+            bol.MarksAndNumbers = (dataRow[10].ToString() == "") ? "Marks and Number (Required)" : dataRow[10].ToString();
+            bol.CommodityCode = "CommidityCode (Required)";
+            bol.CommodityDescription = dataRow[11].ToString();
+
+            bol.PackageType = bol.MarksAndNumbers; 
+            bol.PackageTypeCode = "PKG";
+
+
+
+            bol.Containers.Add(FakeHelper.GenerateFakeContainer("IRSU123456-7", "-"));
+
+            return bol;
+        }
+
+        private static Consignment ConvertLineToIranAirConsignment(DataRow dataRow)
+        {
+            Consignment cons = new Consignment();
+            cons.SerialNumber = "HSCODE (Required)";
+            cons.MarksAndNumbers = (dataRow[10].ToString() == "") ? "Marks and Number (Required)" : dataRow[10].ToString(); // Classnerkh در مانیفست هما
+            cons.CommodityCode = "CommidityCode (Required)";
+            cons.CargoDescription = cons.SerialNumber + "- " + dataRow[11];
+            cons.ConsignmentPackages = int.Parse(dataRow[4].ToString());
+            cons.PackageType = cons.MarksAndNumbers; 
+            cons.PackageTypeCode = "PKG";
+            cons.NoOfPallets = int.Parse(dataRow[4].ToString());
+            cons.ConsignmentWeightInKg = double.Parse(dataRow[5].ToString()); //در مانیفست هما realVazn
+
+            return cons;
+        }
+
+        private static BillOfLading ConvertLineToDhlBOL(DataRow dataRow)
         {
             BillOfLading bol = new BillOfLading();
             bol.BillOfLadingNo = dataRow[1].ToString();
@@ -89,7 +182,7 @@ namespace Manifest.Converter
             return bol;
         }
 
-        private static Consignment ConvertLineToConsignment(DataRow dataRow)
+        private static Consignment ConvertLineToDHLConsignment(DataRow dataRow)
         {
             Consignment cons =  new Consignment();
             cons.SerialNumber = "HSCODE: " + dataRow[1] + "-" + dataRow[27] + "-" + dataRow[23];
@@ -106,6 +199,8 @@ namespace Manifest.Converter
             return cons;
         }
 
+        
+
         public static DataSet ConvertFileToDataSet(String filePath)
         {
             try
@@ -113,14 +208,15 @@ namespace Manifest.Converter
                 FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read);
                 IExcelDataReader excelReader = null;
 
-                if (filePath.Contains("xls"))
-                {
-                    excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
-                }
-                else if (filePath.Contains("xlsx"))
+                if (filePath.Contains("xlsx"))
                 {
                     excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
                 }
+                else if (filePath.Contains("xls"))
+                {
+                    excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
+                }
+                
 
                 excelReader.IsFirstRowAsColumnNames = true;
                 DataSet result = excelReader.AsDataSet();
