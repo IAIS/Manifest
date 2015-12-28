@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.IO;
-using System.IO.Compression;
 using System.Text;
 using System.Windows;
 using FirstFloor.ModernUI.Windows.Navigation;
 using Manifest.Resources;
-using Manifest.Shared;
 using Manifest.Utils;
 using Microsoft.Win32;
 using Warehouse.Exceptions;
