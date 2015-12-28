@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Files>
+  <File class="Manifest.Shared.Manifest">
+    <Property name="manifestOwner"/>
+    <Property name="voyageAgentCode"/>
+    <Property name="nameOfCarrier"/>
+    <Property name="agentsVoyageNumber"/>
+    <Property name="portCodeOfDischarge"/>
+    <Property name="expectedToArriveDate"/>
+    <Property name="rotationNumber"/>    
+    <Property name="agentsManifestReferenceNumber"/>
+  </File>
+</Files>
