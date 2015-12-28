@@ -42,7 +42,7 @@ namespace Manifest.UI.Steps.Fake
             {
                 String path = e.Argument as String;
 
-                manifest = FakeHelper.GenerateFakeManifest(path);
+                manifest = new FakeHelper().GenerateFakeManifest(path);
 
                 ParameterUtility.SetVoyage(manifest);
 

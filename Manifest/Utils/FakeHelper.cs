@@ -14,11 +14,16 @@ namespace Manifest.Utils
 {
     public class FakeHelper
     {
-        public static Voyage GenerateFakeManifest(String agentVoyageNumber, List<String> fakeBillOfLadings, string agentVoyageCode = "1*1",
+        private readonly Random _random;
+
+        public FakeHelper()
+        {
+            this._random =  new Random();
+        }
+
+        public Voyage GenerateFakeManifest(String agentVoyageNumber, List<String> fakeBillOfLadings, string agentVoyageCode = "1*1",
             string commodityCode = "99999999", string consigneCode = "0", string portCodeOfDischarge = "irnot", string portCodeOfDestination = "irnot", string portCodeOfLoading = "irnot")
         {
-
-            Random random = new Random();
 
             Voyage manifest = new Voyage
             {
@@ -29,67 +34,49 @@ namespace Manifest.Utils
                 VoyageAgentCode = agentVoyageNumber,
             };
 
-
             manifest.LineCode = manifest.VoyageAgentCode;
 
-            foreach (string fakeBillOfLading in fakeBillOfLadings)
+            for (int i = 0; i < fakeBillOfLadings.Count; i++)
             {
-                BillOfLading bol = new BillOfLading
+                string fakeBillOfLading = fakeBillOfLadings[i];
+                BillOfLading bol = GenerateFakeBillOfLading(fakeBillOfLading, portCodeOfLoading, portCodeOfDischarge,
+                    portCodeOfDestination, agentVoyageCode, consigneCode, commodityCode);
+
+                // یک کانتینر با یک قلم کالا
+                if (i % 3 == 0)
                 {
-                    BillOfLadingNo = fakeBillOfLading,
-                    PortCodeOfOrigin = portCodeOfLoading,
-                    PortCodeOfLoading = portCodeOfLoading,
-                    PortCodeOfDischarge = portCodeOfDischarge,
-                    PortCodeOfDestination = portCodeOfDestination,
-                    CountryOfOrigin = "ir",
-                    ShipperName = manifest.VoyageAgentCode,
-                    ShipperAddress = "-",
-                    ConsigneeAddress = "-",
-                    Notify1Address = "-",
-                    MarksAndNumbers = "-",
-                    ConsigneeCode = consigneCode,
-                    CommodityCode = commodityCode,
-                    CommodityDescription = "-",
-                    Packages = 1.0,
-                    PackageType = "UNT",
-                    PackageTypeCode = "UNT",
-                    CargoWeightInKg = 1.0,
-                    GrossWeightInKg = 1.0
-                };
+                    Container container = GenerateFakeContainer();
 
-                bool isFirstTime = true;
+                    container.Consignments.Add(GenerateFakeConsignment(commodityCode));
+                    container.Consignments.Add(GenerateFakeConsignment(commodityCode));
 
-                while (isFirstTime || random.Next() % 3 == 0)
-                {
-                    Container container = new Container()
-                    {
-                        ContainerNumber = "FAKE" + random.Next(100000, 999999).ToString() + "-" + random.Next(0, 9),
-                        SealNo = "F996633"
-                    };
-
-                    while (isFirstTime || random.Next() % 2 == 0)
-                    {
-                        container.Consignments.Add(new Consignment()
-                        {
-                            SerialNumber = "F234567",
-                            MarksAndNumbers = "Fake Commodity",
-                            CargoDescription = "Fake Cargo Description",
-                            CommodityCode = GetCommodityCode(commodityCode),
-                            PackageType = "Pallet",
-                            PackageTypeCode = "PLT"
-                        });
-                        isFirstTime = false;
-                    }
-
+                    bol.NoOfContainers = 1;
 
                     bol.Containers.Add(container);
-
-                    
-                    if (agentVoyageCode.Equals("0"))
-                    {
-                        break;
-                    }
                 }
+                else
+                {
+                    Container container1 = GenerateFakeContainer();
+
+                    container1.Consignments.Add(GenerateFakeConsignment(commodityCode));
+
+                    bol.Containers.Add(container1);
+
+                    Container container2 = GenerateFakeContainer();
+
+                    container2.Consignments.Add(GenerateFakeConsignment(commodityCode));
+                    container2.Consignments.Add(GenerateFakeConsignment(commodityCode));
+
+                    bol.NoOfContainers = 2;
+
+                    bol.Containers.Add(container2);
+
+                }
+
+                bol.TotalQuantity = bol.Containers.Sum(ctr => ctr.Consignments.Sum(cons => cons.ConsignmentPackages));
+                bol.Packages = bol.Containers.Sum(ctr => ctr.Consignments.Sum(cons => cons.ConsignmentPackages));
+                bol.TotalTareWeightInMT = bol.Containers.Sum(ctr => ctr.Consignments.Sum(cons => cons.ConsignmentWeightInKg));
+
 
                 manifest.BillOfLadings.Add(bol);
             }
@@ -97,7 +84,7 @@ namespace Manifest.Utils
             return manifest;
         }
 
-        public static Voyage GenerateFakeManifest(String textFileInput)
+        public Voyage GenerateFakeManifest(String textFileInput)
         {
             StreamReader reader = new StreamReader(textFileInput);
             String agentVoyageNumber = reader.ReadLine();
@@ -111,7 +98,7 @@ namespace Manifest.Utils
             return GenerateFakeManifest(agentVoyageNumber, fakeBillOfLadings);
         }
 
-        public static Container GenerateFakeContainer(string number, string sealNo)
+        public Container GenerateFakeContainer(string number, string sealNo)
         {
             Container c = new Container()
             {
@@ -121,7 +108,55 @@ namespace Manifest.Utils
             return c;
         }
 
-        public static string GetCommodityCode(string seed)
+        private Container GenerateFakeContainer()
+        {
+            return GenerateFakeContainer("FAKU" + _random.Next(100000, 999999).ToString() + "-" + _random.Next(0, 9), "F" + _random.Next(100000, 999999));
+        }
+
+        private Consignment GenerateFakeConsignment(string commodityCode)
+        {
+            return new Consignment
+            {
+                SerialNumber = "F234567",
+                MarksAndNumbers = "Fake Commodity",
+                CargoDescription = "Fake Cargo Description",
+                CommodityCode = GetCommodityCode(commodityCode),
+                PackageType = "Pallet",
+                PackageTypeCode = "PLT",
+                ConsignmentWeightInKg = _random.NextDouble(),
+                ConsignmentPackages = _random.NextDouble(),
+                ConsignmentVolumeInCubicMeters = _random.NextDouble(),
+                NoOfPallets = _random.NextDouble(),
+            };
+        }
+
+        private BillOfLading GenerateFakeBillOfLading(string fakeBillOfLading, string portCodeOfLoading, string portCodeOfDischarge, string portCodeOfDestination, string voyageAgentCode, string consigneCode, string commodityCode)
+        {
+            return new BillOfLading
+            {
+                BillOfLadingNo = fakeBillOfLading,
+                PortCodeOfOrigin = portCodeOfLoading,
+                PortCodeOfLoading = portCodeOfLoading,
+                PortCodeOfDischarge = portCodeOfDischarge,
+                PortCodeOfDestination = portCodeOfDestination,
+                CountryOfOrigin = "ir",
+                ShipperName = voyageAgentCode,
+                ShipperAddress = "-",
+                ConsigneeAddress = "-",
+                Notify1Address = "-",
+                MarksAndNumbers = "-",
+                ConsigneeCode = consigneCode,
+                CommodityCode = commodityCode,
+                CommodityDescription = "-",
+                Packages = 1.0,
+                PackageType = "UNT",
+                PackageTypeCode = "UNT",
+                CargoWeightInKg = 1.0,
+                GrossWeightInKg = 1.0
+            };
+        }
+
+        public string GetCommodityCode(string seed)
         {
             if (seed.Equals("99999999"))
             {
@@ -129,11 +164,12 @@ namespace Manifest.Utils
             }
             else
             {
-                Random random = new Random();
-                List<string> commodityCodes = new List<string>() {"09083110", "10064000", "10063000"};
+                Random random = _random;
+                List<string> commodityCodes = new List<string>() { "09083110", "10064000", "10063000" };
                 int index = random.Next(commodityCodes.Count);
                 return commodityCodes[index];
             }
         }
+
     }
 }

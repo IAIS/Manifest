@@ -127,7 +127,7 @@ namespace Manifest.Converter
 
 
 
-            bol.Containers.Add(FakeHelper.GenerateFakeContainer("IRSU123456-7", "-"));
+            bol.Containers.Add(new FakeHelper().GenerateFakeContainer("IRSU123456-7", "-"));
 
             return bol;
         }
@@ -177,7 +177,7 @@ namespace Manifest.Converter
 
 
 
-            bol.Containers.Add(FakeHelper.GenerateFakeContainer("IRSU123456-7", "-"));
+            bol.Containers.Add(new FakeHelper().GenerateFakeContainer("IRSU123456-7", "-"));
             
             return bol;
         }

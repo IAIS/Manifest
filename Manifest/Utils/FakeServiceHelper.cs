@@ -14,6 +14,12 @@ namespace Manifest.Utils
     {
         private static FakeServiceHelper _instance;
         private HttpServer.HttpListener _tagListener;
+        private Random _random;
+
+        private FakeServiceHelper()
+        {
+            this._random = new Random();
+        }
 
         public static FakeServiceHelper GetInstance()
         {
@@ -31,11 +37,6 @@ namespace Manifest.Utils
             _tagListener.Start(0);
         }
 
-        private FakeServiceHelper()
-        {
-
-        }
-
         private void OnRequestTagReceived(object sender, RequestEventArgs e)
         {
             IHttpClientContext context = (IHttpClientContext)sender;
@@ -46,13 +47,12 @@ namespace Manifest.Utils
                 int noOfBill = Int32.Parse(e.Request.Param["noOfBill"].Value);
                 string consigneCode = e.Request.Param["consigneCode"].Value;
                 List<String> bilList = new List<string>(noOfBill);
-                Random random = new Random();
                 for (int i = 0; i < noOfBill; i++)
                 {
-                    bilList.Add("BL" + random.Next());
+                    bilList.Add("BL" + this._random.Next());
                 }
 
-                Voyage voyage = FakeHelper.GenerateFakeManifest("0000000000", bilList, random.Next().ToString(), "61041900", consigneCode, "IRBSR", "IRBND", "AEJEA");
+                Voyage voyage = new FakeHelper().GenerateFakeManifest("0000000000", bilList, this._random.Next().ToString(), "61041900", consigneCode, "IRBSR", "IRBND", "AEJEA");
                 Utils.ParameterUtility.SetVoyage(voyage);
 
                 ArchiveHelper.Compress("C:\\Tests\\fake-manifest\\fake-manifest.zip");

@@ -35,14 +35,7 @@ namespace Manifest.Utils
                 PropertyInfo propertyInfo = properties[i];
                 if (CommonUtility.IsSimpleProperty(propertyInfo))
                 {
-                    if(propertyInfo.PropertyType == typeof(DateTime))
-                    {
-                        builder.Append("\"" + CommonUtility.ConvertDateTime((DateTime)propertyInfo.GetValue(instance, null)) + "\",");    
-                    }
-                    else
-                    {
-                        builder.Append("\"" + GetValue(propertyInfo, instance) + "\",");    
-                    }
+                    builder.Append(GetValue(propertyInfo, instance));
                 }
             }
             if (builder.ToString().Length >= 1)
@@ -64,12 +57,32 @@ namespace Manifest.Utils
         /// <returns></returns>
         private static string GetValue(PropertyInfo propertyInfo, Object instance)
         {
-            var value = propertyInfo.GetValue(instance, null) as String;
-            if (value == null)
+            string stringValue = "\"\",";
+            if (propertyInfo.PropertyType == typeof(DateTime))
             {
-                return "";
+                stringValue = "\"" + CommonUtility.ConvertDateTime((DateTime) propertyInfo.GetValue(instance, null)) + "\",";
             }
-            return value.Replace("\r", "").Replace("\n", "");
+            else if (propertyInfo.PropertyType == typeof(double))
+            {
+                stringValue =  "\"" + ((double)propertyInfo.GetValue(instance, null)) + "\",";
+            }
+            else if (propertyInfo.PropertyType == typeof(int))
+            {
+                stringValue = "\"" + ((int)propertyInfo.GetValue(instance, null)) + "\",";
+            }
+            else if (propertyInfo.PropertyType == typeof (string))
+            {
+                stringValue = "\"" + (propertyInfo.GetValue(instance, null)) + "\",";
+            }
+            else
+            {
+                var temp = propertyInfo.GetValue(instance, null);
+                if (temp != null)
+                {
+                    stringValue = "\"" + temp + "\",";
+                }
+            }
+            return stringValue.Replace("\r", "").Replace("\n", "");
         }
 
         /// <summary>

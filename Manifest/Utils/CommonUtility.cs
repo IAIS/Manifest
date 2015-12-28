@@ -44,8 +44,7 @@ namespace Manifest.Utils
         /// <returns></returns>
         public static bool IsSimpleProperty(PropertyInfo propertyInfo)
         {
-            if (typeof(String) != propertyInfo.PropertyType &&
-                    typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType))
+            if (typeof(IList).IsAssignableFrom(propertyInfo.PropertyType))
             {
                 return false;
             }

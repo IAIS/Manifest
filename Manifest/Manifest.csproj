@@ -25,11 +25,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://epl.irica.ir/manifest/</InstallUrl>
-    <UpdateUrl>https://epl.irica.ir/manifest/</UpdateUrl>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <InstallUrl>http://epl.irica.gov.ir/manifest/</InstallUrl>
+    <UpdateUrl>http://epl.irica.gov.ir/manifest/</UpdateUrl>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>50</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>60</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

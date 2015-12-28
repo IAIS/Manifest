@@ -34,7 +34,6 @@ namespace Manifest.Utils
                         newBol.Containers.Add(newContainer);
                     }
                     voyage.BillOfLadings.Add(newBol);
-
                 }
 
             } while (!file.EndOfStream);
